@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Mobility</title>
+    <link rel="stylesheet" href="LogMobility.css">
+</head>
+<body>
+Valor sensor de entrada do dia: <input id="sensor_entrada" type="number">
+<br>
+Valor sensor de saída do dia: <input id="sensor_saida" type="number">
+<br>
+Valor de pagamentos meio do dia: <input id="pagamentos_meios" type="number">
+<br>
+Valor pessoas isentas de pagamento do dia: <input id="isentos_pagamento" type="number">
+<br>
+Valor de vezes que a catraca foi utilizada do dia: <input id="uso_catraca" type="number">
+<br>
+Valor atual da passagem: <input id="valor_passagem" type="number">
+<br>
+
+<button onclick="calc()">Calcular</button>
+<div id="resultado"></div>
+
+    
+</body>
+</html>
+
+<Script>
+    function calc(){ 
+        // valores informados pelo usuario - esses já foram testados e esta OK
+        var e = Number (sensor_entrada.value)
+        var s = Number (sensor_saida.value)
+        var pm = Number (pagamentos_meios.value)
+        var ip = Number (isentos_pagamento.value)
+        var uc = Number (uso_catraca.value)
+        var valorp = Number (valor_passagem.value)
+
+        // calculos -- estão testados e esta ok
+
+        var te = e - ip
+        var ts = s - ip
+        var uct = uc - ip
+        var l = uct * valorp
+        var m = pm / 2
+        var pmd = m * valorp
+        var ld = l - pmd
+        var es = ts - te
+        var valorcomp_e = te - m
+        var valorcomp_s = ts - m
+        var vf = ld / valorcomp_e
+        var vfe = ld / valorcomp_e
+        var vfs = ld / valorcomp_s
+
+        if (es == 0){
+            if (vf == valorp){
+                resultado.innerHTML = `Esta tudo certo todos que usaram pagaram. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            }else if (vf > valorp){
+                resultado.innerHTML = `Alguém pagou a mais. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            }else {
+                resultado.innerHTML = `Alguém não pagou. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            }
+        } else if (es < 0) {
+            if (vfe == valorp){
+                resultado.innerHTML = `Houve mais movimentos na frente do ônibus, mas todos pagaram. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            } else if (vfe > valorp){
+                resultado.innerHTML = `Houve mais movimento na frente do ônibus e alguém pagou a mais. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            } else {
+                resultado.innerHTML = `Houve mais movimento na frente do ônibus e alguém não pagou. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            }
+        }else {
+            if (vfs == valorp){
+                resultado.innerHTML = `Houve mais movimento na parte de trás do ônibus, mas todos pagaram. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            } else if (vfs > valorp){
+                resultado.innerHTML = `Houve mais movimento na parte de trás do ônibus e ouve pagamento a mais. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            } else {
+                resultado.innerHTML = `Houve mais movimento na parte de trás do ônibus e alguém não pagou. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} <br>
+                `
+            }
+        }
+    }
+
+
+
+</Script>
