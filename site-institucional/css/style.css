@@ -1,0 +1,98 @@
+body{
+    background-color: black;
+    margin: 0;
+    font-family: monospace;
+}
+/* -----------------------NAVEGAÇÃO DO SITE--------------------------------- */
+.header{
+    color: white;
+    background-color: black;
+    border-bottom: 6px solid white;
+    
+}
+
+.header .container{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.container .brand{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar{
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    background-color: #00418C;
+    align-items: center;
+    height: 30px;
+    margin: 0;
+    padding: 10px;
+}
+
+/* ------------------------CORPO DO SITE------------------------------ */
+.container-corpo{ 
+    display: flex;
+    background-image: url(../img/Banner.png);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+.banner1{
+    display: flex;
+}
+
+.banner1 p{
+    padding: 0;
+    margin: 0;
+    width: 380px;
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+}
+
+.group-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+/* ----------Botões----------- */
+.button-simular{
+    color: #fff;
+    border-radius: 10px;
+    font-weight: bolder;
+    background-color: #00418C;
+    height: 30px;
+    width: 150px;
+}
+.button-contato{
+    border-radius: 10px;
+    font-weight: bolder;
+    color: #00418C;
+    height: 30px;
+    width: 150px;
+}
+
+/* -----------------------RODAPÉ--------------------------------------- */
+.footer{
+    margin: 0;
+    color: #fff;
+    border-top: 3px solid white;
+}
+.footer .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 30px 0px 30px 0px;
+}
+.footer .direitos{
+    align-items: center;
+    background-color: #4d4d4d;
+    text-align: center;
+    font-size: 11px;
+    line-height: 50px;
+    margin: 0;
+}
+/* ------------------------------------------------------------------- */
