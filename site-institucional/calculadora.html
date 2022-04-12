@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Home</title>
+</head>
+
+<body>
+    <!------------------------------HEADER DO SITE ----------------------------------------- -->
+    <div class="header">
+        <div class="container-header-empCadast">
+
+
+            <ul class="navbar-empCadast"><img src="img/SPTrans_logo.png"
+                    height="60px">
+                <!--Navegação -->
+                <li class="li1">
+                    <p>Empresas <br>Cadastradas</p>
+                </li>
+                <li>
+                    <p>Cadastrar Empresas</p>
+                </li>
+                <li>
+                    <p>Calculadora <br>de gestão</p>
+                </li>
+                <li>
+                    <p>Sair</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!---------------------------------CORPO DO SITE------------------------------------------>
+    <div class="container-empCadastradas">
+        <div class="ipt-calc">
+            <div class="ipt-valor">
+                <p>Valor sensor de entrada do dia: </p><input id="sensor_entrada" type="number">
+            </div>
+
+            <div class="ipt-valor">
+                <p>Valor sensor de saída do dia: </p><input id="sensor_saida" type="number">
+            </div>
+
+            <div class="ipt-valor">
+                <p>Valor de pagamentos meio do dia: </p><input id="pagamentos_meios" type="number">
+            </div>
+
+            <div class="ipt-valor">
+                <p>Valor pessoas isentas de pagamento do dia: </p><input id="isentos_pagamento" type="number">
+            </div>
+
+            <div class="ipt-valor">
+                <p>Valor de vezes que a catraca foi utilizada do dia: </p><input id="uso_catraca" type="number">
+            </div>
+
+            <div class="ipt-valor">
+                <p>Valor atual da passagem: </p><input id="valor_passagem" type="number">
+                <button class="button-simular" onclick="calc()">Calcular</button>
+            </div>
+
+        </div>
+
+
+
+        <div class="resul" id="resultado"></div>
+
+
+
+    </div>
+
+    <!---------------------------------RODAPÉ DO SITE------------------------------------------>
+    <div class="footer">
+        <div class="container">
+            <div>
+                <h2>Saiba Mais</h2>
+                <p>Termos de Serviço</p>
+                <p>Perguntas Frequentes</p>
+            </div>
+            <div>
+                <h2>Atendimento</h2>
+                <p>suporte@logmobility.com</p>
+                <p>(11) 1234-5678</p>
+            </div>
+            <div>
+                <h2>Redes Sociais</h2>
+                <img src="img/instagram.png" alt="">
+                <img src="img/facebook.png" alt="">
+                <img src="img/twitter.png" alt="">
+            </div>
+        </div>
+
+        <div class="direitos">
+            Log Mobility - 2022 Todos os direitos reservados
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- ---------------------------Inicio do script para calculo com valores informados pelos usuarios--------------------------------------- -->
+
+<Script>
+    function calc() {
+        // valores informados pelo usuario 
+        var e = Number(sensor_entrada.value)
+        var s = Number(sensor_saida.value)
+        var pm = Number(pagamentos_meios.value)
+        var ip = Number(isentos_pagamento.value)
+        var uc = Number(uso_catraca.value)
+        var valorp = Number(valor_passagem.value)
+
+        // calculos 
+        var te = e - ip
+        var ts = s - ip
+        var uct = uc - ip
+        var l = uct * valorp
+        var m = pm / 2
+        var pmd = m * valorp
+        var ld = l - pmd
+        var es = ts - te
+        var valorcomp_e = te - m
+        var valorcomp_s = ts - m
+        var vf = ld / valorcomp_e
+        var vfe = ld / valorcomp_e
+        var vfs = ld / valorcomp_s
+
+        //Condições 
+
+        if (es == 0) {
+            if (vf == valorp) {
+                resultado.innerHTML = `<p>
+                Esta tudo certo todos que usaram pagaram. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            } else if (vf > valorp) {
+                resultado.innerHTML = `<p>
+                Alguém pagou a mais. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            } else {
+                resultado.innerHTML = `<p>
+                Alguém não pagou. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            }
+        } else if (es < 0) {
+            if (vfe == valorp) {
+                resultado.innerHTML = `<p>
+                Houve mais movimentos na frente do ônibus, mas todos pagaram. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            } else if (vfe > valorp) {
+                resultado.innerHTML = `<p>
+                Houve mais movimento na frente do ônibus e alguém pagou a mais. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            } else {
+                resultado.innerHTML = `<p>
+                Houve mais movimento na frente do ônibus e alguém não pagou. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            }
+        } else {
+            if (vfs == valorp) {
+                resultado.innerHTML = `<p>
+                Houve mais movimento na parte de trás do ônibus, mas todos pagaram. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            } else if (vfs > valorp) {
+                resultado.innerHTML = `<p>
+                Houve mais movimento na parte de trás do ônibus e ouve pagamento a mais. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            } else {
+                resultado.innerHTML = `<p>
+                Houve mais movimento na parte de trás do ônibus e alguém não pagou. Esses são os valores:<br>
+                Total de entrada:${te} <br>
+                Total de saida:${ts} <br>
+                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                </p>
+                `
+            }
+        }
+    }
+
+
+
+</Script>

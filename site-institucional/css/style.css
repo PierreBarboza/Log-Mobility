@@ -166,6 +166,56 @@ p{
     font-size: 18px;
     color: rgb(255, 255, 255);
 }
-/* ----------------------------------------------------------------------------------------------------------------------- */
-
-
+/* ---------------------------------------------------Empresas cadastradas------------------------------------------------------------------ */
+.navbar-empCadast{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    background-image: linear-gradient(to right,#000, #4F4F4F);
+    align-items: center;
+    height: 50px;
+    margin: 0;
+    padding: 10px;
+}
+.container-empCadastradas{
+    background-image: url(../img/background1.png);
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+.navbar-empCadast .li1{
+    border-right: 2px solid #fff;
+    width: 150px;
+}
+.navbar-empCadast .li{
+    font-size: 100px;
+}
+/* --------------------------------Inputs para calculadora do gestor------------------------------------------------------ */
+.ipt-calc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-right: 10px;
+    
+}
+.ipt-valor{
+    padding-top: 30px;
+}
+.resul{
+    background-color: #4d4d4d;
+    border: white 5px solid;
+    padding-left: 10px;
+    width: 400px;
+    height: 150px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* --------------------------------------------------------------------------------- */
