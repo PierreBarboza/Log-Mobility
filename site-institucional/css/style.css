@@ -237,8 +237,8 @@ p {
 }
 
 .div_container_empresas_cadast {
-    background-color: #ffff;
     height: 15vh;
+    background-color: rgba(91, 87, 87, 0.7);
     width: 70vw;
     display: flex;
     align-items: center;
@@ -254,7 +254,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 5px 5px 5px gray;
+    box-shadow: 5px 5px 5px rgb(104, 101, 101);
 }
 
 .container-empCadastradas-footer {
