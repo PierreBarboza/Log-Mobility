@@ -254,12 +254,11 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 5px 5px 5px rgb(104, 101, 101);
+    box-shadow: 5px 5px 5px rgb(74, 73, 73);
 }
 
 .container-empCadastradas-footer {
-    background-color: rgb(100, 96, 96);
-    opacity: 30%;
+    background-color: rgba(51, 47, 47, 0.7);
     height: 10vh;
     width: 72%;
     display: flex;
