@@ -138,7 +138,7 @@ body {
     align-items: center;
 }
 
-/*<!-------------------------------------Descrição dos valores da empresa----------------------------------------------> */
+/*<!-------------------------------------Descrição dos Missão, Visão e valores da empresa----------------------------------------------> */
 .sobreNos-logo {
     width: 150px;
     height: 180px;
@@ -237,10 +237,9 @@ p {
 }
 
 .div_container_empresas_cadast {
-    background-color: #ffffff;
+    background-color: #ffff;
     height: 15vh;
     width: 70vw;
-    border: 3px solid #00418C;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -260,6 +259,7 @@ p {
 
 .container-empCadastradas-footer {
     background-color: rgb(100, 96, 96);
+    opacity: 30%;
     height: 10vh;
     width: 72%;
     display: flex;
@@ -309,6 +309,7 @@ p {
     font-weight: bolder;
     align-items: center;
     font-size: 20px;
+    text-decoration:  none;
 }
 
 .uso_local {
