@@ -182,7 +182,7 @@ p{
     background-size: cover;
     height: 600px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     
@@ -193,6 +193,35 @@ p{
 }
 .navbar-empCadast .li{
     font-size: 100px;
+}
+.div_container_empresas_cadast{
+background-color: #ffffff;
+height: 15vh;
+width: 70vw;
+border: 10px solid black;
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+}
+.vizu_linha{
+background-color: #000;
+height: 30%;
+width: 25%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.container-empCadastradas-footer{
+background-color: rgb(100, 96, 96);
+height: 10vh;
+width: 70%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+
 }
 /* --------------------------------Inputs para calculadora do gestor------------------------------------------------------ */
 .ipt-calc{
@@ -219,3 +248,34 @@ p{
     justify-content: center;
 }
 /* --------------------------------------------------------------------------------- */
+
+/*                            ESTILIZAÇÃO DE TEXTO */
+
+.texto-principal-empCadastrada{
+color: white;
+font-weight: lighter;
+
+}
+.texto_mediano_btn{
+color: #ffffff;
+font-weight: bolder;
+align-items: center;
+font-size: 20px;
+}
+
+/*                  Formatação de icones   e imagens            */
+
+.engranagem-icone{
+height: 30px;
+padding-left: 44px;
+padding-right: 44px;
+}
+
+
+
+.imagens-empresas-cad{
+    height: 105px;
+    width: 20%;
+    
+    }
+    
