@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Home</title>
+    <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon">
+
 </head>
 
 <body>
@@ -15,8 +17,7 @@
         <div class="container-header-empCadast">
 
 
-            <ul class="navbar-empCadast"><img src="img/SPTrans_logo.png"
-                    height="60px">
+            <ul class="navbar-empCadast"><img src="img/SPTrans_logo.png" height="60px">
                 <!--Navegação -->
                 <li class="li1">
                     <p>Empresas <br>Cadastradas</p>
@@ -36,32 +37,35 @@
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
     <div class="container-empCadastradas">
-        <div class="ipt-calc">
-            <div class="ipt-valor">
-                <p>Valor sensor de entrada do dia: </p><input id="sensor_entrada" type="number">
-            </div>
+        <div class="">
 
-            <div class="ipt-valor">
-                <p>Valor sensor de saída do dia: </p><input id="sensor_saida" type="number">
-            </div>
+            <div class="ipt-calc">
+                <div class="ipt-valor">
+                    <p>Valor sensor de entrada do dia: </p><input id="sensor_entrada" type="number">
+                </div>
 
-            <div class="ipt-valor">
-                <p>Valor de pagamentos meio do dia: </p><input id="pagamentos_meios" type="number">
-            </div>
+                <div class="ipt-valor">
+                    <p>Valor sensor de saída do dia: </p><input id="sensor_saida" type="number">
+                </div>
 
-            <div class="ipt-valor">
-                <p>Valor pessoas isentas de pagamento do dia: </p><input id="isentos_pagamento" type="number">
-            </div>
+                <div class="ipt-valor">
+                    <p>Valor de pagamentos meio do dia: </p><input id="pagamentos_meios" type="number">
+                </div>
 
-            <div class="ipt-valor">
-                <p>Valor de vezes que a catraca foi utilizada do dia: </p><input id="uso_catraca" type="number">
-            </div>
+                <div class="ipt-valor">
+                    <p>Valor pessoas isentas de pagamento do dia: </p><input id="isentos_pagamento" type="number">
+                </div>
 
-            <div class="ipt-valor">
-                <p>Valor atual da passagem: </p><input id="valor_passagem" type="number">
-                <button class="button-simular" onclick="calc()">Calcular</button>
-            </div>
+                <div class="ipt-valor">
+                    <p>Valor de vezes que a catraca foi utilizada do dia: </p><input id="uso_catraca" type="number">
+                </div>
 
+                <div class="ipt-valor">
+                    <p>Valor atual da passagem: </p><input id="valor_passagem" type="number">
+                    <button class="button-simular" onclick="calc()">Calcular</button>
+                </div>
+                
+            </div>
         </div>
 
 
@@ -210,7 +214,4 @@
             }
         }
     }
-
-
-
 </Script>

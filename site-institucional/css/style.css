@@ -1,7 +1,7 @@
 body{
     background-color: black;
     margin: 0;
-    font-family: monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* -----------------------NAVEGAÇÃO DO SITE--------------------------------- */
 .header{
@@ -31,6 +31,7 @@ body{
     height: 30px;
     margin: 0;
     padding: 10px;
+    text-decoration: none;
 }
 
 /* ------------------------CORPO DO SITE------------------------------ */
@@ -61,18 +62,34 @@ body{
 /* ----------Botões----------- */
 .button-simular{
     color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 10px;
     font-weight: bolder;
     background-color: #00418C;
     height: 30px;
     width: 150px;
+    border: 0;
+    box-shadow: 1px 1px 1px gray;
 }
 .button-contato{
     border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bolder;
     color: #00418C;
     height: 30px;
     width: 150px;
+    border: 0;
+    box-shadow: 1px 1px 1px gray;
+}
+.btn_cadEmpresa{
+height: 75px;
+background-color: #4d4d4d;
+border: 0;
+width: 300px;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+align-self: center;
 }
 
 /* -----------------------RODAPÉ--------------------------------------- */
@@ -132,6 +149,7 @@ p{
     width: 380px;
     font-size: 19px;
     color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 .sobreNos-display{
     width: 400px;
@@ -190,18 +208,22 @@ p{
 .navbar-empCadast .li1{
     border-right: 2px solid #fff;
     width: 150px;
+    text-decoration: none;
 }
 .navbar-empCadast .li{
     font-size: 100px;
+    color: #ffffff;
+    text-decoration: none;
 }
 .div_container_empresas_cadast{
 background-color: #ffffff;
 height: 15vh;
 width: 70vw;
-border: 10px solid black;
+border: 3px solid #00418C;
 display: flex;
 align-items: center;
 justify-content: space-around;
+margin-bottom: 5px;
 
 }
 .vizu_linha{
@@ -211,11 +233,12 @@ width: 25%;
 display: flex;
 align-items: center;
 justify-content: center;
+box-shadow: 5px 5px 5px gray;
 }
 .container-empCadastradas-footer{
 background-color: rgb(100, 96, 96);
 height: 10vh;
-width: 70%;
+width: 72%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -262,19 +285,28 @@ font-weight: bolder;
 align-items: center;
 font-size: 20px;
 }
+.uso_local{
+color: #00418C;
+
+}
+
+.navbar ul{
+    text-decoration: none;
+}
 
 /*                  Formatação de icones   e imagens            */
 
 .engranagem-icone{
 height: 30px;
 padding-left: 44px;
-padding-right: 44px;
+padding-right: 12px;
+
 }
 
 
 
 .imagens-empresas-cad{
-    height: 105px;
+    height: 103px;
     width: 20%;
     
     }
