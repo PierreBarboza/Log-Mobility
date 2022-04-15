@@ -1,307 +1,369 @@
 body {
-    background-color: black;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* -----------------------NAVEGAÇÃO DO SITE INSTITUCIONAL--------------------------------- */
 .header {
-    color: white;
-    background-color: black;
-    border-bottom: 6px solid white;
-
+  color: white;
+  background-color: black;
+  border-bottom: 6px solid white;
 }
 
 .header .container {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
 }
 
 .container .brand {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
-    background-color: #00418C;
-    align-items: center;
-    height: 30px;
-    margin: 0;
-    padding: 10px;
-    text-decoration: none;
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  background-color: #00418c;
+  align-items: center;
+  height: 30px;
+  margin: 0;
+  padding: 10px;
+  text-decoration: none;
 }
 
-.btn_login{
-    text-decoration: none;
-    color: #fff;
+.btn_login {
+  text-decoration: none;
+  color: #fff;
 }
 
 /* ------------------------Corpo da Home------------------------------ */
 .container-corpo {
-    display: flex;
-    background-image: url(../img/Banner.png);
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
+  display: flex;
+  background-image: url(../img/Banner.png);
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.container-corpo-simulador {
+  display: flex;
+  background-image: url(../img/banner1.png);
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  border-bottom: 10px white;
+}
+.container-corpo-simulador2 {
+  display: flex;
+  background-image: url(../img/background-simulador.png);
+  background-size: cover;
+  justify-content: left;
+  align-items: center;
+  height: 500px;
+  border-bottom: 10px white;
+}
+.div-container-sim-esq {
+  color: white;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.div-container-sim-dir {
+  background-color: rgba(0, 0, 0, 0.562);
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.div-container-sim-dir h2 {
+  color: white;
+  padding: 15px;
+}
+.inp_simu {
+  border-radius: 0%;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.7);
+  margin-top: 1%;
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  background-color: #d4d1d1;
+}
+.div-container-sim-esq span {
+  display: flex;
+  flex-direction: row;
 }
 
 .banner1 {
-    display: flex;
+  display: flex;
 }
 
 .banner1 p {
-    padding: 0;
-    margin: 0;
-    width: 380px;
-    font-size: 19px;
-    color: rgb(255, 255, 255);
+  padding: 0;
+  margin: 0;
+  width: 380px;
+  font-size: 19px;
+  color: rgb(255, 255, 255);
 }
 
 .group-buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ----------Botões----------- */
 .button-simular {
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 10px;
-    font-weight: bolder;
-    background-color: #00418C;
-    height: 30px;
-    width: 150px;
-    border: 0;
-    box-shadow: 1px 1px 1px gray;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 100px;
+  font-weight: bolder;
+  background-color: #00418c;
+  height: 30px;
+  width: 150px;
+  border: 0;
+  box-shadow: 1px 1px 1px gray;
+  transition: 150ms;
 }
+.button-simular:hover{
+border-radius: 0%;
+
+}
+  
 
 .button-contato {
-    border-radius: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-    color: #00418C;
-    height: 30px;
-    width: 150px;
-    border: 0;
-    box-shadow: 1px 1px 1px gray;
+  border-radius: 100px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  color: #00418c;
+  height: 30px;
+  width: 150px;
+  border: 0;
+  box-shadow: 1px 1px 1px gray;
+  transition: 150ms;
+}
+.button-contato:hover {
+  border-radius: 0;
 }
 
 .btn_cadEmpresa {
-    height: 75px;
-    background-color: #4d4d4d;
-    border: 0;
-    width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    align-self: center;
+  height: 75px;
+  background-color: #4d4d4d;
+  border: 0;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  align-self: center;
+  transition: 500ms;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
+.btn_cadEmpresa:hover{
+border-radius: 150px;
+
+}
+  
 
 /* -----------------------RODAPÉ--------------------------------------- */
 .footer {
-    margin: 0;
-    color: #fff;
-    border-top: 3px solid white;
-
+  margin: 0;
+  color: #fff;
+  border-top: 3px solid white;
 }
 
 .footer .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 30px 0px 30px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 30px 0px 30px 0px;
 }
-.footer .container p{
-    font-size: 14px;
+.footer .container p {
+  font-size: 14px;
 }
-.footer .container h2{
-    font-size: 16px;
+.footer .container h2 {
+  font-size: 16px;
 }
 .footer .direitos {
-    align-items: center;
-    background-color: #4d4d4d;
-    text-align: center;
-    font-size: 11px;
-    line-height: 50px;
-    margin: 0;
+  align-items: center;
+  background-color: #4d4d4d;
+  text-align: center;
+  font-size: 11px;
+  line-height: 50px;
+  margin: 0;
 }
 
 /* --------------------------Sobre Nós-------------------------------------- */
 .container-sobreNos {
-    background-image: url(../img/background-sobreNos.png);
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 900px;
+  background-image: url(../img/background-sobreNos.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 900px;
 }
 
 .banner-sobreNos {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 /*<!-------------------------------------Descrição dos Missão, Visão e valores da empresa----------------------------------------------> */
 .sobreNos-logo {
-    width: 150px;
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
+  width: 150px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .sobreNos-logo p {
-    font-size: 40px;
-    color: rgb(255, 255, 255);
+  font-size: 40px;
+  color: rgb(255, 255, 255);
 }
 
 .sobreNos-cabecario {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 p {
-    margin: 0;
-    width: 380px;
-    font-size: 19px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
+  margin: 0;
+  width: 380px;
+  font-size: 19px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
 .sobreNos-display {
-    width: 400px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .box-mvv {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .sobreNos-enunciado {
-    background-color: #4d4d4d;
-    border: white 5px solid;
-    padding-left: 10px;
-    width: 300px;
-    height: 250px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+  background-color: #4d4d4d;
+  border: white 5px solid;
+  padding-left: 10px;
+  width: 300px;
+  height: 250px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sobreNos-enunciado p {
-    padding: 0;
-    margin: 0;
-    width: 380px;
-    font-size: 18px;
-    color: rgb(255, 255, 255);
+  padding: 0;
+  margin: 0;
+  width: 380px;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
 }
 
 /* ---------------------------------------------------[PARTE DA GESTÃO] -- Empresas cadastradas------------------------------------------------------------------ */
 .navbar-empCadast {
-    display: flex;
-    list-style: none;
-    justify-content: space-between;
-    background-image: linear-gradient(to right, #000, #4F4F4F);
-    align-items: center;
-    height: 50px;
-    margin: 0;
-    padding: 10px;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  background-image: linear-gradient(to right, #000, #4f4f4f);
+  align-items: center;
+  height: 50px;
+  margin: 0;
+  padding: 10px;
 }
 
 .container-empCadastradas {
-    background-image: url(../img/background1.png);
-    background-size: cover;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+  background-image: url(../img/background1.png);
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-empCadast .li1 {
-    border-right: 2px solid #fff;
-    width: 150px;
-    text-decoration: none;
+  border-right: 2px solid #fff;
+  width: 150px;
+  text-decoration: none;
 }
 
 .navbar-empCadast .li {
-    font-size: 100px;
-    color: #ffffff;
-    text-decoration: none;
+  font-size: 100px;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .div_container_empresas_cadast {
-    height: 15vh;
-    background-color: rgba(91, 87, 87, 0.7);
-    width: 70vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 5px;
-
+  height: 15vh;
+  background-color: rgba(91, 87, 87, 0.7);
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5px;
 }
 
 .vizu_linha {
-    background-color: #000;
-    height: 30%;
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 5px 5px 5px rgb(74, 73, 73);
+  background-color: #000;
+  height: 30%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 5px rgb(74, 73, 73);
 }
 
 .container-empCadastradas-footer {
-    background-color: rgba(51, 47, 47, 0.7);
-    height: 10vh;
-    width: 72%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: rgba(122, 119, 119, 0.37);
+  height: 10vh;
+  width: 72%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* --------------------------------Inputs para calculadora do gestor------------------------------------------------------ */
 .ipt-calc {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-    padding-right: 10px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-right: 10px;
 }
 
 .ipt-valor {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 .resul {
-    background-color: #4d4d4d;
-    border: white 5px solid;
-    padding-left: 10px;
-    width: 400px;
-    height: 150px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  background-color: #4d4d4d;
+  border: white 5px solid;
+  padding-left: 10px;
+  width: 400px;
+  height: 150px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* --------------------------------------------------------------------------------- */
@@ -309,353 +371,343 @@ p {
 /*                            ESTILIZAÇÃO DE TEXTO */
 
 .texto-principal-empCadastrada {
-    color: white;
-    font-weight: lighter;
-
+  color: white;
+  font-weight: lighter;
 }
 
 .texto_mediano_btn {
-    color: #ffffff;
-    font-weight: bolder;
-    align-items: center;
-    font-size: 20px;
-    text-decoration:  none;
+  color: #ffffff;
+  font-weight: bolder;
+  align-items: center;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .uso_local {
-    color: #00418C;
-
+  color: #00418c;
 }
 
 .navbar ul {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /*                  Formatação de icones   e imagens            */
 
 .engranagem-icone {
-    height: 30px;
-    padding-left: 44px;
-    padding-right: 12px;
-
+  height: 30px;
+  padding-left: 44px;
+  padding-right: 12px;
 }
-
-
 
 .imagens-empresas-cad {
-    height: 103px;
-    width: 20%;
-
+  height: 103px;
+  width: 20%;
 }
-
-
 
 /*------------------HEADER / NAVEGAÇÃO DO SITE DO GESTOR---------------------------------*/
 
 .header-da-gestao {
-    color: #fff;
-    background-image: linear-gradient(to right, black, gray);
-    display: flex;
-    justify-content: center;
-    border-bottom: 3px solid #fff;
+  color: #fff;
+  background-image: linear-gradient(to right, black, rgb(77, 74, 74));
+  display: flex;
+  justify-content: center;
 }
 
 .container-navbar {
-    display: flex;
-    width: 80%;
+  display: flex;
+  width: 80%;
 }
 
 .navbar-da-gestao {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
-    padding: 0;
-    width: 600px;
-    align-items: center;
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  padding: 0;
+  width: 600px;
+  align-items: center;
 }
 /*----Esse estilo é Para indicar em qual pagina está-----*/
-.pagina-atual { 
-    font-weight: bolder;
-    font-size: 15px;
+.pagina-atual {
+  font-weight: bolder;
+  font-size: 15px;
 }
 
 /*----tirando o estilo da formatação da ancora (link) ---*/
 .navbar-da-gestao li a {
-    text-decoration: none;
-    color: #d5d5d5;
-    transition: 1000ms;
+  text-decoration: none;
+  color: #d5d5d5;
+  transition: 1000ms;
 }
 .navbar-da-gestao li a:hover {
-    text-decoration: none;
-    color: #fa6868;
+  text-decoration: none;
+  color: #fa6868;
 }
 /*---------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------PAGINA (VISUALIZAR LINHAS )---------------------------------------*/
 /*---Banner-logo-(Area Branca com Logo no meio)---*/
 .banner-logo {
-    display: flex;
-    height: 200px;
-    background-color: #fff;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 5px solid #000;
+  display: flex;
+  height: 200px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid #000;
 }
 
 /*----Aqui começa o Corpo do Site, onde contém os conteudos--*/
 .container-corpo-linhas {
-    display: flex;
-    color: rgb(0, 0, 0);
-    background-image: url(../img/background-linhas.png);
-    justify-content: center;
+  display: flex;
+  color: rgb(0, 0, 0);
+  background-image: url(../img/background-linhas.png);
+  justify-content: center;
 }
 
 /*----Quadro das linhas/rotas----*/
 .quadro {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
 }
 
 /*----Cabeçalho do Quadro----*/
 .quadro .cabecalho {
-    background-color: #aaaaaa;
-    text-align: center;
-    margin-top: 50px;
+  background-color: #aaaaaa;
+  text-align: center;
+  margin-top: 50px;
 }
 
 /*----Rodapé do Quadro----*/
 .quadro .rodape {
-    background-color: #aaaaaa;
-    text-align: center;
-    margin-bottom: 50px;
+  background-color: #aaaaaa;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 /*----Tuplas do Quadro----*/
 .tupla {
-    display: flex;
-    align-items: center;
-    background-color: #000000;
-    padding: 20px 30px 20px 30px;
-    border-bottom: 2px solid #d5d5d5;
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  padding: 20px 30px 20px 30px;
+  border-bottom: 2px solid #d5d5d5;
 }
 
 /*----Botão (numero da Linha)----*/
 .button-linha {
-    color: #000;
-    font-weight: bolder;
-    font-size: 19px;
-    margin-left: 10px;
-    height: 40px;
-    width: 200px;
-    border-radius: 30px;
-    cursor: pointer;
+  color: #000;
+  font-weight: bolder;
+  font-size: 19px;
+  margin-left: 10px;
+  height: 40px;
+  width: 200px;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
 /*----Nome da Linha----*/
 .nome-linha {
-    color: #fff;
-    font-size: 17px;
-    margin-left: 12px;
+  color: #fff;
+  font-size: 17px;
+  margin-left: 12px;
 }
 /*-----------------------------------PÁGINA-CADASTRAR-EMPRESA--------------------------------------------------------*/
 /* ----------------------------------BANNER-CADASTRAR-EMPRESA-------------------------------------------------------- */
 .banner2 {
-    height: 650px;
-    background-image: url(../img/background-cadastro-empresa.png);;
-    background-size: cover;
+  height: 650px;
+  background-image: url(../img/background-cadastro-empresa.png);
+  background-size: cover;
 }
 
-.banner2 .containerCadastrarEmp{
-    display: flex;
-    justify-content: center;
-    color: #fff;
-    align-items: center;
-    padding: 60px 60px 0px 60px;
+.banner2 .containerCadastrarEmp {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  align-items: center;
+  padding: 60px 60px 0px 60px;
 }
 
 /* --------------------------BOX DE LOGIN-CADASTRAR-EMPRESA------------------------- */
 
-.form-boxCadastrarEmp{
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    width: 600px;
-    flex-wrap: wrap;
-    align-content: space-around;
+.form-boxCadastrarEmp {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 600px;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 
-
 .form-boxCadastrarEmp h4 {
-    margin: 15px 0 2px 5px;
-    color: #fff;
-    font: small-caption;
+  margin: 15px 0 2px 5px;
+  color: #fff;
+  font: small-caption;
 }
 
 .cardCadastrarEmp h1 {
-border: #E02B23;
-text-align: center;
-font-family: sans-serif;
+  border: #e02b23;
+  text-align: center;
+  font-family: sans-serif;
 }
 
 input {
-    margin: 3px;
-    height: 25px;
-    border: none;
-    border-radius: 10px;
-    width: 250px;
+  margin: 3px;
+  height: 25px;
+  border: none;
+  border-radius: 10px;
+  width: 250px;
 }
 
-.cardCadastrarEmp .containerCadastrarEmp{
-    margin: 15px;
-    height: 50px;
+.cardCadastrarEmp .containerCadastrarEmp {
+  margin: 15px;
+  height: 50px;
 }
 
 .btn {
-    font-family: monospace;
-    border: 0;
-    border-radius: 10px;
-    font-weight: bolder;
-    font-size: 14px;
-    padding: 0;
-    color: white;
-    background-color: #E02B23;
-    width: 95px;
-    align-self: center;
-    cursor: pointer;
-    height: 30px;
-  }
-  
-  .btn1 {
-    font-family: monospace;
-    border: 3px solid #E02B23;
-    border-radius: 10px;
-    font-weight: bolder;
-    font-size: 14px;
-    padding: 0px;
-    color: #E02B23;
-    background-color: white;
-    align-self: center;
-    cursor: pointer;
-    width: 95px;
-    height: 30px;
-  }
+  font-family: monospace;
+  border: 0;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 14px;
+  padding: 0;
+  color: white;
+  background-color: #e02b23;
+  width: 95px;
+  align-self: center;
+  cursor: pointer;
+  height: 30px;
+}
 
-  .banner2 .cardCadastrarEmp {
-    background-color: #0000007c;
-    border: 1px solid #fff;
-    border-radius: 25px;
-    height: 500px;
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 20px;
-  }
+.btn1 {
+  font-family: monospace;
+  border: 3px solid #e02b23;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 14px;
+  padding: 0px;
+  color: #e02b23;
+  background-color: white;
+  align-self: center;
+  cursor: pointer;
+  width: 95px;
+  height: 30px;
+}
 
-  .containerbtn{
-      display: flex;
-      justify-content: space-evenly;
-      padding-top: 25px;
-  }
+.banner2 .cardCadastrarEmp {
+  background-color: #0000007c;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  height: 500px;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.containerbtn {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 25px;
+}
 
 /* ------------------------------------------------------PÁGINA-LOGIN-------------------------------------------------------------- */
 #bodyLogin {
-    margin: 0;
+  margin: 0;
 }
 /* -----------------------------------------------------HEADER-LOGIN---------------------------------------------------------------- */
-.headerlogin{
-    height: 100px;
-    background-image: linear-gradient(to bottom, #00408B,rgb(0, 0, 27),black);
+.headerlogin {
+  height: 100px;
+  background-image: linear-gradient(to bottom, #00408b, rgb(0, 0, 27), black);
 }
 /* -----------------------------------------------------BANNER-LOGIN------------------------------------------------------------------ */
-.bannerlogin{
-    height: 550px;
-    background-image: linear-gradient(to bottom, black,rgb(0, 0, 20),#00408C);
+.bannerlogin {
+  height: 550px;
+  background-image: linear-gradient(to bottom, black, rgb(0, 0, 20), #00408c);
 }
 
-.containerlogin{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    height: 99%;
+.containerlogin {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 99%;
 }
 
-.boximglogin{
-    width: 65%;
-    text-align: center;
-    align-self: center;
+.boximglogin {
+  width: 65%;
+  text-align: center;
+  align-self: center;
 }
 
-.cardlogin{
-    height: 100%;
-    width: 35%;
+.cardlogin {
+  height: 100%;
+  width: 35%;
 }
 
-.boxlogin{
-    height: 100%;
-    background-image: linear-gradient(to bottom, black,#00408C);
-    text-align: center;
+.boxlogin {
+  height: 100%;
+  background-image: linear-gradient(to bottom, black, #00408c);
+  text-align: center;
 }
 
-.containerbox{
-    display: flex;
-    align-items: center;
-    padding-top: 80px;
+.containerbox {
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
 }
 
-.imgloginseta{
-    width: 40px;
-    padding: 0px 100px 0px 62px;
+.imgloginseta {
+  width: 40px;
+  padding: 0px 100px 0px 62px;
 }
 
-.voltarIndex{
-    padding-top: 12px;
+.voltarIndex {
+  padding-top: 12px;
 }
 
-.cardlogin h2{
-    color: white;
+.cardlogin h2 {
+  color: white;
 }
 
-.cardlogin label{
-    color: white;
+.cardlogin label {
+  color: white;
 }
 
-.bannerlogin input{
-    border-radius: 15px;
-    border: none;
-    margin: 20px;
-    height: 30px;
-    width: 255px;
-    background-color: #C4C4C4;
+.bannerlogin input {
+  border-radius: 15px;
+  border: none;
+  margin: 20px;
+  height: 30px;
+  width: 255px;
+  background-color: #c4c4c4;
 }
 
-#input_email{
-    margin-top: 20px;
+#input_email {
+  margin-top: 20px;
 }
 
-#input_senha{
-    margin-bottom: 70px;
+#input_senha {
+  margin-bottom: 70px;
 }
 
-.loginbtn{
-    text-decoration: none;
-    color: white;
-    margin: 0;
-    background-color: #1D1F87;
-    padding: 3px 12px 3px 12px;
-    font-size: larger;
+.loginbtn {
+  text-decoration: none;
+  color: white;
+  margin: 0;
+  background-color: #1d1f87;
+  padding: 3px 12px 3px 12px;
+  font-size: larger;
 }
 
-.p_login{
-    color: white;
-    padding-top: 30px;
-    font-variant-caps: small-caps;
-    width: auto;
-    font-size: medium;
+.p_login {
+  color: white;
+  padding-top: 30px;
+  font-variant-caps: small-caps;
+  width: auto;
+  font-size: medium;
 }
 /* ------------------------------------------------------------FOOTER-LOGIN------------------------------------------------------------------ */
-.footerlogin{
-    height: 125px;
-    background-color: black;
+.footerlogin {
+  height: 125px;
+  background-color: black;
 }
