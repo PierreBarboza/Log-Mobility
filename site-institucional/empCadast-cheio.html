@@ -1,147 +1,148 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
     <title>Home</title>
-    <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon">
-</head>
+    <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon" />
+  </head>
 
-<body>
+  <body>
     <!------------------------------HEADER DO SITE ----------------------------------------- -->
     <div class="header-da-gestao">
-        <div class="container-navbar">
-
-            <div class="brand-sptrans">
-                <!----LOGO--->
-                <img src="img/SPTrans_logo.png" alt="" width="70px">
-            </div>
-
-            <ul class="navbar-da-gestao">
-                <li>
-                    <a href="cadastrarEmp.html">
-                        Cadastrar<br>
-                        Empresas
-                    </a>
-                </li>
-                <li class="pagina-atual">
-                    <a href="empCadast-cheio.html">
-                        Empresas<br>
-                        Cadastradas
-                    </a>
-                </li>
-                <li>
-                    <a href="calculadora.html">
-                        Calculadora<br>
-                        de Gestão
-                    </a>
-                </li>
-                <li>
-                    <a href="index.html"> Sair</a>
-                </li>
-            </ul>
+      <div class="container-navbar">
+        <div class="brand-sptrans">
+          <!----LOGO--->
+          <img src="img/SPTrans_logo.png" alt="" width="70px" />
         </div>
+
+        <ul class="navbar-da-gestao">
+          <li>
+            <a href="cadastrarEmp.html">
+              Cadastrar<br />
+              Empresas
+            </a>
+          </li>
+          <li class="pagina-atual">
+            <a href="empCadast-cheio.html">
+              Empresas<br />
+              Cadastradas
+            </a>
+          </li>
+          <li>
+            <a href="calculadora.html">
+              Calculadora<br />
+              de Gestão
+            </a>
+          </li>
+          <li>
+            <a href="index.html"> Sair</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
 
     <!-- EMPRESA ALFA RODO BUS -->
 
     <div class="container-empCadastradas">
-        
-        <a href="cadastrarEmp.html">
-            <button class="btn_cadEmpresa">
-                <span class="texto_mediano_btn">Cadastrar Empresa</span>
-                <img class="engranagem-icone" src="img/icone mais.png" alt="">
-            </button>
+      <a href="cadastrarEmp.html">
+        <button class="btn_cadEmpresa">
+          <span class="texto_mediano_btn">Cadastrar Empresa</span>
+          <img class="engranagem-icone" src="img/icone mais.png" alt="" />
+        </button>
+      </a>
+      <div class="div_container_empresas_cadast">
+        <img
+          class="imagens-empresas-cad"
+          src="img/logo-empresa-alfa.png"
+          alt=""
+        />
+        <button class="vizu_linha">
+          <h3 class="texto_mediano_btn">Visualizar linha</h3>
+        </button>
+      </div>
+
+      <!-- EMPRESA MOBIBRASIL-->
+      <div class="div_container_empresas_cadast">
+        <img
+          class="imagens-empresas-cad"
+          src="img/logo-empresa-mobiBrasil.png"
+          alt=""
+        />
+        <button onclick="vizu()" class="vizu_linha">
+          <a href="visualizarLinha.html" class="texto_mediano_btn"
+            >Visualizar linha</a
+          >
+        </button>
+      </div>
+
+      <!-- EMPRESA QUALIBUS -->
+      <div class="div_container_empresas_cadast">
+        <img
+          class="imagens-empresas-cad"
+          src="img/logo-empresa-qualiBus.png"
+          alt=""
+        />
+        <button class="vizu_linha">
+          <h3 class="texto_mediano_btn">Visualizar linha</h3>
+        </button>
+      </div>
+
+      <!-- EMPRESA SANTABRIGIDA  -->
+      <div class="div_container_empresas_cadast">
+        <img
+          class="imagens-empresas-cad"
+          src="img/logo-empresa-santaBrigida.png"
+          alt=""
+        />
+        <button class="vizu_linha">
+          <h3 class="texto_mediano_btn">Visualizar linha</h3>
+        </button>
+      </div>
+
+      <div class="container-empCadastradas-footer">
+        <h1 class="texto_mediano_btn">
+          <u class="uso_local">1</u>
+          2 3 4
+        </h1>
+
+        <a href="empCadasr-cheio2.html">
+          <img
+            class="engranagem-icone"
+            src="img/seta icone direita.png"
+            alt=""
+          />
         </a>
-        <div class="div_container_empresas_cadast">
-            <img class="imagens-empresas-cad" src="img/logo-empresa-alfa.png" alt="">
-            <button class="vizu_linha">
-                <H3 class="texto_mediano_btn">Visualizar linha</H3>
-            </button>
-
-        </div>
-
-
-
-        <!-- EMPRESA MOBIBRASIL-->
-        <div class="div_container_empresas_cadast">
-            <img class="imagens-empresas-cad" src="img/logo-empresa-mobiBrasil.png" alt="">
-            <button onclick="vizu()" class="vizu_linha">
-                <a href="visualizarLinha.html" class="texto_mediano_btn">Visualizar linha</a> </button>
-
-
-
-        </div>
-
-
-        <!-- EMPRESA QUALIBUS -->
-        <div class="div_container_empresas_cadast">
-            <img class="imagens-empresas-cad" src="img/logo-empresa-qualiBus.png" alt="">
-            <button class="vizu_linha">
-                <H3 class="texto_mediano_btn">Visualizar linha</H3>
-            </button>
-
-        </div>
-
-
-        <!-- EMPRESA SANTABRIGIDA  -->
-        <div class="div_container_empresas_cadast">
-            <img class="imagens-empresas-cad" src="img/logo-empresa-santaBrigida.png" alt="">
-            <button class="vizu_linha">
-                <H3 class="texto_mediano_btn">Visualizar linha</H3>
-            </button>
-
-
-        </div>
-
-
-        <div class="container-empCadastradas-footer">
-            <h1 class="texto_mediano_btn">
-                <u class="uso_local">1</u>
-                2 3 4
-            </h1>
-
-            <a href="empCadasr-cheio2.html">
-                <img class="engranagem-icone" src="img/seta icone direita.png" alt="">
-            </a>
-
-
-        </div>
-
-
-
-
+      </div>
     </div>
 
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
     <div class="footer">
-        <div class="container">
-            <div>
-                <h2>Saiba Mais</h2>
-                <p>Termos de Serviço</p>
-                <p>Perguntas Frequentes</p>
-            </div>
-            <div>
-                <h2>Atendimento</h2>
-                <p>suporte@logmobility.com</p>
-                <p>(11) 1234-5678</p>
-            </div>
-            <div>
-                <h2>Redes Sociais</h2>
-                <img src="img/instagram.png" alt="">
-                <img src="img/facebook.png" alt="">
-                <img src="img/twitter.png" alt="">
-            </div>
+      <div class="container">
+        <div>
+          <h2>Saiba Mais</h2>
+          <p>Termos de Serviço</p>
+          <p>Perguntas Frequentes</p>
         </div>
+        <div>
+          <h2>Atendimento</h2>
+          <p>suporte@logmobility.com</p>
+          <p>(11) 1234-5678</p>
+        </div>
+        <div>
+          <h2>Redes Sociais</h2>
+          <img src="img/instagram.png" alt="" />
+          <img src="img/facebook.png" alt="" />
+          <img src="img/twitter.png" alt="" />
+        </div>
+      </div>
 
-        <div class="direitos">
-            Log Mobility - 2022 Todos os direitos reservados
-        </div>
+      <div class="direitos">
+        Log Mobility - 2022 Todos os direitos reservados
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
