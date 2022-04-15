@@ -390,6 +390,14 @@ p {
 .navbar ul {
   text-decoration: none;
 }
+.texto_mediano_simu {
+  color: #ffffff;
+  font-weight: bolder;
+  align-items: center;
+  font-size: 16px;
+  text-decoration: none;
+  padding-left: 30px;
+}
 
 /*                  Formatação de icones   e imagens            */
 
