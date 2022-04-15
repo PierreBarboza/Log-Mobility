@@ -306,6 +306,11 @@ p {
   color: #ffffff;
   text-decoration: none;
 }
+a{
+text-decoration: none;
+color: white;
+
+}
 
 .div_container_empresas_cadast {
   height: 15vh;
@@ -395,6 +400,16 @@ p {
   text-decoration: none;
   padding-left: 30px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.texto_mediano_btn3{
+  color: #ffffff;
+  font-weight: 250;
+  align-items: center;
+  font-size: 25px;
+  text-decoration: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+
 }
 
 /*                  Formatação de icones   e imagens            */

@@ -23,10 +23,18 @@
 
             <ul class="navbar">
                 <!--Navegação -->
-                <li>Home</li>
-                <li>Simulador</li>
-                <li>Sobre nós</li>
-                <li>Login</li>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
+                <a href="Simulador.html">
+                    <li>Simulador</li>
+                </a>
+                <a href="sobreNos.html">
+                    <li>Sobre nós</li>
+                </a>
+                <a href="login.html">
+                    <li>Login</li>
+                </a>
             </ul>
 
         </div>
@@ -34,27 +42,27 @@
 
     <div class="container-corpo-simulador">
 
-        <h3 class="texto_mediano_btn">
-            text text text text text text text text text text text text text text<br>
-            text text text text text text text text text text text
+        <h3 class="texto_mediano_btn3">
+           Simule aqui os valores que sua empresa recebe<br>
+            que podem ser alterados com nosso serviços!
         </h3>
     </div>
 
     <div class="container-corpo-simulador2">
         <div class="div-container-sim-esq">
-            
-            Nos Informe Seu Nome: 
+
+            Nos Informe Seu Nome:
             <input id="inpt_nome" class="inp_simu" type="text"> <br>
-            
-            Informe a Média de Usuários Mensais de Determinado Ônibus: 
-            <input id="inpt_numero_usuarios" class="inp_simu"type="text" <br>
-            
-            Informe o Valor Unitário das Passagens Atualmente: 
+
+            Informe a Média de Usuários Mensais de Determinado Ônibus:
+            <input id="inpt_numero_usuarios" class="inp_simu" type="text" <br>
+
+            Informe o Valor Unitário das Passagens Atualmente:
             <input id="inpt_valor_passagem" class="inp_simu" type="text"><br>
 
 
             <div class="">
-                <button onclick="" class="button-contato">Limpar</button>
+                <button onclick="limpar()" class="button-contato">Limpar</button>
                 <button onclick="calc()" class="button-simular">Simular</button>
             </div>
         </div>
@@ -115,10 +123,14 @@
         var lucrocp = (lucro - projeto)
         var lucrocp_formatado = lucrocp.toFixed(2)
 
-
-
-        div_analise.innerHTML = ` <div class="texto_mediano_simu" 'dentro'>
-            <h4 texto_mediano_btn class=tituloanalise> Análise </h4><br>
+        if (inpt_nome.value == `` ||
+            inpt_numero_usuarios.value == `` ||
+            inpt_valor_passagem.value == ``) {
+            div_analise.innerHTML = `<h1 class="texto_mediano_simu">
+                    Dados invalidos ou não preenchidos</h1>`
+        } else {
+            div_analise.innerHTML = ` <div class="texto_mediano_simu" 'dentro'>
+                    <h4 texto_mediano_btn class=tituloanalise> Análise </h4><br>
             Olá, ${nome}. <br><br>
             <h4 class=tituloanalise>Sem o Sistema - </h4>
             Passageiros Mensais no Ônibus : ${numero_usuarios} <br>
@@ -131,5 +143,16 @@
             <h4 class=tituloanalise>Com o Sistema -</h4>
             Valor a Receber : R$${lucrocp_formatado}<br>
             Com o Sistema da GTSP, reduziria no mínimo em 12% as suas perdas.`
+        }
+    }
+
+    function limpar() {
+        div_analise.innerHTML = ``
+        inpt_numero_usuarios.value = ``
+        inpt_valor_passagem.value = ``
+        inpt_nome.value = ``
+
+
+
     }
 </script>
