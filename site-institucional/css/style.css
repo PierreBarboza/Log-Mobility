@@ -466,7 +466,7 @@ color: white;
 /*---------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------PAGINA (VISUALIZAR LINHAS )---------------------------------------*/
 /*---Banner-logo-(Area Branca com Logo no meio)---*/
-.banner-logo {
+.container-logo {
   display: flex;
   height: 200px;
   background-color: #fff;
@@ -474,7 +474,11 @@ color: white;
   align-items: center;
   border-bottom: 5px solid #000;
 }
-
+.banner-logo{
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
 /*----Aqui começa o Corpo do Site, onde contém os conteudos--*/
 .container-corpo-linhas {
   display: flex;
@@ -499,10 +503,17 @@ color: white;
 
 /*----Rodapé do Quadro----*/
 .quadro .rodape {
+  display: flex;
+  justify-content: center;
   background-color: #aaaaaa;
-  text-align: center;
   margin-bottom: 50px;
+  align-items: center;
 }
+.quadro .rodape a{
+  text-decoration: none;
+  color: #000;
+}
+
 
 /*----Tuplas do Quadro----*/
 .tupla {
@@ -524,12 +535,36 @@ color: white;
   border-radius: 30px;
   cursor: pointer;
 }
+.button-linha:hover {
+  background-color: #9a9a9a; 
+}
 
 /*----Nome da Linha----*/
 .nome-linha {
   color: #fff;
   font-size: 17px;
   margin-left: 12px;
+}
+/*---------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------PAGINA ( DASHBOARDS )---------------------------------------*/
+.background-dashboard{
+  background-size: cover;
+}
+.container-linha-reference{
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px 30px 0px;
+  background-size: cover;
+}
+.container-dashboard .linha-reference{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 60%;
+}
+.container-graficos{
+  display: flex;
+  justify-content: center;
 }
 /*-----------------------------------PÁGINA-CADASTRAR-EMPRESA--------------------------------------------------------*/
 /* ----------------------------------BANNER-CADASTRAR-EMPRESA-------------------------------------------------------- */

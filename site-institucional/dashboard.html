@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Visualizar Linhas</title>
+</head>
+
+<body class="background-dashboard">
+
+    <div class="header-da-gestao">
+        <div class="container-navbar">
+
+            <div class="brand-sptrans">
+                <!----LOGO--->
+                <img src="img/SPTrans_logo.png" alt="" width="70px">
+            </div>
+
+            <ul class="navbar-da-gestao">
+                <li>
+                    <a href="">
+                        Cadastrar<br>
+                        Empresas
+                    </a>
+                </li>
+                <li class="pagina-atual">
+                    <a href="empCadast-cheio.html">
+                        Empresas<br>
+                        Cadastradas
+                    </a>
+                </li>
+                <li>
+                    <a href="calculadora.html">
+                        Calculadora<br>
+                        de Gestão
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"> Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!---------------Area Branca com o logo da empresa------------------>
+    <div class="container-logo">
+        <div>
+            <a href="empCadast-cheio.html"><img src="img/seta icone esquerda.png" alt="voltar" width="25px"></a>
+        </div>
+        <div class="banner-logo">
+            <img src="img/logo-empresa-mobiBrasil.png" alt="" width="">
+        </div>
+    </div>
+    <!---------------CONTEUDO DO CORPO------------------------------------------------------>
+
+    <div class="container-linha-reference">
+
+        <div class="linha-reference">
+            <img src="img/onibus-branco.png" alt="" width="40px"> <button class="button-linha"
+                style="border: 4px solid green;">N103-11</button>
+            <span class="nome-linha">Terminal Lapa - Terminal Parque Dom Pedro II</span>
+        </div>
+
+    </div>
+
+    <div class="container-graficos">
+        <div class="grafico">
+            <canvas id="myChart1" style="position: relative;  width:30vw"></canvas>
+        </div>
+    </div>
+
+
+
+    <!---------------------------------RODAPÉ DO SITE------------------------------------------>
+    <div class="footer">
+        <div class="container">
+            <div>
+                <h2>Saiba Mais</h2>
+                <p>Termos de Serviço</p>
+                <p>Perguntas Frequentes</p>
+            </div>
+            <div>
+                <h2>Atendimento</h2>
+                <p>suporte@logmobility.com</p>
+                <p>(11) 1234-5678</p>
+            </div>
+            <div>
+                <h2>Redes Sociais</h2>
+                <img src="img/instagram.png" alt="">
+                <img src="img/facebook.png" alt="">
+                <img src="img/twitter.png" alt="">
+            </div>
+        </div>
+
+        <div class="direitos">
+            Log Mobility - 2022 Todos os direitos reservados
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+    const labels_Pagamentos= [
+        'Inteiro',
+        'Meia',
+        'Isentos',
+        'Não Pago',
+    ];
+
+    const data1 = {
+        labels: labels_Pagamentos,
+        datasets: [{
+            backgroundColor: ['#363636', '#696969','#A9A9A9','red'],
+            borderColor: ['white', 'white', 'white', '#8B0000'],
+            data: [200,100,50,30],
+        },
+        ]
+    };
+    
+    const config1 = {
+        type: 'pie',
+        data: data1,
+        options: {}
+    };
+
+</script>
+
+<script>
+    Chart.defaults.font.weight = 1000;
+    const myChart1 = new Chart(
+        document.getElementById('myChart1'),
+        config1
+    );
+</script>
