@@ -171,6 +171,7 @@ body {
   margin: 0;
   color: #fff;
   border-top: 3px solid white;
+  background-color: #000;
 }
 
 .footer .container {
@@ -548,6 +549,7 @@ color: white;
 /*---------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------PAGINA ( DASHBOARDS )---------------------------------------*/
 .background-dashboard{
+  background-image: url(../img/background-metricas.png);
   background-size: cover;
 }
 .container-linha-reference{
@@ -558,13 +560,24 @@ color: white;
 }
 .container-dashboard .linha-reference{
   display: flex;
-  align-items: center;
   flex-direction: row;
   width: 60%;
 }
-.container-graficos{
+.container-graficos-pizza{
+  display: flex;
+  justify-content: space-evenly;
+}
+.container-grafico-linha{
+  padding-top: 50px;
   display: flex;
   justify-content: center;
+}
+.grafico_pizza{
+  
+}
+.grafico_pizza h3{
+  text-align: center;
+  color: #fff;
 }
 /*-----------------------------------PÁGINA-CADASTRAR-EMPRESA--------------------------------------------------------*/
 /* ----------------------------------BANNER-CADASTRAR-EMPRESA-------------------------------------------------------- */

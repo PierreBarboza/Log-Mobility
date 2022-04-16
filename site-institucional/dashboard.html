@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Visualizar Linhas</title>
 </head>
@@ -61,18 +60,42 @@
     <div class="container-linha-reference">
 
         <div class="linha-reference">
-            <img src="img/onibus-branco.png" alt="" width="40px"> <button class="button-linha"
+            <span><img src="img/onibus-branco.png" alt="" width="40px"></span> <button class="button-linha"
                 style="border: 4px solid green;">N103-11</button>
             <span class="nome-linha">Terminal Lapa - Terminal Parque Dom Pedro II</span>
         </div>
 
     </div>
 
-    <div class="container-graficos">
-        <div class="grafico">
-            <canvas id="myChart1" style="position: relative;  width:30vw"></canvas>
+    <!---------------GRAFICOS------------------------------------------------------>
+    <div class="container-graficos-pizza">
+
+        <div class="grafico_pizza">
+            <h3>Onibus Placa: LPY-3352</h3>
+            <canvas id="myChart1" style="position: relative;  width:25vw"></canvas>
         </div>
+
+        <div class="grafico_pizza">
+            <h3>Onibus Placa: LPY-3352</h3>
+            <canvas id="myChart2" style="position: relative;  width:25vw"></canvas>
+        </div>
+
+        <div class="grafico_pizza">
+            <h3>Onibus Placa: LPY-3352</h3>
+            <canvas id="myChart3" style="position: relative;  width:25vw"></canvas>
+        </div>
+
     </div>
+
+    <div class="container-grafico-linha">
+
+        <div class="grafico_linha">
+            <span></span>
+            <canvas id="myChart4" style="position: relative;  height:40vh; width:60vw;"></canvas>
+        </div>
+
+    </div>
+
 
 
 
@@ -106,9 +129,17 @@
 
 </html>
 
-
+<!-----------------------------[ S C R I P T ]---------------------------------------------------------------------->
 <script>
-    const labels_Pagamentos= [
+    var pag_inteiro = 300;
+    var pag_meia = 60;
+    var isento = 20;
+    var nao_pag = 16;
+
+    var media = (pag_inteiro + pag_meia + isento + nao_pag) / 4;
+
+
+    const labels_Pagamentos = [
         'Inteiro',
         'Meia',
         'Isentos',
@@ -118,17 +149,85 @@
     const data1 = {
         labels: labels_Pagamentos,
         datasets: [{
-            backgroundColor: ['#363636', '#696969','#A9A9A9','red'],
-            borderColor: ['white', 'white', 'white', '#8B0000'],
-            data: [200,100,50,30],
+            backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
+            borderColor: ['white', 'white', 'white', 'white'],
+            data: [200, 100, 50, 30],
+
         },
         ]
     };
-    
+    const data2 = {
+        labels: labels_Pagamentos,
+        datasets: [{
+            backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
+            borderColor: ['white', 'white', 'white', 'white'],
+            data: [300, 80, 50, 90],
+        },
+        ]
+    };
+    const data3 = {
+        labels: labels_Pagamentos,
+        datasets: [{
+            backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
+            borderColor: ['white', 'white', 'white', 'white'],
+            data: [200, 100, 50, 90],
+        },
+        ]
+    };
+    const data4 = {
+        labels: labels_Pagamentos,
+        datasets: [{
+            backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
+            borderColor: ['white', 'white', 'white', 'white'],
+            data: [200, 100, 50, 90],
+        },
+        ]
+    };
+
     const config1 = {
         type: 'pie',
         data: data1,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'left',               
+
+                }
+            }
+        }
+    };
+    const config2 = {
+        type: 'pie',
+        data: data2,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'left',
+
+                }
+            }
+        }
+    };
+    const config3 = {
+        type: 'pie',
+        data: data3,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'left',
+
+                }
+            }
+        }
+    };
+    const config4 = {
+        type: 'line',
+        data: data4,
         options: {}
+            
     };
 
 </script>
@@ -138,5 +237,23 @@
     const myChart1 = new Chart(
         document.getElementById('myChart1'),
         config1
+    );
+
+    Chart.defaults.font.weight = 1000;
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    Chart.defaults.font.weight = 1000;
+    const myChart3 = new Chart(
+        document.getElementById('myChart3'),
+        config1
+    );
+
+    Chart.defaults.font.weight = 1000;
+    const myChart4 = new Chart(
+        document.getElementById('myChart4'),
+        config4
     );
 </script>
