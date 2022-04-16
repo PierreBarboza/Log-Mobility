@@ -47,46 +47,39 @@
         </div>
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
-    <div class="container-empCadastradas">
-        <div class="">
-
-            <div class="ipt-calc">
-                <div class="ipt-valor">
-                    <p>Valor sensor de entrada do dia: </p><input id="sensor_entrada" type="number">
-                </div>
-
-                <div class="ipt-valor">
-                    <p>Valor sensor de saída do dia: </p><input id="sensor_saida" type="number">
-                </div>
-
-                <div class="ipt-valor">
-                    <p>Valor de pagamentos meio do dia: </p><input id="pagamentos_meios" type="number">
-                </div>
-
-                <div class="ipt-valor">
-                    <p>Valor pessoas isentas de pagamento do dia: </p><input id="isentos_pagamento" type="number">
-                </div>
-
-                <div class="ipt-valor">
-                    <p>Valor de vezes que a catraca foi utilizada do dia: </p><input id="uso_catraca" type="number">
-                </div>
-
-                <div class="ipt-valor">
-                    <p>Valor atual da passagem: </p><input id="valor_passagem" type="number">
-                    <button class="button-simular" onclick="calc()">Calcular</button>
-                </div>
-                
+    <div class="bannerCalculadoraGestão">
+        <div class="containerCalculadoraGestão">
+          <div class="ipt-calc">
+            <h2>Calculadora de Gestão</h2>
+            <div class="ipt-valor">
+              <h4>Valor sensor de entrada do dia:</h4>
+              <input id="sensor_entrada" />
+      
+              <h4>Valor sensor de saída do dia:</h4>
+              <input id="sensor_saida" type="number" />
+      
+              <h4>Valor de pagamentos meio do dia:</h4>
+              <input id="pagamentos_meios" type="number" />
+      
+              <h4>Valor pessoas isentas de pagamento do dia:</h4>
+              <input id="isentos_pagamento" type="number" />
+      
+              <h4>Valor de vezes que a catraca foi utilizada do dia:</h4>
+              <input id="uso_catraca" type="number" />
+      
+              <h4>Valor atual da passagem:</h4>
+              <input id="valor_passagem" type="number" />
             </div>
+            <div class="containerbutton">
+              <button onclick="calc()">Calcular</button>
+            </div>
+          </div>
+          <div class="boxResul">
+            <h2>Resultado</h2>
+            <div class="resul" id="resultado"></div>
+          </div>
         </div>
-
-
-
-        <div class="resul" id="resultado"></div>
-
-
-
-    </div>
-
+      </div>      
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
     <div class="footer">
         <div class="container">
@@ -147,7 +140,7 @@
 
         if (es == 0) {
             if (vf == valorp) {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Esta tudo certo todos que usaram pagaram. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -155,7 +148,7 @@
                 </p>
                 `
             } else if (vf > valorp) {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Alguém pagou a mais. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -163,7 +156,7 @@
                 </p>
                 `
             } else {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Alguém não pagou. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -173,7 +166,7 @@
             }
         } else if (es < 0) {
             if (vfe == valorp) {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimentos na frente do ônibus, mas todos pagaram. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -181,7 +174,7 @@
                 </p>
                 `
             } else if (vfe > valorp) {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na frente do ônibus e alguém pagou a mais. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -189,7 +182,7 @@
                 </p>
                 `
             } else {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na frente do ônibus e alguém não pagou. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -199,7 +192,7 @@
             }
         } else {
             if (vfs == valorp) {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na parte de trás do ônibus, mas todos pagaram. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -207,7 +200,7 @@
                 </p>
                 `
             } else if (vfs > valorp) {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na parte de trás do ônibus e ouve pagamento a mais. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
@@ -215,7 +208,7 @@
                 </p>
                 `
             } else {
-                resultado.innerHTML = `<p>
+                resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na parte de trás do ônibus e alguém não pagou. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>

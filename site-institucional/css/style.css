@@ -307,6 +307,7 @@ p {
   color: #ffffff;
   text-decoration: none;
 }
+
 a{
 text-decoration: none;
 color: white;
@@ -342,29 +343,112 @@ color: white;
   justify-content: center;
 }
 
-/* --------------------------------Inputs para calculadora do gestor------------------------------------------------------ */
+/* --------------------------------PÁGINA CALCULADORA DO GESTOR------------------------------------------------------ */
+.bannerCalculadoraGestão {
+  background-image: url(../img/background1.png);
+  background-size: cover;
+  height: 600px;
+}
+
+.containerCalculadoraGestão {
+  height: 100%;
+  display: flex;
+  background-image: linear-gradient(to right, rgb(77 74 74 / 54%), #00000054);
+}
+
+.ipt-valor h4 {
+  margin: 0%;
+  font: small-caption;
+  color: rgb(0, 0, 0);
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ipt-valor input {
+  width: 45%;
+  height: 25px;
+  margin-bottom: auto;
+}
+
 .ipt-calc {
+  width: 50%;
+  align-self: center;
+  text-align: center;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 10px;
-  padding-right: 10px;
+  background-color: white;
+}
+
+.ipt-calc h2 {
+  color: rgb(0, 0, 0);
 }
 
 .ipt-valor {
-  padding-top: 30px;
-}
-
-.resul {
-  background-color: #4d4d4d;
-  border: white 5px solid;
-  padding-left: 10px;
-  width: 400px;
-  height: 150px;
-  border-radius: 30px;
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  height: 70%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  justify-content: center;
+}
+
+.containerbutton {
+  width: 80%;
+}
+
+.containerbutton button{
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 0;
+  font-weight: bolder;
+  background-color: #00418c;
+  height: 30px;
+  width: 30%;
+  border: 0;
+  box-shadow: 1px 1px 1px grey;
+  transition: 150ms;
+}
+
+.containerbutton button:hover{
+  border-radius: 100px;
+}
+
+.boxResul {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.boxResul{
+  color: white;
+}
+
+.resul{
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.pCalculadora{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-size: large;
+  display: flex;
   justify-content: center;
 }
 
@@ -579,20 +663,23 @@ color: white;
   text-align: center;
   color: #fff;
 }
+
 /*-----------------------------------PÁGINA-CADASTRAR-EMPRESA--------------------------------------------------------*/
 /* ----------------------------------BANNER-CADASTRAR-EMPRESA-------------------------------------------------------- */
-.banner2 {
-  height: 650px;
+
+.bannerCadastrarEmp {
+  height: 600px;
   background-image: url(../img/background-cadastro-empresa.png);
   background-size: cover;
 }
 
-.banner2 .containerCadastrarEmp {
+.bannerCadastrarEmp .containerCadastrarEmp {
   display: flex;
   justify-content: center;
   color: #fff;
   align-items: center;
-  padding: 60px 60px 0px 60px;
+  height: 100%;
+  flex-direction: column;
 }
 
 /* --------------------------BOX DE LOGIN-CADASTRAR-EMPRESA------------------------- */
@@ -601,7 +688,7 @@ color: white;
   display: flex;
   flex-direction: column;
   height: 400px;
-  width: 600px;
+  width: 60%;
   flex-wrap: wrap;
   align-content: space-around;
 }
@@ -612,18 +699,16 @@ color: white;
   font: small-caption;
 }
 
-.cardCadastrarEmp h1 {
-  border: #e02b23;
-  text-align: center;
-  font-family: sans-serif;
+.containerCadastrarEmp h1 {
+margin-top: 0;
 }
 
-input {
+.form-boxCadastrarEmp input {
   margin: 3px;
   height: 25px;
   border: none;
   border-radius: 10px;
-  width: 250px;
+  width: 40%;
 }
 
 .cardCadastrarEmp .containerCadastrarEmp {
@@ -631,53 +716,41 @@ input {
   height: 50px;
 }
 
-.btn {
-  font-family: monospace;
-  border: 0;
-  border-radius: 10px;
-  font-weight: bolder;
-  font-size: 14px;
-  padding: 0;
-  color: white;
-  background-color: #e02b23;
-  width: 95px;
-  align-self: center;
-  cursor: pointer;
-  height: 30px;
-}
-
-.btn1 {
-  font-family: monospace;
-  border: 3px solid #e02b23;
-  border-radius: 10px;
-  font-weight: bolder;
-  font-size: 14px;
-  padding: 0px;
+.containerbtn a{
   color: #e02b23;
-  background-color: white;
-  align-self: center;
+  background-color: #f7f7f7;
+  border: 3px solid #e02b23;
   cursor: pointer;
-  width: 95px;
-  height: 30px;
+  border-radius: 12px;
+  align-self: center;
+  text-align: center;
+  width: 40%;
+  padding-bottom: 4px;
+  font-weight: 500;
+  box-shadow: 2px 3px 10px 1px #0000009c;
+  transition: 150ms;
 }
 
-.banner2 .cardCadastrarEmp {
+.containerbtn a:hover{
+  color: #f7f7f7;
+  background-color: #e02b23;
+}
+
+.bannerCadastrarEmp .cardCadastrarEmp {
   background-color: #0000007c;
   border: 1px solid #fff;
   border-radius: 25px;
-  height: 500px;
-  width: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 20px;
 }
 
 .containerbtn {
   display: flex;
   justify-content: space-evenly;
   padding-top: 25px;
+  width: 40%;
 }
 
 /* ------------------------------------------------------PÁGINA-LOGIN-------------------------------------------------------------- */
@@ -691,7 +764,7 @@ input {
 }
 /* -----------------------------------------------------BANNER-LOGIN------------------------------------------------------------------ */
 .bannerlogin {
-  height: 550px;
+  height: 600px;
   background-image: linear-gradient(to bottom, black, rgb(0, 0, 20), #00408c);
 }
 
@@ -699,7 +772,7 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  height: 99%;
+  height: 100%;
 }
 
 .boximglogin {
@@ -717,6 +790,7 @@ input {
   height: 100%;
   background-image: linear-gradient(to bottom, black, #00408c);
   text-align: center;
+  align-items: center;
 }
 
 .containerbox {
@@ -726,16 +800,17 @@ input {
 }
 
 .imgloginseta {
-  width: 40px;
-  padding: 0px 100px 0px 62px;
+  width: 25%;
 }
 
 .voltarIndex {
-  padding-top: 12px;
+  padding-top: 2%;
+  width: 35%;
 }
 
 .cardlogin h2 {
   color: white;
+  width: 29%;
 }
 
 .cardlogin label {
@@ -747,7 +822,7 @@ input {
   border: none;
   margin: 20px;
   height: 30px;
-  width: 255px;
+  width: 55%;
   background-color: #c4c4c4;
 }
 
