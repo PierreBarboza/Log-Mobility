@@ -1,221 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
     <title>Home</title>
-    <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!------------------------------HEADER DO SITE ----------------------------------------- -->
     <div class="header-da-gestao">
-        <div class="container-navbar">
-
-            <div class="brand-sptrans">
-                <!----LOGO--->
-                <img src="img/SPTrans_logo.png" alt="" width="70px">
-            </div>
-
-            <ul class="navbar-da-gestao">
-                <li>
-                    <a href="cadastrarEmp.html"> 
-                        Cadastrar<br>
-                        Empresas
-                    </a>
-                </li>
-                <li>
-                    <a href="empCadast-cheio.html"> 
-                        Empresas<br>
-                        Cadastradas
-                    </a>
-                </li>
-                <li class="pagina-atual">
-                    <a href="calculadora.html"> 
-                        Calculadora<br>
-                        de Gestão
-                    </a>
-                </li>
-                <li>
-                    <a href="index.html"> Sair</a>
-                </li>
-            </ul>
+      <div class="container-navbar">
+        <div class="brand-sptrans">
+          <!----LOGO--->
+          <img src="img/SPTrans_logo.png" alt="" width="70px" />
         </div>
+
+        <ul class="navbar-da-gestao">
+          <li>
+            <a href="cadastrarEmp.html">
+              Cadastrar<br />
+              Empresas
+            </a>
+          </li>
+          <li>
+            <a href="empCadast-cheio.html">
+              Empresas<br />
+              Cadastradas
+            </a>
+          </li>
+          <li class="pagina-atual">
+            <a href="calculadora.html">
+              Calculadora<br />
+              de Gestão
+            </a>
+          </li>
+          <li>
+            <a href="index.html"> Sair</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
     <div class="bannerCalculadoraGestão">
-        <div class="containerCalculadoraGestão">
-          <div class="ipt-calc">
-            <h2>Calculadora de Gestão</h2>
-            <div class="ipt-valor">
-              <h4>Valor sensor de entrada do dia:</h4>
-              <input id="sensor_entrada" />
-      
-              <h4>Valor sensor de saída do dia:</h4>
-              <input id="sensor_saida" type="number" />
-      
-              <h4>Valor de pagamentos meio do dia:</h4>
-              <input id="pagamentos_meios" type="number" />
-      
-              <h4>Valor pessoas isentas de pagamento do dia:</h4>
-              <input id="isentos_pagamento" type="number" />
-      
-              <h4>Valor de vezes que a catraca foi utilizada do dia:</h4>
-              <input id="uso_catraca" type="number" />
-      
-              <h4>Valor atual da passagem:</h4>
-              <input id="valor_passagem" type="number" />
-            </div>
-            <div class="containerbutton">
-              <button onclick="calc()">Calcular</button>
-            </div>
+      <div class="containerCalculadoraGestão">
+        <div class="ipt-calc">
+          <h2>Calculadora de Gestão</h2>
+          <div class="ipt-valor">
+            <h4>Valor sensor de entrada do dia:</h4>
+            <input id="sensor_entrada" />
+
+            <h4>Valor sensor de saída do dia:</h4>
+            <input id="sensor_saida" type="number" />
+
+            <h4>Valor de pagamentos meio do dia:</h4>
+            <input id="pagamentos_meios" type="number" />
+
+            <h4>Valor pessoas isentas de pagamento do dia:</h4>
+            <input id="isentos_pagamento" type="number" />
+
+            <h4>Valor de vezes que a catraca foi utilizada do dia:</h4>
+            <input id="uso_catraca" type="number" />
+
+            <h4>Valor atual da passagem:</h4>
+            <input id="valor_passagem" type="number" />
           </div>
-          <div class="boxResul">
-            <h2>Resultado</h2>
-            <div class="resul" id="resultado"></div>
+          <div class="containerbutton">
+            <button onclick="calc()">Calcular</button>
           </div>
         </div>
-      </div>      
+        <div class="boxResul">
+          <h2>Resultado</h2>
+          <div class="resul" id="resultado"></div>
+        </div>
+      </div>
+    </div>
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
     <div class="footer">
-        <div class="container">
-            <div>
-                <h2>Saiba Mais</h2>
-                <p>Termos de Serviço</p>
-                <p>Perguntas Frequentes</p>
-            </div>
-            <div>
-                <h2>Atendimento</h2>
-                <p>suporte@logmobility.com</p>
-                <p>(11) 1234-5678</p>
-            </div>
-            <div>
-                <h2>Redes Sociais</h2>
-                <img src="img/instagram.png" alt="">
-                <img src="img/facebook.png" alt="">
-                <img src="img/twitter.png" alt="">
-            </div>
+      <div class="container">
+        <div class="Boxtext">
+          <h2>Saiba Mais</h2>
+          <p>Termos de Serviço</p>
         </div>
+        <div class="Boxtext">
+          <h2>Atendimento</h2>
+          <p>suporte@logmobility.com</p>
+          <p>(11) 1234-5678</p>
+        </div>
+        <div class="RedesSocias">
+          <h2>Redes Sociais</h2>
+          <div class="BoxImgs">
+            <img src="img/logo-instagram.png" width="30px" alt="" />
+            <img src="img/logo-facebook.png" width="30px" alt="" />
+            <img src="img/logo-twitter.png" width="30px" alt="" />
+          </div>
+        </div>
+      </div>
 
-        <div class="direitos">
-            Log Mobility - 2022 Todos os direitos reservados
-        </div>
+      <div class="direitos">
+        Log Mobility - 2022 Todos os direitos reservados
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
-
 <!-- ---------------------------Inicio do script para calculo com valores informados pelos usuarios--------------------------------------- -->
 
-<Script>
-    function calc() {
-        // valores informados pelo usuario 
-        var e = Number(sensor_entrada.value)
-        var s = Number(sensor_saida.value)
-        var pm = Number(pagamentos_meios.value)
-        var ip = Number(isentos_pagamento.value)
-        var uc = Number(uso_catraca.value)
-        var valorp = Number(valor_passagem.value)
+<script>
+  function calc() {
+    // valores informados pelo usuario
+    var e = Number(sensor_entrada.value);
+    var s = Number(sensor_saida.value);
+    var pm = Number(pagamentos_meios.value);
+    var ip = Number(isentos_pagamento.value);
+    var uc = Number(uso_catraca.value);
+    var valorp = Number(valor_passagem.value);
 
-        // calculos 
-        var te = e - ip
-        var ts = s - ip
-        var uct = uc - ip
-        var l = uct * valorp
-        var m = pm / 2
-        var pmd = m * valorp
-        var ld = l - pmd
-        var es = ts - te
-        var valorcomp_e = te - m
-        var valorcomp_s = ts - m
-        var vf = ld / valorcomp_e
-        var vfe = ld / valorcomp_e
-        var vfs = ld / valorcomp_s
+    // calculos
+    var te = e - ip;
+    var ts = s - ip;
+    var uct = uc - ip;
+    var l = uct * valorp;
+    var m = pm / 2;
+    var pmd = m * valorp;
+    var ld = l - pmd;
+    var es = ts - te;
+    var valorcomp_e = te - m;
+    var valorcomp_s = ts - m;
+    var vf = ld / valorcomp_e;
+    var vfe = ld / valorcomp_e;
+    var vfs = ld / valorcomp_s;
 
-        //Condições 
+    //Condições
 
-        if (es == 0) {
-            if (vf == valorp) {
-                resultado.innerHTML = `<p class="pCalculadora">
+    if (es == 0) {
+      if (vf == valorp) {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Esta tudo certo todos que usaram pagaram. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            } else if (vf > valorp) {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      } else if (vf > valorp) {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Alguém pagou a mais. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            } else {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      } else {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Alguém não pagou. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            }
-        } else if (es < 0) {
-            if (vfe == valorp) {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      }
+    } else if (es < 0) {
+      if (vfe == valorp) {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimentos na frente do ônibus, mas todos pagaram. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            } else if (vfe > valorp) {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      } else if (vfe > valorp) {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na frente do ônibus e alguém pagou a mais. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            } else {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      } else {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na frente do ônibus e alguém não pagou. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            }
-        } else {
-            if (vfs == valorp) {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      }
+    } else {
+      if (vfs == valorp) {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na parte de trás do ônibus, mas todos pagaram. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            } else if (vfs > valorp) {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      } else if (vfs > valorp) {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na parte de trás do ônibus e ouve pagamento a mais. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            } else {
-                resultado.innerHTML = `<p class="pCalculadora">
+                `;
+      } else {
+        resultado.innerHTML = `<p class="pCalculadora">
                 Houve mais movimento na parte de trás do ônibus e alguém não pagou. Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br>
+                Lucro diario:${ld.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })} <br>
                 </p>
-                `
-            }
-        }
+                `;
+      }
     }
-</Script>
+  }
+</script>
