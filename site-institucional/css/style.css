@@ -90,7 +90,7 @@ body {
   background-size: cover;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 400px;
   border-bottom: 10px white;
 }
 .container-corpo-simulador2 {
@@ -277,6 +277,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 900px;
+  font-family: sans-serif;
 }
 
 .banner-sobreNos {
@@ -565,7 +566,7 @@ a {
   align-items: center;
   font-size: 25px;
   text-decoration: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 }
 
 /*                  Formatação de icones   e imagens            */

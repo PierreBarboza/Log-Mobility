@@ -1,7 +1,7 @@
 .container-login {
 
     width: 100%;
-    background-image: url(background-cadastro-linhas.png);
+    background-image: url(../img/background-cadastro-linhas.png);
     height: 80vh;
 
     background-size: cover;
