@@ -49,19 +49,19 @@
         <div class="ipt-calc">
           <h2>Calculadora de Gestão</h2>
           <div class="ipt-valor">
-            <h4>Valor sensor de entrada do dia:</h4>
+            <h4>Valor registrado pelo sensor de entrada:</h4>
             <input id="sensor_entrada" />
 
-            <h4>Valor sensor de saída do dia:</h4>
+            <h4>Valor registrado pelo sensor de saída:</h4>
             <input id="sensor_saida" type="number" />
 
-            <h4>Valor de pagamentos meio do dia:</h4>
+            <h4>Valor de pagamentos meio:</h4>
             <input id="pagamentos_meios" type="number" />
 
-            <h4>Valor pessoas isentas de pagamento do dia:</h4>
+            <h4>Valor pessoas isentas de pagamento:</h4>
             <input id="isentos_pagamento" type="number" />
 
-            <h4>Valor de vezes que a catraca foi utilizada do dia:</h4>
+            <h4>Valor de vezes que a catraca foi utilizada:</h4>
             <input id="uso_catraca" type="number" />
 
             <h4>Valor atual da passagem:</h4>
@@ -137,10 +137,10 @@
     if (es == 0) {
       if (vf == valorp) {
         resultado.innerHTML = `<p class="pCalculadora">
-                Esta tudo certo todos que usaram pagaram. Esses são os valores:<br>
+                <strong>Receita de acordo com a esperada<br> pela quantia de usuarios indicados.</strong> <br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
@@ -148,10 +148,10 @@
                 `;
       } else if (vf > valorp) {
         resultado.innerHTML = `<p class="pCalculadora">
-                Alguém pagou a mais. Esses são os valores:<br>
+                <strong>Mais que a devida receita<br> pela quantia de usuarios indicados.</strong><br><br><br> Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
@@ -159,10 +159,10 @@
                 `;
       } else {
         resultado.innerHTML = `<p class="pCalculadora">
-                Alguém não pagou. Esses são os valores:<br>
+                <strong>Receita a baixo da esperada<br> pela quantia de usuarios indicados.</strong><br><br><br> Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
@@ -172,32 +172,35 @@
     } else if (es < 0) {
       if (vfe == valorp) {
         resultado.innerHTML = `<p class="pCalculadora">
-                Houve mais movimentos na frente do ônibus, mas todos pagaram. Esses são os valores:<br>
+                <strong>Houve mais movimentos na frente do ônibus, <br>mas todos pagaram, 
+                pois a receita esta de acordo.</strong><br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
                 </p>
                 `;
       } else if (vfe > valorp) {
-        resultado.innerHTML = `<p class="pCalculadora">
-                Houve mais movimento na frente do ônibus e alguém pagou a mais. Esses são os valores:<br>
+        resultado.innerHTML = `<p class="pCalculadora">               
+                <strong>Houve mais movimentos na frente do ônibus, <br>e a receita
+                esta a mais que a esperada.</strong><br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
                 </p>
                 `;
       } else {
-        resultado.innerHTML = `<p class="pCalculadora">
-                Houve mais movimento na frente do ônibus e alguém não pagou. Esses são os valores:<br>
+        resultado.innerHTML = `<p class="pCalculadora">                
+                <strong>Houve mais movimentos na frente do ônibus, <br>e a receita
+                esta a menos que a esperada.</strong><br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
@@ -206,11 +209,12 @@
       }
     } else {
       if (vfs == valorp) {
-        resultado.innerHTML = `<p class="pCalculadora">
-                Houve mais movimento na parte de trás do ônibus, mas todos pagaram. Esses são os valores:<br>
+        resultado.innerHTML = `<p class="pCalculadora">                
+                <strong>Houve mais movimentos na parte de atrás do ônibus, <br>mas todos pagaram, 
+                pois a receita está de acordo.</strong><br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
@@ -218,21 +222,23 @@
                 `;
       } else if (vfs > valorp) {
         resultado.innerHTML = `<p class="pCalculadora">
-                Houve mais movimento na parte de trás do ônibus e ouve pagamento a mais. Esses são os valores:<br>
+                <strong>Houve mais movimentos na parte de atrás do ônibus <br>e a receita
+                está a mais que a esperada.</strong><br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>
                 </p>
                 `;
       } else {
-        resultado.innerHTML = `<p class="pCalculadora">
-                Houve mais movimento na parte de trás do ônibus e alguém não pagou. Esses são os valores:<br>
+        resultado.innerHTML = `<p class="pCalculadora">          
+                <strong>Houve mais movimentos na parte de atrás do ônibus <br>e a receita
+                está a menos que a esperada.</strong><br><br><br>Esses são os valores:<br>
                 Total de entrada:${te} <br>
                 Total de saida:${ts} <br>
-                Lucro diario:${ld.toLocaleString("pt-BR", {
+                Receita:${ld.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })} <br>

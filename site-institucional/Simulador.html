@@ -52,17 +52,11 @@
         <h4>Nos Informe Seu Nome:</h4>
         <input id="inpt_nome" class="inp_simu" type="text" />
 
-        <h4>Informe a Média de Usuários Mensais de Determinado Ônibus:</h4>
+        <h4>Informe a Média de Usuários Mensais De Uma Determinada Linha:</h4>
         <input id="inpt_numero_usuarios" class="inp_simu" type="text" />
 
         <h4>Informe o Valor Unitário das Passagens Atualmente:</h4>
         <input id="inpt_valor_passagem" class="inp_simu" type="text" />
-
-        <h4>Lorem:</h4>
-        <input id="inpt_nome" class="inp_simu" type="text" />
-
-        <h4>Lorem:</h4>
-        <input id="inpt_nome" class="inp_simu" type="text" />
 
         <div class="SimuladorBoxbtn">
           <button onclick="limpar()" class="button-contato">Limpar</button>
@@ -109,17 +103,17 @@
     //Valor de inputs:
     var numero_usuarios = Number(inpt_numero_usuarios.value);
     var valor_passagem = Number(inpt_valor_passagem.value);
-    var nome = inpt_nome.value;
+    var nome = inpt_nome.value
 
     //Calculos:
     var lucro = numero_usuarios * valor_passagem;
-    var lucro_formatado = lucro.toFixed(2);
+    var lucro_formatado = lucro;
     var perdas = lucro * 0.37;
     var total = lucro - perdas;
-    var total_formatado = total.toFixed(2);
+    var total_formatado = total;
     var projeto = lucro * 0.25;
     var lucrocp = lucro - projeto;
-    var lucrocp_formatado = lucrocp.toFixed(2);
+    var lucrocp_formatado = lucrocp;
 
     if (
       inpt_nome.value == `` ||
@@ -133,16 +127,18 @@
                     <h4 texto_mediano_btn class=tituloanalise> Análise </h4><br>
             Olá, ${nome}. <br><br>
             <h4 class=tituloanalise>Sem o Sistema - </h4>
-            Passageiros Mensais no Ônibus : ${numero_usuarios} <br>
-            Preço da Passagem : R$${valor_passagem}<br>
+            Passageiros Mensais de uma Determinada Linha: ${numero_usuarios} <br>
+            Preço da Passagem: ${valor_passagem.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}<br>
             <br>
-            De acordo com o relatório de 2019 da SPTrans, 37% do valor a receber é perdido pela falta de
-            pagamento dos usuários mensais.<br>
-            Valor a Receber : R$${lucro_formatado}<br>
-            Valor Recebido : R$${total_formatado}<br><br>
+            De acordo com o relatório de 2019 da SPTrans, você está tendo uma perda de 37% da 
+            sua receita por conta de usuarios que não pagam pela utilização. <br>Então do total 
+            de ${lucro_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} 
+            você esta recebendo apenas ${total_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} reais.<br>          
             <h4 class=tituloanalise>Com o Sistema -</h4>
-            Valor a Receber : R$${lucrocp_formatado}<br>
-            Com o Sistema da GTSP, reduziria no mínimo em 12% as suas perdas.`;
+            Com o Sistema da Log Mobility, você conseguiria reduzir no mínimo em 12% as suas perdas. Com esses dados informados
+            você iria conseguir receber ${lucrocp_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} de receita 
+            ao invés dos ${total_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}.<br>
+            `;
     }
   }
 
