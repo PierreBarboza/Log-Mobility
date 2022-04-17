@@ -6,7 +6,6 @@ body {
 
 /* -----------------------NAVEGAÇÃO DO SITE INSTITUCIONAL--------------------------------- */
 .header {
-  color: white;
   background-color: black;
   border-bottom: 6px solid white;
 }
@@ -33,7 +32,12 @@ body {
   padding: 10px;
   text-decoration: none;
 }
-
+.navbar a{
+  color: rgb(203, 203, 203);
+}
+.navbar a:hover{
+  color: #fff;
+}
 .btn_login {
   text-decoration: none;
   color: #fff;
@@ -182,6 +186,7 @@ body {
   box-shadow: 1px 1px 1px gray;
   transition: 150ms;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .button-simular:hover {
@@ -197,6 +202,7 @@ body {
   border: 0;
   box-shadow: 1px 1px 1px gray;
   transition: 150ms;
+  cursor: pointer;
 }
 .button-contato:hover {
   border-radius: 100px;
