@@ -134,7 +134,14 @@
     var isento = 20;
     var nao_pag = 16;
 
-    var media = (pag_inteiro + pag_meia + isento + nao_pag) / 4;
+    var valorTotal = (pag_inteiro + pag_meia + isento + nao_pag);
+
+    var porcento_inteiro = (pag_inteiro * 100) / valorTotal;
+    var porcento_meia = (pag_meia * 100) / valorTotal;
+    var porcento_isento = (isento * 100) / valorTotal;
+    var porcento_NaoPag = (nao_pag * 100) / valorTotal;
+
+    var porcentagem = porcento_inteiro + "%";
 
 
     const labels_Pagamentos = [
@@ -149,7 +156,7 @@
         datasets: [{
             backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
             borderColor: ['white', 'white', 'white', 'white'],
-            data: [200, 100, 50, 30],
+            data: [porcentagem, porcento_meia, porcento_isento, porcento_NaoPag],
 
         },
         ]
@@ -177,7 +184,7 @@
         datasets: [{
             backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
             borderColor: ['white', 'white', 'white', 'white'],
-            data: [200, 100, 50, 90],
+            data: [-400, 0, 100, -300, 300,],
         },
         ]
     };
