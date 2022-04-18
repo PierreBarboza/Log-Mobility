@@ -129,26 +129,78 @@
       </html>
 <!-----------------------------[ S C R I P T ]---------------------------------------------------------------------->
 <script>
-    var pag_inteiro = 300;
-    var pag_meia = 60;
-    var isento = 20;
-    var nao_pag = 16;
+    var pag_inteiro_1 = 300;
+    var pag_meia_1 = 60;
+    var isento_1 = 20;
+    var nao_pag_1 = 16;
+    
+    var pag_inteiro_2 = 400;
+    var pag_meia_2 = 67;
+    var isento_2 = 50;
+    var nao_pag_2 = 34;
 
-    var valorTotal = (pag_inteiro + pag_meia + isento + nao_pag);
+    var pag_inteiro_3 = 254;
+    var pag_meia_3 = 20;
+    var isento_3 = 15;
+    var nao_pag_3 = 20;
 
-    var porcento_inteiro = (pag_inteiro * 100) / valorTotal;
-    var porcento_meia = (pag_meia * 100) / valorTotal;
-    var porcento_isento = (isento * 100) / valorTotal;
-    var porcento_NaoPag = (nao_pag * 100) / valorTotal;
+    var valorTotal_1 = (pag_inteiro_1 + pag_meia_1 + isento_1 + nao_pag_1);
+    var valorTotal_2 = (pag_inteiro_2 + pag_meia_2 + isento_2 + nao_pag_2);
+    var valorTotal_3 = (pag_inteiro_3 + pag_meia_3 + isento_3 + nao_pag_3);
 
-    var porcentagem = porcento_inteiro + "%";
+    
+    var porcento_inteiro_1 = (pag_inteiro_1 * 100) / valorTotal_1;
+    var porcento_meia_1 = (pag_meia_1 * 100) / valorTotal_1;
+    var porcento_isento_1 = (isento_1 * 100) / valorTotal_1;
+    var porcento_NaoPag_1 = (nao_pag_1 * 100) / valorTotal_1;
+
+    var porcento_inteiro_2 = (pag_inteiro_2 * 100) / valorTotal_2;
+    var porcento_meia_2 = (pag_meia_2 * 100) / valorTotal_2;
+    var porcento_isento_2 = (isento_2 * 100) / valorTotal_2;
+    var porcento_NaoPag_2 = (nao_pag_2 * 100) / valorTotal_2;
+
+    var porcento_inteiro_3 = (pag_inteiro_3 * 100) / valorTotal_3;
+    var porcento_meia_3 = (pag_meia_3 * 100) / valorTotal_3;
+    var porcento_isento_3 = (isento_3 * 100) / valorTotal_3;
+    var porcento_NaoPag_3 = (nao_pag_3 * 100) / valorTotal_3;
+
+    var somaInteiros = (pag_inteiro_1 + pag_inteiro_2 + pag_inteiro_3);
+    var somaMeia = (pag_meia_1 + pag_meia_2 + pag_meia_3);
+    var soma_naoPago = (nao_pag_1 + nao_pag_2 + nao_pag_3);
+
+    var totalInteiro = (somaInteiros * 4.40);
+    var totalMeia = (somaMeia * 2.20);
+    var total_naoPago = (soma_naoPago * 4.40);
+
+    var lucro = (totalInteiro + totalMeia);
+    var perda = (total_naoPago + 2600);
 
 
     const labels_Pagamentos = [
         'Inteiro',
         'Meia',
-        'Isentos',
+        'Isento',
         'Não Pago',
+   
+
+    ];
+    const labels_Horarios = [
+        '07:00',
+        '08:00',
+        '09:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+        '23:00',  
+
     ];
 
     const data1 = {
@@ -156,7 +208,7 @@
         datasets: [{
             backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
             borderColor: ['white', 'white', 'white', 'white'],
-            data: [porcentagem, porcento_meia, porcento_isento, porcento_NaoPag],
+            data: [porcento_inteiro_1, porcento_meia_1, porcento_isento_1, porcento_NaoPag_1],
 
         },
         ]
@@ -166,7 +218,7 @@
         datasets: [{
             backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
             borderColor: ['white', 'white', 'white', 'white'],
-            data: [300, 80, 50, 90],
+            data: [porcento_inteiro_2, porcento_meia_2, porcento_isento_2, porcento_NaoPag_2],
         },
         ]
     };
@@ -175,17 +227,24 @@
         datasets: [{
             backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
             borderColor: ['white', 'white', 'white', 'white'],
-            data: [200, 100, 50, 90],
+            data: [porcento_inteiro_3, porcento_meia_3, porcento_isento_3, porcento_NaoPag_3],
         },
         ]
     };
+
+    
     const data4 = {
-        labels: labels_Pagamentos,
+        labels: labels_Horarios,
         datasets: [{
-            backgroundColor: ['#363636', '#696969', '#A9A9A9', 'red'],
-            borderColor: ['white', 'white', 'white', 'white'],
-            data: [-400, 0, 100, -300, 300,],
-        },
+            
+        //     backgroundColor: ['darkgreen', 'darkgreen', 'darkgreen', 'darkgreen'],
+        //     borderColor: ['green', 'green', 'green', 'green'],
+        //     data: [0, 1600, 2450, 2200, 3060, 3800, 3900, lucro],
+        // },{
+        //     backgroundColor: ['darkred', 'darkred', 'darkred', 'darkred'],
+        //     borderColor: ['red', 'red', 'red', 'red'],
+        //     data: [2600, 100+2600, 200+2600, 50+2600, 14+2600, 30+2600, 19+2600, perda],
+        }
         ]
     };
 
@@ -253,7 +312,7 @@
     Chart.defaults.font.weight = 1000;
     const myChart3 = new Chart(
         document.getElementById('myChart3'),
-        config1
+        config3
     );
 
     Chart.defaults.font.weight = 1000;
