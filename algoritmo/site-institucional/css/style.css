@@ -47,6 +47,7 @@ body {
 
 .bannerHome {
   background-image: url(../img/Banner.png);
+  background-size: cover;
   height: 600px;
 }
 
@@ -204,6 +205,10 @@ body {
   transition: 150ms;
   cursor: pointer;
 }
+.button-contato a{
+  color: #00418c;
+}
+
 .button-contato:hover {
   border-radius: 100px;
 }
