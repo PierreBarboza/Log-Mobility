@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/header-footer.css" type="text/css" />
+    <link rel="stylesheet" href="../css/Simulador.css">
+    <title>Simulador</title>
+    <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon" />
+  </head>
+
+  <body>
+    <!------------------------------HEADER DO SITE ----------------------------------------- -->
+    <div class="header">
+      <div class="container">
+        <div class="brand">
+          <!--Area do Logo da Log Mobility-->
+          <img
+            src="../img/logo-LogMobility.png"
+            alt=""
+            width="200px"
+          />
+        </div>
+
+        <ul class="navbar">
+          <!--Navegação -->
+          <a href="index.html">
+            <li>Home</li>
+          </a>
+          <a href="Simulador.html">
+            <li>Simulador</li>
+          </a>
+          <a href="sobreNos.html">
+            <li>Sobre nós</li>
+          </a>
+          <a href="login.html">
+            <li>Login</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container-corpo-simulador">
+      <h3 class="texto_mediano_btn3">
+        Simule aqui os valores que sua empresa recebe<br />
+        que podem ser alterados com nosso serviços!
+      </h3>
+    </div>
+
+    <div class="container-corpo-simulador2">
+      <div class="div-container-sim-esq">
+        <h4>Nos Informe Seu Nome:</h4>
+        <input id="inpt_nome" class="inp_simu" type="text" />
+
+        <h4>Informe a Média de Usuários Mensais De Uma Determinada Linha:</h4>
+        <input id="inpt_numero_usuarios" class="inp_simu" type="text" />
+
+        <h4>Informe o Valor Unitário das Passagens Atualmente:</h4>
+        <input id="inpt_valor_passagem" class="inp_simu" type="text" />
+
+        <div class="SimuladorBoxbtn">
+          <button onclick="limpar()" class="button-contato">Limpar</button>
+          <button onclick="calc()" class="button-simular">Simular</button>
+        </div>
+      </div>
+
+      <div id="div_analise" class="div-container-sim-dir">
+        <h5 class="texto_mediano_btn" id="h2msg"></h5>
+      </div>
+    </div>
+
+    <!---------------------------------RODAPÉ DO SITE------------------------------------------>
+    <div class="footer">
+      <div class="container">
+        <div class="Boxtext">
+          <h2>Saiba Mais</h2>
+          <p><a href="termos-de-uso.html">Termos de Uso</a></p>
+        </div>
+        <div class="Boxtext">
+          <h2>Atendimento</h2>
+          <p>suporte@logmobility.com</p>
+          <p>(11) 1234-5678</p>
+        </div>
+        <div class="RedesSocias">
+          <h2>Redes Sociais</h2>
+          <div class="BoxImgs">
+            <img src="../img/logo-instagram.png" width="30px" alt="" />
+            <img src="../img/logo-facebook.png" width="30px" alt="" />
+            <img src="../img/logo-twitter.png" width="30px" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="direitos">
+        Log Mobility - 2022 Todos os direitos reservados
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  function calc() {
+    //Valor de inputs:
+    var numero_usuarios = Number(inpt_numero_usuarios.value);
+    var valor_passagem = Number(inpt_valor_passagem.value);
+    var nome = inpt_nome.value
+
+    //Calculos:
+    var lucro = numero_usuarios * valor_passagem;
+    var lucro_formatado = lucro;
+    var perdas = lucro * 0.37;
+    var total = lucro - perdas;
+    var total_formatado = total;
+    var projeto = lucro * 0.25;
+    var lucrocp = lucro - projeto;
+    var lucrocp_formatado = lucrocp;
+
+    if (
+      inpt_nome.value == `` ||
+      inpt_numero_usuarios.value == `` ||
+      inpt_valor_passagem.value == ``
+    ) {
+      div_analise.innerHTML = `<h1 class="texto_mediano_simu_h1">
+                    Dados invalidos ou não preenchidos</h1>`;
+    } else {
+      div_analise.innerHTML = ` <div class="texto_mediano_simu" 'dentro'>
+                    <h4 texto_mediano_btn class=tituloanalise> Análise </h4><br>
+            Olá, ${nome}. <br><br>
+            <h4 class=tituloanalise>Sem o Sistema - </h4>
+            Passageiros Mensais de uma Determinada Linha: ${numero_usuarios} <br>
+            Preço da Passagem: ${valor_passagem.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}<br>
+            <br>
+            De acordo com o relatório de 2019 da SPTrans, você está tendo uma perda de 37% da 
+            sua receita por conta de usuarios que não pagam pela utilização. <br>Então do total 
+            de ${lucro_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} 
+            você esta recebendo apenas ${total_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} reais.<br>          
+            <h4 class=tituloanalise>Com o Sistema -</h4>
+            Com o Sistema da Log Mobility, você conseguiria reduzir no mínimo em 12% as suas perdas. Com esses dados informados
+            você iria conseguir receber ${lucrocp_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} de receita 
+            ao invés dos ${total_formatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}.<br>
+            `;
+    }
+  }
+
+  function limpar() {
+    div_analise.innerHTML = ``;
+    inpt_numero_usuarios.value = ``;
+    inpt_valor_passagem.value = ``;
+    inpt_nome.value = ``;
+  }
+</script>
