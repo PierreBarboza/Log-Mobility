@@ -6,30 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/header-footer.css">
-    <link rel="stylesheet" href="../css/empDashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Visualizar Linhas</title>
 </head>
 
-<body>
+<body class="background-dashboard">
 
-    <div class="header-das-empreas">
-        <div class="containerLinha">
-            <div class="container-navbarLinha">
-                <div class="logo-empresa">
-                    <img src="../img/logo-empresa-mobiBrasil.png" alt="" width="150px" />
-                </div>
-                <ul class="navbar-empress">
-                    <div class="palavras">
-                        <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
-                        <hr />
-                        <li class="pagina-atual-empresa"><a href="linhasCadast.html">Linhas Cadastradas</a></li>
-                    </div>
-                </ul>
+    <div class="header-da-gestao">
+        <div class="container-navbar">
+
+            <div class="brand-sptrans">
+                <!----LOGO--->
+                <img src="../img/SPTrans_logo.png" alt="" width="70px">
             </div>
-            <div class="boxSair">
-                <a href="index.html"> Sair</a>
-            </div>
+
+            <ul class="navbar-da-gestao">
+                <li>
+                    <a href="">
+                        Cadastrar<br>
+                        Empresas
+                    </a>
+                </li>
+                <li class="pagina-atual">
+                    <a href="empCadast-cheio.html">
+                        Empresas<br>
+                        Cadastradas
+                    </a>
+                </li>
+                <li>
+                    <a href="calculadora.html">
+                        Calculadora<br>
+                        de Gestão
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"> Sair</a>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -42,18 +56,18 @@
                 </div>
                 <div class="boxMenu">
                     <h3>Análise</h3>
-                    <a href="empDashboard.html"><button class="box_a">Hora</button></a><br>
-                    <a href="empGrafico_dia.html"><button class="box_a">Dia</button></a><br>
-                    <a href="empGrafico_mes.html"><button class="box_a">Mês</button></a><br>
-                    <a href="empGrafico_ano.html"><button class="box_a">Ano</button></a><br>
-                    <a href="empOnibus.html"><button class="box_a">Voltar</button></a><br>
+                    <a href="dashboard-onibus.html"><button class="box_a">Hora</button></a><br>
+                    <a href="grafico_dia.html"><button class="box_a">Dia</button></a><br>
+                    <a href="grafico_mes.html"><button class="box_a">Mês</button></a><br>
+                    <a href="grafico_ano.html"><button class="box_a">Ano</button></a><br>
+                    <a href="linha-N103-11.html"><button class="box_a">Voltar</button></a><br>
                 </div>
             </div>
         </div>
         <!---------------CONTEUDO DO CORPO------------------------------------------------------>
         <div class="containerGráfico">
             <div class="grafico">
-                <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico em Horas</h2>
+                <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Anual</h2>
                 <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
                 <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
             </div>
@@ -94,22 +108,23 @@
 <script>
     Chart.defaults.color = "white"
 
-    const labelsHorarios = [
-        '05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00',
+
+    const labelsAnos = [
+        '2022','2023','2024','2025','2026','2027','2028','2029','2030','2031','2032','2033',
     ];
 
     const data1 = {
-        labels: labelsHorarios,
+        labels: labelsAnos,
         datasets: [{
             label: 'Entrada',
             backgroundColor: '#25d398',
             borderColor: '#25d398',
-            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79, 79, 32, 51, 90, 83, 78,],
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79],
         }, {
             label: 'Saida',
             backgroundColor: '#fb4b7c',
             borderColor: '#fb4b7c',
-            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79, 79, 32, 51, 90, 83, 78,],
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79],
         }
         ]
     };

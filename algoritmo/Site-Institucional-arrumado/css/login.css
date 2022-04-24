@@ -98,13 +98,21 @@ label {
   background-color: #c4c4c4;
   font-size: 15px;
 }
-
+select{
+  border-radius: 15px;
+  border: none;
+  margin: 20px;
+  height: 30px;
+  width: 55%;
+  background-color: #c4c4c4;
+  font-size: 15px;
+}
 #input_email {
   margin-top: 20px;
 }
 
 #input_senha {
-  margin-bottom: 70px;
+  margin-bottom: 20px;
 }
 
 .loginbtn {
@@ -123,6 +131,14 @@ label {
   font-variant-caps: small-caps;
   width: auto;
   font-size: medium;
+}
+.p_login a{
+  color: #fff;
+  text-decoration: none;
+}
+.p_login a:hover{
+  color: rgb(118, 216, 255);
+  text-decoration: none;
 }
 /* ------------------------------------------------------------FOOTER-LOGIN------------------------------------------------------------------ */
 .footerlogin {

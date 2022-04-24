@@ -57,6 +57,10 @@ body {
   margin-right: 30px;
   cursor: pointer;
 }
+.button-simular a{
+  color: #fff;
+  text-decoration: none;
+}
 
 .button-simular:hover {
   border-radius: 100px;
@@ -72,6 +76,10 @@ body {
   box-shadow: 1px 1px 1px gray;
   transition: 150ms;
   cursor: pointer;
+}
+.button-contato a{
+  color: #00418c;
+  text-decoration: none;
 }
 .button-contato:hover {
   border-radius: 100px;

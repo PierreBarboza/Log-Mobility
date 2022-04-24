@@ -53,8 +53,9 @@
         <!---------------CONTEUDO DO CORPO------------------------------------------------------>
         <div class="containerGráfico">
             <div class="grafico">
-                <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico em Horas</h2>
+                <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Diário</h2>
                 <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
+                
                 <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
             </div>
         </div>
@@ -94,22 +95,23 @@
 <script>
     Chart.defaults.color = "white"
 
-    const labelsHorarios = [
-        '05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00',
+    const labelsDias = [
+        '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',
+
     ];
 
     const data1 = {
-        labels: labelsHorarios,
+        labels: labelsDias,
         datasets: [{
             label: 'Entrada',
             backgroundColor: '#25d398',
             borderColor: '#25d398',
-            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79, 79, 32, 51, 90, 83, 78,],
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79],
         }, {
             label: 'Saida',
             backgroundColor: '#fb4b7c',
             borderColor: '#fb4b7c',
-            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79, 79, 32, 51, 90, 83, 78,],
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79],
         }
         ]
     };
