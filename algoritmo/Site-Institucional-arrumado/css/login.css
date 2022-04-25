@@ -4,17 +4,17 @@
 }
 
 body::-webkit-scrollbar {
-  width: 12px;               /*Largura da Barra de rolagem */
+  width: 12px; /*Largura da Barra de rolagem */
 }
 
 body::-webkit-scrollbar-track {
-  background: #4d4d4d;        /* Cor da Raiz Principal da Barra de Rolagem */
+  background: #4d4d4d; /* Cor da Raiz Principal da Barra de Rolagem */
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.582);    /* Cor do scroll Thub */
-  border-radius: 20px;       /* Curvatura do Scroll thumb */
-  border: 2px solid #4d4d4d;  /*Criar uma Borda com cor no Scroll thumb*/
+  background-color: rgba(255, 255, 255, 0.582); /* Cor do scroll Thub */
+  border-radius: 20px; /* Curvatura do Scroll thumb */
+  border: 2px solid #4d4d4d; /*Criar uma Borda com cor no Scroll thumb*/
 }
 /* -----------------------------------------------------HEADER-LOGIN---------------------------------------------------------------- */
 .headerlogin {
@@ -62,57 +62,61 @@ label {
   height: 100%;
   background-image: linear-gradient(to bottom, black, #00408c);
   text-align: center;
-  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .containerbox {
   display: flex;
   align-items: center;
-  padding-top: 80px;
 }
 
 .imgloginseta {
-  width: 25%;
+  width: 20%;
 }
 
 .voltarIndex {
-  padding-top: 2%;
+  height: 10px;
   width: 35%;
 }
 
-.cardlogin h2 {
+.cardlogin h1 {
   color: white;
   width: 29%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.cardlogin label {
+.boxInputs {
+  padding: 10px 30px 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.boxInputs input {
+  background-color: #c4c4c4;
+  border-radius: 15px;
+  border: none;
+  height: 30px;
+  width: 55%;
+  margin-left: 20px;
+}
+
+.boxInputs label {
   color: white;
 }
 
-.bannerlogin input {
+.boxInputs select {
   border-radius: 15px;
   border: none;
-  margin: 20px;
+  margin: 0 6px 0 20px;
   height: 30px;
   width: 55%;
   background-color: #c4c4c4;
-  font-size: 15px;
-}
-select{
-  border-radius: 15px;
-  border: none;
-  margin: 20px;
-  height: 30px;
-  width: 55%;
-  background-color: #c4c4c4;
-  font-size: 15px;
-}
-#input_email {
-  margin-top: 20px;
-}
-
-#input_senha {
-  margin-bottom: 20px;
 }
 
 .loginbtn {
@@ -132,11 +136,11 @@ select{
   width: auto;
   font-size: medium;
 }
-.p_login a{
+.p_login a {
   color: #fff;
   text-decoration: none;
 }
-.p_login a:hover{
+.p_login a:hover {
   color: rgb(118, 216, 255);
   text-decoration: none;
 }

@@ -35,10 +35,9 @@
 .boxLinhas {
   background-color: white;
   width: 100%;
-  height: 13%;
+  height: 80px;
   box-sizing: border-box;
   margin-bottom: 1px;
-  padding: 17px 0px 17px 0px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -77,8 +76,4 @@
 .boxRodapé li a {
   text-decoration: none;
   color: white;
-}
-
-.boxRodapé li .uso_local{
-  color:#00418c;
 }
