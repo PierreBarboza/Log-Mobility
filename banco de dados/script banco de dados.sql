@@ -14,7 +14,6 @@ create table empresa (
   cep char(8),
   telefoneContato1 varchar(15),
   telefoneContato2 varchar(15),
-  email varchar(40),
   empresaGestora int,
   foreign key (empresaGestora) references empresa(idEmpresa)
 );
@@ -30,10 +29,7 @@ create table usuario (
 create table linha (
   idLinha int primary key auto_increment,
   nomeLinha varchar(45),
-  mediaDiaria decimal(10,2),
-  quantidadeOnibusRodando int,
   rota varchar(45),
-  custoLinhaMensal decimal(10,2),
   fkEmpresa int,
   foreign key (fkEmpresa) references empresa(idEmpresa)
 );
@@ -41,6 +37,7 @@ create table linha (
 create table onibus (
 	idOnibus int primary key auto_increment,
     numeroOnibus varchar(45),
+    placaOnibus varchar(45),
     fkLinha int,
     foreign key (fkLinha) references linha(idLinha)
 );
@@ -61,53 +58,53 @@ create table registro (
 );
 
 insert into empresa values
-	(null, 'SPTrans', '558004101000110', 'Rua Boa Vista', '274', 'Centro', 'São Paulo', 'SP', '01014000', '8000110156', '156', 'ouvidoria@sptrans.com.br', null),
-	(null, 'MOBIBRASIL', '558004101000118', 'Avenida Engenheiro George Corbisier', '1100', 'Jabaquara', 'São Paulo', 'SP', '04345001', '1156722100', '', 'fernandapiccoli@mobibrasil.com', 1),
-    (null, 'Move Bus', '558004101000119', 'Rua Murta do Campo', '405', 'Vila Alpina', 'São Paulo', 'SP', '03210010', '1129110675', '1123027920', 'moveBuss@outlook.com', 1);
+	(null, 'SPTrans', '558004101000110', 'Rua Boa Vista', '274', 'Centro', 'São Paulo', 'SP', '01014000', '8000110156', '156', null),
+	(null, 'MOBIBRASIL', '558004101000118', 'Avenida Engenheiro George Corbisier', '1100', 'Jabaquara', 'São Paulo', 'SP', '04345001', '1156722100', '', 1),
+    (null, 'Move Bus', '558004101000119', 'Rua Murta do Campo', '405', 'Vila Alpina', 'São Paulo', 'SP', '03210010', '1129110675', '1123027920', 1);
 
 insert into usuario values 
-	(null, 'antonio.sptrans@hotmail.com', 'batatinhafrita123', 1),
-	(null, 'silva.mobibrasil@gmail.com', 'batatinhafrita1234', 2),
-    (null, 'joana.movebus@outlook.com', 'batatinhafrita1235', 3);
+	(null, 'antonio.sptrans@hotmail.com', 'antonioMobibrasil7522', 1),
+	(null, 'silva.mobibrasil@gmail.com', 'Maria25022008', 2),
+    (null, 'joana.movebus@outlook.com', '@Joanna7885', 3);
 
 insert into linha values
-	(null,'Terminal Piraporinha / Terminal Eldorado', 100.75, 2, '13EP', '1000.00', 2),
-    (null,'Terminal Piraporinha / Jardim Gazuza', 150.25, 2, '14P', '3000.00', 2),
-    (null,'Terminal Piraporinha / Jardim Arco-Íris', 200.25, 3, '16P', '2000.00', 2),
-    (null,'Terminal Diadema / Terminal Piraporinha', 150.25, 1, '20DP', '1500.00', 2),
-    (null,'Terminal Diadema / Terminal Piraporinha', 100.75, 3, '22DP', '4000.00', 2),
-    (null,'Terminal Parelheiros / Terminal Santo Amaro', 1000.75, 2, '6000-10', '4000.00', 2),
-    (null,'HOSP. IPIRANGA / SHOP. ARICANDUVA', 650.75, 3, '364A-10', '4000.00', 3),
-    (null,'JD. ITÁPOLIS / METRÔ BRESSER', 90.25, 1, '373T-10', '2000.00', 3),
-    (null,'VL. INDUSTRIAL / TERM. NORTE METRÔ CARRÃO', 400.80, 2, '414P-10', '2900.00', 3),
-    (null,'TERM. SACOMÃ / JD. ITÁPOLIS', 150.25, 2, '514T-10', '2550.00', 3),
-    (null,'PQ. SÃO LUCAS / METRÔ TATUAPÉ', 100.75, 1, '524L-10', '1000.00', 3),
-    (null,'MASCARENHAS DE MORAIS / SHOP. ARICANDUVA', 900.50, 3, '524M-10', '10000.00', 3);
+	(null,'Terminal Piraporinha / Terminal Eldorado', '13EP', 2),
+    (null,'Terminal Piraporinha / Jardim Gazuza', '14P', 2),
+    (null,'Terminal Piraporinha / Jardim Arco-Íris', '16P', 2),
+    (null,'Terminal Diadema / Terminal Piraporinha', '20DP', 2),
+    (null,'Terminal Diadema / Terminal Piraporinha', '22DP', 2),
+    (null,'Terminal Parelheiros / Terminal Santo Amaro', '6000-10', 2),
+    (null,'HOSP. IPIRANGA / SHOP. ARICANDUVA', '364A-10', 3),
+    (null,'JD. ITÁPOLIS / METRÔ BRESSER', '373T-10', 3),
+    (null,'VL. INDUSTRIAL / TERM. NORTE METRÔ CARRÃO', '414P-10', 3),
+    (null,'TERM. SACOMÃ / JD. ITÁPOLIS','514T-10', 3),
+    (null,'PQ. SÃO LUCAS / METRÔ TATUAPÉ', '524L-10', 3),
+    (null,'MASCARENHAS DE MORAIS / SHOP. ARICANDUVA', '524M-10', 3);
 
 insert into onibus values
-	(null, '13080', 1),(null, '16494', 1),
+	(null, '13080', 'CBM-0688', 1),(null, '16494', 'EVB-1786', 1),
     
-    (null, '20884', 2),(null, '21665', 2),
+    (null, '64442', 'NXC-7891', 2),(null, '21665', 'EMM-0916', 2),
     
-    (null, '34285', 3),(null, '35075', 3),(null, '43254', 3),
+    (null, '20884', 'BPB-4425', 3),(null, '35075', 'CWH-2972', 3),(null, '43254', 'EEZ-8764', 3),
     
-    (null, '45475', 4),
+    (null, '45475', 'GBN-7380', 4),
     
-    (null, '54453', 5),(null, '74262', 5),(null, '80437', 5),
+    (null, '54453', 'DSD-7053', 5),(null, '74262', 'CLF-9025', 5),(null, '80437', 'EZV-8655', 5),
     
-    (null, '85670', 6),(null, '22063', 6),
+    (null, '85670', 'EDG-1784', 6),(null, '22063', 'ETH-9604', 6),
     
-    (null, '30790', 7),(null, '56080', 7),(null, '66934', 7),
+    (null, '30790', 'ETC-9109', 7),(null, '56080', 'GCR-2128', 7),(null, '66934', 'CES-6498', 7),
     
-    (null, '69231', 8),
+    (null, '69231', 'BJI-7600', 8),
     
-    (null, '71263', 9),(null, '73721', 9),
+    (null, '71263', 'GCS-5938', 9),(null, '73721', 'ESX-1701', 9),
     
-    (null, '79872', 10),(null, '82496', 10),
+    (null, '79872', 'CQA-0813', 10),(null, '82496', 'BOX-5531', 10),
     
-    (null, '88324', 11),
+    (null, '88324', 'DFU-3877', 11),
     
-    (null, '92344', 12),(null, '97136', 12),(null, '97784', 12);
+    (null, '92344', 'EQV-1097', 12),(null, '97136', 'FBZ-8372', 12),(null, '97784', 'BWN-4629', 12);
 
 insert into sensor values
 	(null,'Entrada',1),(null,'Saída',1),(null,'Catraca',1),
@@ -273,18 +270,18 @@ select nome, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on 
 
 -- exibir todas as empresas geridas pela SPTrans
 select * from empresa join empresa as empresaGestora on empresa.empresaGestora = empresaGestora.idEmpresa;
-select empresaGestora.nome, empresaGestora.email as email, empresa.nome, empresa.email
+select empresaGestora.nome as nomeEmpresa, empresa.nome
 	from empresa 
 		join empresa 
 			as empresaGestora on empresaGestora.idEmpresa = empresa.empresaGestora;
 
 -- exibir todas as empresas com suas linhas
 select * from empresa join linha on idEmpresa = fkEmpresa;
-select nome,rota,nomeLinha,mediaDiaria,quantidadeOnibusRodando,custoLinhaMensal from empresa join linha on idEmpresa = fkEmpresa;
+select nome,rota,nomeLinha from empresa join linha on idEmpresa = fkEmpresa;
 
 -- exibir todas as linhas com seus onibus
 select * from linha join onibus on idLinha = fkLinha;
-select fkLinha,numeroOnibus,rota,nomeLinha,mediaDiaria,quantidadeOnibusRodando,custoLinhaMensal from linha join onibus on idLinha = fkLinha;
+select fkLinha,numeroOnibus,rota,nomeLinha from linha join onibus on idLinha = fkLinha;
 
 -- exibir todos os onibus com seus sensores
 select * from onibus join sensor on idOnibus = fkOnibus;
@@ -296,5 +293,5 @@ select tipoSensor,fkOnibus,dataHora from sensor join registro on idSensor = fkSe
 select idOnibus,numeroOnibus,tipoSensor,dataHora from onibus join sensor on idOnibus = fkOnibus join registro on idSensor = fkSensor;
 
 -- exibir todos os registros em um mesmo join
-select numeroOnibus,rota,nomeLinha,mediaDiaria,quantidadeOnibusRodando,custoLinhaMensal,tipoSensor,dataHora 
+select numeroOnibus,rota,nomeLinha,tipoSensor,dataHora 
 	from linha join onibus on idLinha = fkLinha join sensor on idOnibus = fkOnibus join registro on idSensor = fkSensor;
