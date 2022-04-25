@@ -30,21 +30,16 @@ a {
   align-items: center;
 }
 
-.button-linha {
-  color: #000;
-  font-weight: bolder;
-  font-size: 19px;
-  margin-left: 10px;
-  height: 40px;
-  width: 200px;
-  border-radius: 30px;
-  cursor: pointer;
+.button{
+  color: #fff;
+  background-color: rgb(49, 49, 49);
+  font-weight: bold;
+  width: 20%;
 }
 
 .nome-linha {
   color: #fff;
   font-size: 17px;
-  margin-left: 12px;
 }
 
 .container-corpo-linhas {
@@ -69,13 +64,15 @@ a {
   margin-top: 50px;
 }
 
-.tupla {
+.tupla_onibus{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #000000;
+  background-color: #091b19;
   padding: 20px 30px 20px 30px;
   border-bottom: 2px solid #d5d5d5;
 }
+
 
 .quadro .rodape {
   display: flex;
@@ -92,10 +89,48 @@ a {
 }
 
 .uso_local {
-  color: #00418c;
+  color: #000000;
+  text-decoration: none;
 }
 
-.corpo a {
+.corpo p {
+  color: #fff;
+  font-weight: bolder;
+  font-size: 19px;
+  height: 0px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.texto-circulando{
+  color: rgb(0, 255, 0);
+}
+.texto-garagem{
+  color: red;
+}
+
+.bolinha-circulando{
+  width: 15px;
+  height: 15px;
+  color: rgb(0, 255, 0);
+  background-color: rgb(0, 255, 0);
+  border: 2px solid green;
+  border-radius: 50px;
+}
+
+.bolinha-garagem{
+  width: 15px;
+  height: 15px;
+  color: rgb(255, 0, 0);
+  background-color: rgb(255, 0, 0);
+  border: 2px solid rgb(128, 0, 0);
+  border-radius: 50px;
+}
+
+.container-linha-reference a {
   color: #000;
   font-weight: bolder;
   font-size: 19px;
@@ -111,27 +146,6 @@ a {
   font-family: sans-serif;
 }
 
-.corpo a:hover {
+.container-linha-reference a:hover {
   background-color: #9a9a9a;
 }
-
-.container-linha-reference a{
-    color: #000;
-  font-weight: bolder;
-  font-size: 19px;
-  margin-left: 10px;
-  height: 32px;
-  width: 190px;
-  border-radius: 30px;
-  cursor: pointer;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-}
-
-.container-linha-reference a:hover{
-    background-color: #9a9a9a;
-}
-
