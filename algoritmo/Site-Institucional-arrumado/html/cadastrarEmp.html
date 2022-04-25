@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/header-footer.css" type="text/css" />
   <link rel="stylesheet" href="../css/cadastrarEmp.css" type="text/css" />
-  <title>Home</title>
   <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+  <title>Cadastro de empresa</title>
 </head>
 
 <body>
@@ -51,32 +51,32 @@
       <h1>Cadastro de Empresa</h1>
       <div class="form-boxCadastrarEmp">
         <h4>Nome da Empresa:</h4>
-        <input type="text" />
+        <input id="input_nomeEmpresa" type="text" />
         <h4>CNPJ:</h4>
-        <input type="text" />
+        <input id="input_CNPJ" type="text" />
         <h4>Endereço:</h4>
-        <input type="text" />
+        <input id="input_endereco" type="text" />
         <h4>Numero:</h4>
-        <input type="text" />
+        <input id="input_numero" type="text" />
         <h4>Bairro:</h4>
-        <input type="text" />
+        <input id="input_bairro" type="text" />
         <h4>Cidade:</h4>
-        <input type="text" />
+        <input id="input_cidade" type="text" />
         <h4>Estado:</h4>
-        <input type="text" />
+        <input id="input_estado" type="text" />
         <h4>CEP:</h4>
-        <input type="text" />
+        <input id="input_CEP" type="text" />
         <h4>Telefone (1):</h4>
-        <input type="text" />
+        <input id="input_telefone1" type="text" />
         <h4>Telefone (2):</h4>
-        <input type="text" />
+        <input id="input_telefone2" type="text" />
         <h4>Email:</h4>
-        <input type="text" />
+        <input id="input_email" type="text" />
         <h4>Senha:</h4>
-        <input type="text" />
+        <input id="input_senha" type="text" />
       </div>
       <div class="containerbtn">
-        <a>Limpar</a>
+        <a onclick="a_limpar()">Limpar</a>
         <a href="empCadast-cheio.html">Cadastrar</a>
       </div>
     </div>
@@ -110,3 +110,20 @@
 </body>
 
 </html>
+
+<script>
+  function a_limpar(){
+    input_nomeEmpresa.value = "";
+    input_CNPJ.value = "";
+    input_endereco.value = "";
+    input_numero.value = "";
+    input_bairro.value = "";
+    input_cidade.value = "";
+    input_estado.value = "";
+    input_CEP.value = "";
+    input_telefone1.value = "";
+    input_telefone2.value = "";
+    input_email.value = "";
+    input_senha.value = "";
+  }
+</script>

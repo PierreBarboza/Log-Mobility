@@ -127,7 +127,9 @@ label {
   padding: 7px 12px 7px 12px;
   font-size: larger;
   box-shadow: 1px 1px 1px black;
+  cursor: pointer;
 }
+
 
 .p_login {
   color: white;

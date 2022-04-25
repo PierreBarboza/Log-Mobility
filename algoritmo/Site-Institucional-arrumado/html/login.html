@@ -5,9 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
   <link rel="stylesheet" href="../css/login.css" />
   <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+  <title>Login</title>
 </head>
 
 <body id="bodyLogin">
@@ -30,11 +31,11 @@
           <div class="cardInputs">
             <div class="boxInputs"><label>Email:</label><input id="input_email" type="text" /></div>
             <div class="boxInputs"><label>Senha:</label><input id="input_senha" type="password" /></div>
-            <div class="boxInputs"><label>Usuário:</label><select>
+            <div class="boxInputs"><label>Usuário:</label><select id="select_usuario">
                 <option value="0">Empresa Gestora</option>
                 <option value="1">Empresa Supervisionada</option>
               </select></div>
-            <a class="loginbtn" href="empCadast-vazio.html">Entrar</a>
+            <a onclick="selecionarUsuario()" class="loginbtn">Entrar</a>
             <p class="p_login"> <a
                 href="https://wa.me/5511912567194?text=Eu%20tenho%20interesse%20no%20serviço%20da%20Log%20Mobility,%20Quero%20Saber%20Mais%20Sobre%20o%20Sistema">
                 Não tem uma conta?<br />
@@ -49,3 +50,15 @@
 </body>
 
 </html>
+
+<script>
+  function selecionarUsuario() {
+    var usuario = select_usuario.value
+
+    if (usuario == 0) {
+      window.location.href = "empCadast-vazio.html"
+    } else if (usuario == 1) {
+      window.location.href = "nenhumaLinha.html"
+    }
+  }
+</script>

@@ -5,9 +5,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="stylesheet" href="../css/header-footer.css" />
     <link rel="stylesheet" href="../css/cadastrarÔnibus.css" />
+    <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+    <title>Cadastro de ônibus</title>
 </head>
 
 <body>
@@ -38,16 +39,16 @@
 
             <div class="dados">
                 <h4>Numero do ônibus:</h4>
-                <input>
+                <input id="input_numeroOnibus">
             </div>
 
             <div class="dados">
                 <h4>Placa do ônibus:</h4>
-                <input />
+                <input id="input_placaOnibus" />
             </div>
 
             <div class="butao">
-                <button>Limpar</button>
+                <button onclick="button_limpar()">Limpar</button>
                 <a href="linhasCadast.html"><button class="btnCadastrarLinha">Cadastrar</button></a>
             </div>
         </div>
@@ -79,5 +80,11 @@
         </div>
     </div>
 </body>
-
 </html>
+
+<script>
+    function button_limpar() {
+        input_numeroOnibus.value = "";
+        input_placaOnibus.value = "";
+    }
+</script>

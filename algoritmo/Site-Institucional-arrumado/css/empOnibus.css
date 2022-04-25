@@ -62,13 +62,14 @@
   box-sizing: border-box;
   margin-bottom: 1px;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  padding: 0 0px 0 30px;
 }
 
 .button-linha {
   padding: 8px 20px 8px 20px;
   transition: 150ms;
+  margin: 0 25px;
 }
 
 .button-linha:hover {

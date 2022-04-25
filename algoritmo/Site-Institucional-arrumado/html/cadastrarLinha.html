@@ -5,9 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
   <link rel="stylesheet" href="../css/header-footer.css" />
   <link rel="stylesheet" href="../css/cadastrarLinha.css" />
+  <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+  <title>Cadastro de linha</title>
 </head>
 
 <body>
@@ -37,27 +38,17 @@
       <h1>Cadastro de Linha</h1>
 
       <div class="dados">
-        <h4>Numero da linha:</h4>
-        <input>
+        <h4>Nome da Linha:</h4>
+        <input id="input_nomeLinha">
       </div>
 
       <div class="dados">
-        <h4>Nome da linha:</h4>
-        <input />
-      </div>
-
-      <div class="dados">
-        <h4>Ponto Incial:</h4>
-        <input />
-      </div>
-
-      <div class="dados">
-        <h4>Ponto final:</h4>
-        <input />
+        <h4>Rota:</h4>
+        <input id="input_rota" />
       </div>
 
       <div class="butao">
-        <button>Limpar</button>
+        <button onclick="button_limpar()">Limpar</button>
         <a href="cadastrarOnibus.html"><button class="btnCadastrarLinha">Cadastrar</button></a>
       </div>
     </div>
@@ -91,3 +82,10 @@
 </body>
 
 </html>
+
+<script>
+  function button_limpar(){
+    input_nomeLinha.value = "";
+    input_rota.value = "";
+  }
+</script>
