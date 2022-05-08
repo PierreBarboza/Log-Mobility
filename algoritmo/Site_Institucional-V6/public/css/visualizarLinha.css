@@ -1,0 +1,117 @@
+.container-logo {
+  display: flex;
+  height: 200px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid #000;
+}
+
+.container-corpo-linhas {
+  display: flex;
+  color: rgb(0, 0, 0);
+  background-image: url(../img/background-linhas.png);
+  justify-content: center;
+}
+
+.container-corpo-linhas {
+  display: flex;
+  color: rgb(0, 0, 0);
+  background-image: url(../img/background-linhas.png);
+  justify-content: center;
+}
+
+.banner-logo {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+
+/*----Quadro das linhas/rotas----*/
+.quadro {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+/*----Cabeçalho do Quadro----*/
+.quadro .cabecalho {
+  background-color: #aaaaaa;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/*----Rodapé do Quadro----*/
+.quadro .rodape {
+  display: flex;
+  justify-content: center;
+  background-color: #aaaaaa;
+  margin-bottom: 50px;
+  align-items: center;
+}
+.quadro .rodape a {
+  text-decoration: none;
+  color: #000;
+}
+
+/*----Tuplas do Quadro----*/
+.tupla {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  padding: 20px 30px 20px 30px;
+  border-bottom: 2px solid #d5d5d5;
+}
+
+/*----Botão (numero da Linha)----*/
+.button-linha {
+  color: #000;
+  font-weight: bolder;
+  font-size: 19px;
+  margin-left: 10px;
+  height: 40px;
+  width: 200px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.button-linha:hover {
+  background-color: #9a9a9a;
+}
+
+/*----Nome da Linha----*/
+.nome-linha {
+  color: #fff;
+  font-size: 17px;
+  margin-left: 12px;
+}
+
+.engranagem-icone {
+  height: 30px;
+  padding-left: 44px;
+  padding-right: 12px;
+}
+
+.uso_local {
+  color: #00418c;
+}
+
+.corpo a {
+  color: #000;
+  font-weight: bolder;
+  font-size: 19px;
+  margin-left: 10px;
+  height: 32px;
+  width: 190px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+
+.corpo a:hover {
+  background-color: #9a9a9a;
+}

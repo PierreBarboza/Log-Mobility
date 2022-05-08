@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="shortcut icon" href="img/Icon-LM.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+  <title>Login</title>
+  <script src="../js/funcoes.js"></script>
+</head>
+
+<body id="bodyLogin">
+  <!---------------------HEADER-LOGIN------------------------------------->
+  <div class="headerlogin"></div>
+  <!---------------------BANNER-LOGIN------------------------------------->
+  <div class="bannerlogin">
+    <div class="containerlogin">
+      <div class="boximglogin">
+        <img class="imgLogin" src="../img/logo-LogMobility.png" />
+        <!-- ------------CARD-LOGIN--------------------------------------->
+      </div>
+      <div class="cardlogin">
+        <div class="boxlogin">
+          <div class="containerbox">
+            <a class="voltarIndex" href="../index.html"><img class="imgloginseta"
+                src="../img/nova_seta_icone_esquerda.png" /></a>
+            <h1>Login</h1>
+          </div>
+          <div class="cardInputs">
+            <div class="boxInputs"><label>Email:</label><input id="input_email" type="text" /></div>
+            <div class="boxInputs"><label>Senha:</label><input id="input_senha" type="password" /></div>
+            <div class="boxInputs"><label>Empresa:</label><select id="select_empresa">
+              <option value="0">Selecione a empresa que você trabalha</option>
+              <option value="MOBIBRASIL">MOBIBRASIL</option>
+              <option value="Move Bus">Move Bus</option>
+              <option value="SPTrans">SPTrans</option>
+
+            </select></div>
+            
+            <a onclick="selecionarUsuario()" class="loginbtn">Entrar</a>
+            <p class="p_login"> <a
+                href="https://wa.me/5511912567194?text=Eu%20tenho%20interesse%20no%20serviço%20da%20Log%20Mobility,%20Quero%20Saber%20Mais%20Sobre%20o%20Sistema">
+                Não tem uma conta?<br />
+                Entre em contato conosco!</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ----------------------FOOTER-LOGIN--------------------------------------->
+  <div class="footerlogin"></div>
+</body>
+
+</html>
+
+<script>
+  function selecionarUsuario() {
+    
+
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+    var tipoUsuarioVar = 0;
+    var empresaVAR = select_empresa.value;
+
+    if (emailVar == "" || senhaVar == "" || empresaVAR == "0") {
+      alert("Os campos não podem estar em branco")
+        
+    } else {
+      if (emailVar.indexOf("@") == -1){
+          alert("O e-mail está incorreto")
+        }
+    }
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        empresaServer: empresaVAR,
+        tipoUsuarioServer : tipoUsuarioVar == '0' ? null : tipoUsuarioVar
+        
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+
+
+          
+          sessionStorage.TIPOUSUARIO_USUARIO = json.empresaGestora;
+          sessionStorage.EMPRESA_USUARIO = json.nomeEmpresa;
+          
+          if (sessionStorage.EMPRESA_USUARIO == "SPTrans"){
+              window.location.href = "empCadast-cheio.html"
+          } else {
+            if (sessionStorage.EMPRESA_USUARIO == "MOBIBRASIL"){
+              window.location.href = "linhasCadast.html"
+            }else {
+              window.location.href = "termos-de-uso.html"
+            }
+            
+          }
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+      
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  
+</script>

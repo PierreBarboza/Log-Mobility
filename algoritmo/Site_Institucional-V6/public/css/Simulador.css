@@ -1,0 +1,138 @@
+.container-corpo-simulador {
+  display: flex;
+  background-image: url(../img/banner1.png);
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  border-bottom: 10px white;
+}
+.container-corpo-simulador2 {
+  display: flex;
+  background-image: url(../img/background-simulador.png);
+  background-size: cover;
+  justify-content: left;
+  align-items: center;
+  height: 500px;
+}
+
+.div-container-sim-esq {
+  color: white;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid white;
+}
+
+.div-container-sim-dir {
+  background-color: rgba(0, 0, 0, 0.562);
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.div-container-sim-dir h2 {
+  color: white;
+  padding: 15px;
+}
+
+.div-container-sim-esq h4 {
+  margin: 0%;
+  font: small-caption;
+  color: rgb(255, 255, 255);
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inp_simu {
+  width: 45%;
+  height: 25px;
+  margin-bottom: 25px;
+  border: none;
+  background-color: #d4d1d1;
+  font-size: 15px;
+}
+.SimuladorBoxbtn {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.div-container-sim-esq span {
+  display: flex;
+  flex-direction: row;
+}
+
+.banner1 {
+  display: flex;
+}
+
+.banner1 p {
+  padding: 0;
+  margin: 0;
+  width: 380px;
+  font-size: 19px;
+  color: rgb(255, 255, 255);
+}
+/* ------------------------BOTÕES------------------------ */
+.button-contato:hover {
+  border-radius: 100px;
+}
+.button-contato {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  color: #00418c;
+  height: 30px;
+  width: 30%;
+  border: 0;
+  box-shadow: 1px 1px 1px grey;
+  transition: 150ms;
+  cursor: pointer;
+}
+
+.button-simular:hover {
+  border-radius: 100px;
+}
+.button-simular {
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  background-color: #00418c;
+  height: 30px;
+  width: 30%;
+  border: 0;
+  box-shadow: 1px 1px 1px grey;
+  transition: 150ms;
+  cursor: pointer;
+}
+
+.texto_mediano_simu {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.texto_mediano_btn3 {
+    color: #ffffff;
+    font-weight: 250;
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+.texto_mediano_simu_h1{
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.texto_mediano_simu {
+    color: #ffffff;
+    padding-left: 30px;
+}

@@ -1,0 +1,103 @@
+.bannerLinhas {
+  background-image: url(../img/background-cadastro-linhas.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.containerLinhas {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0 80px 0;
+  flex-direction: column;
+}
+
+.containerLinhas h2 {
+  color: white;
+}
+
+.boxHeaderLinhas {
+  width: 50%;
+  background-color: #4d4d4d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boxHeaderLinhas a {
+  padding: 20px;
+  width: 5%;
+}
+
+.boxLinhasH2 {
+  /* width: 77%; */
+  text-align: center;
+}
+
+.cardLinhas {
+  background-color: #4d4d4d;
+  height: 85%;
+  width: 50%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardLinhas h2 {
+  color: white;
+}
+
+.cardLinhas label {
+  font-weight: 600;
+  font-size: large;
+}
+
+.boxLinhas {
+  background-color: white;
+  width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  padding: 0 0px 0 30px;
+}
+
+.button-linha {
+  padding: 8px 20px 8px 20px;
+  transition: 150ms;
+  margin: 0 25px;
+}
+
+.button-linha:hover {
+  background-color: rgb(204, 204, 204);
+}
+
+.bannerLinhas h3 {
+  margin: 0;
+}
+
+.boxRodapé {
+  color: white;
+}
+
+.boxRodapé ul {
+  display: flex;
+  padding: 0;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.boxRodapé li {
+  display: flex;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.boxRodapé li a {
+  text-decoration: none;
+  color: white;
+}

@@ -1,0 +1,91 @@
+.banner-logo {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+
+.containerDashboard {
+  display: flex;
+  height: 600px;
+  justify-content: space-around;
+  background-color: #1a1f23;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container-logo {
+  width: 25%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 70%;
+  height: 520px;
+}
+
+.boxLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  height: 110px;
+}
+
+.boxMenu h3 {
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+}
+
+.box_a {
+  width: 60%;
+  background-color: #262b2f;
+  color: white;
+  text-align: start;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+  cursor: pointer;
+  transition: 150ms;
+}
+
+.box_a:hover {
+  background-color: #335293;
+}
+
+.containerGráfico {
+  height: 600px;
+  width: 75%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.grafico {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 89%;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grafico h3 {
+  color: white;
+  margin: 0px 0px 20px 0px;
+}
+
+.grafico label {
+  color: white;
+}
