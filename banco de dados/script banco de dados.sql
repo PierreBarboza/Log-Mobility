@@ -4,7 +4,7 @@ use LogMobility;
 
 create table empresa (
   idEmpresa int primary key auto_increment,
-  nome varchar(80),
+  nomeEmpresa varchar(80),
   cnpj char(15),
   logradouro varchar(45),
   numero varchar(15),
@@ -26,6 +26,7 @@ create table usuario (
   foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
+
 create table linha (
   idLinha int primary key auto_increment,
   nomeLinha varchar(45),
@@ -41,6 +42,8 @@ create table onibus (
     fkLinha int,
     foreign key (fkLinha) references linha(idLinha)
 );
+
+
 
 create table sensor (
 	idSensor int primary key auto_increment,
@@ -263,26 +266,22 @@ select * from empresa;
 
 -- exibir todos os usuários de cada empresa
 select * from empresa join usuario on idEmpresa = fkEmpresa;
-select nome, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa;
-select nome, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa where nome = 'SPTrans';
-select nome, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa where nome = 'mobibrasil';
-select nome, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa where nome = 'move bus';
-
--- exibir todas as empresas geridas pela SPTrans
-select * from empresa join empresa as empresaGestora on empresa.empresaGestora = empresaGestora.idEmpresa;
-select empresaGestora.nome as nomeEmpresa, empresa.nome
-	from empresa 
-		join empresa 
-			as empresaGestora on empresaGestora.idEmpresa = empresa.empresaGestora;
+select nomeEmpresa, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa;
+select nomeEmpresa, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa where nomeEmpresa = 'SPTrans';
+select nomeEmpresa, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa where nomeEmpresa = 'mobibrasil';
+select nomeEmpresa, idUsuario, emailUsuario, senhaUsuario from empresa join usuario on idEmpresa = fkEmpresa where nomeEmpresa = 'move bus';
 
 -- exibir todas as empresas com suas linhas
 select * from empresa join linha on idEmpresa = fkEmpresa;
-select nome,rota,nomeLinha from empresa join linha on idEmpresa = fkEmpresa;
+select nomeEmpresa,rota,nomeLinha from empresa join linha on idEmpresa = fkEmpresa;
 
 -- exibir todas as linhas com seus onibus
 select * from linha join onibus on idLinha = fkLinha;
 select fkLinha,numeroOnibus,rota,nomeLinha from linha join onibus on idLinha = fkLinha;
 
+
+
+desc empresa;
 -- exibir todos os onibus com seus sensores
 select * from onibus join sensor on idOnibus = fkOnibus;
 select idOnibus,numeroOnibus,tipoSensor from onibus join sensor on idOnibus = fkOnibus;
