@@ -38,23 +38,32 @@ a {
 }
 
 .div_container_empresas_cadast {
-  height: 64vh;
-  background-color: rgba(255, 255, 255, 0.849);
+  height: 500px;
+  background-color: #262b2f;
   width: 70vw;
-  display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin-bottom: 5px;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: scroll  ;
+  position: absolute;
+  overflow-x: hidden;
 }
 
 .vizu_linha {
-  background-color: #000;
+  background-color: rgb(73, 73, 73);
+  color: white;
   height: 30%;
-  width: 25%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 5px 5px 5px rgb(155, 152, 152);
+  width: 30%;
+  cursor: pointer;
+  border: 0ch;
+  font-weight: 300;
+  transition: 500ms;
+  box-shadow: 0 0 10px 0 #000;
+}
+.vizu_linha:hover{
+border-radius: 30px;
+
+
 }
 
 .container-empCadastradas-footer {
@@ -106,4 +115,44 @@ cursor: pointer;
   font-size: 20px;
   text-decoration: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.cont_empresa_cad{
+width:100% ;
+height: 120px;
+background-color: #262b2f;
+border: 1PX BLACK SOLID;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 10px;
+padding-left: 20px;
+}
+.container_logo_empre{
+height: 70%;
+width: 40%;
+display: flex;
+align-items: center;
+justify-content: center ;
+padding: 10px;
+align-self: center;
+border-radius: 10px;
+font-size: 22pt;
+font-weight: 300;
+background-color: white;
+
+}
+.container_btn{
+  height: 100%;
+width: 60%;
+display: flex;
+align-items: center;
+justify-content: center ;
+
+
+}
+.logo_empresas{
+height: 100px;
+width: 200px;
+
+
 }
