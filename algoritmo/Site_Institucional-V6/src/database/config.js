@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "LogMobility",
-    password: "#Gf48506906881",
+    password: "guilherme3032002",
     multipleStatements:true
     
 };

@@ -150,6 +150,7 @@ body::-webkit-scrollbar-thumb {
   align-self: center;
   width: 41%;
   text-align: center;
+  font-weight: 500;
 }
 
 .header-das-empreas a {
@@ -161,7 +162,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .header-das-empreas a:hover{
-  color: #00418c;
+  color: cornflowerblue;
 } 
 
 hr {

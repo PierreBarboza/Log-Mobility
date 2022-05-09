@@ -50,15 +50,18 @@
 
 .butao button {
   border: none;
-  padding: 10px;
   border-radius: 10px;
-  font-weight: bolder;
+  font-weight: 300;
   width: 35%;
   transition: 150ms;
-  margin-top: 15px;
   cursor: pointer;
+  height: 40%;
 }
-
+.butao {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
 .butao button:hover {
   color: white;
   background-color: #1d1d1d;

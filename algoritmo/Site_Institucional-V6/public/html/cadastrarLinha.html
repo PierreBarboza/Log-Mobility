@@ -52,7 +52,7 @@
 
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
-        <a><button onclick="cadastrolinha()">Cadastrar</button></a>
+        <button onclick="cadastrolinha()">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -108,10 +108,11 @@
               // Agora vá para o arquivo routes/usuario.js              
               nomeLinhaServer : nomeLinhaVar,
               rotaServer : rotaVar,  
-              empresapertServer : empresapertVar     
+              empresapertServer : empresapertVar    
           })
       })
-  }
+      window.location.href = "linhasCadast.html"
+    }
   function button_limpar(){
     input_nomeLinha.value = "";
     input_rota.value = "";
