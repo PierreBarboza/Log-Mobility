@@ -3,10 +3,11 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    user: "XXXXX",
-    password: "XXXXX",
-    database: "XXXXX",
-    server: "XXXXX",
+    user: "admin-aquatec-8",
+    password: "#Gfgrupo8",
+    database: "acquatec",
+    server: "svr-acquatec-grupo8.database.windows.net",
+    multipleStatements:true,
     pool: {
         max: 10,
         min: 0,
@@ -18,14 +19,14 @@ var sqlServerConfig = {
 }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-var mySqlConfig = {
-    host: "localhost",
-    user: "root",
-    database: "LogMobility",
-    password: "guilherme3032002",
-    multipleStatements:true
+// var mySqlConfig = {
+//     host: "localhost",
+//     user: "root",
+//     database: "LogMobility",
+//     password: "guilherme3032002",
+//     multipleStatements:true
     
-};
+// };
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

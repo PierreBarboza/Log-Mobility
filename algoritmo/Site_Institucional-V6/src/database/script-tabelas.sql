@@ -3,58 +3,264 @@
 -- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
 
 /* para workbench - local - desenvolvimento */
-CREATE DATABASE acquatec;
-
-USE acquatec;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+create table empresa (
+  idEmpresa int primary key identity,
+  nomeEmpresa varchar(80),
+  cnpj char(15),
+  logradouro varchar(45),
+  numero varchar(15),
+  bairro varchar(45),
+  cidade varchar(45),
+  estado char(2),
+  cep char(8),
+  telefoneContato1 varchar(15),
+  telefoneContato2 varchar(15),
+  empresaGestora int,
+  foreign key (empresaGestora) references empresa(idEmpresa)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-); 
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DOUBLE,
-	umidade DOUBLE,
-	momento DATETIME,
-	fk_aquario INT
+create table usuario (
+  idUsuario int primary key identity,
+  emailUsuario varchar(45),
+  senhaUsuario varchar(50),
+  fkEmpresa int,
+  foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
 
-
-
-/* para sql server - remoto - produção */
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
+create table linha (
+  idLinha int primary key identity,
+  nomeLinha varchar(45),
+  rota varchar(45),
+  fkEmpresa int,
+  foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-); 
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
+create table onibus (
+	idOnibus int primary key identity,
+    numeroOnibus varchar(45),
+    placaOnibus varchar(45),
+    fkLinha int,
+    foreign key (fkLinha) references linha(idLinha)
 );
 
 
+
+create table sensor (
+	idSensor int primary key identity,
+    tipoSensor varchar(45),
+    fkOnibus int,
+    foreign key (fkOnibus) references onibus(idOnibus)
+);
+
+create table registro (
+	idRegistro int,
+	dataHora datetime,
+	fkSensor int,
+	primary key (idRegistro,fkSensor),
+	foreign key (fkSensor) references sensor(idSensor)
+);
+insert into empresa values
+	( 'SPTrans', '558004101000110', 'Rua Boa Vista', '274', 'Centro', 'São Paulo', 'SP', '01014000', '8000110156', '156', null),
+	( 'MOBIBRASIL', '558004101000118', 'Avenida Engenheiro George Corbisier', '1100', 'Jabaquara', 'São Paulo', 'SP', '04345001', '1156722100', '', 1),
+    ( 'Move Bus', '558004101000119', 'Rua Murta do Campo', '405', 'Vila Alpina', 'São Paulo', 'SP', '03210010', '1129110675', '1123027920', 1);
+
+insert into usuario values 
+	('antonio.sptrans@hotmail.com', 'antonioMobibrasil7522', 1),
+	('silva.mobibrasil@gmail.com', 'Maria25022008', 2),
+    ('joana.movebus@outlook.com', '@Joanna7885', 3);
+	
+	insert into linha values
+	('Terminal Piraporinha / Terminal Eldorado', '13EP', 2),
+    ('Terminal Piraporinha / Jardim Gazuza', '14P', 2),
+    ('Terminal Piraporinha / Jardim Arco-Íris', '16P', 2),
+    ('Terminal Diadema / Terminal Piraporinha', '20DP', 2),
+    ('Terminal Diadema / Terminal Piraporinha', '22DP', 2),
+    ('Terminal Parelheiros / Terminal Santo Amaro', '6000-10', 2),
+    ('HOSP. IPIRANGA / SHOP. ARICANDUVA', '364A-10', 3),
+    ('JD. ITÁPOLIS / METRÔ BRESSER', '373T-10', 3),
+    ('VL. INDUSTRIAL / TERM. NORTE METRÔ CARRÃO', '414P-10', 3),
+    ('TERM. SACOMÃ / JD. ITÁPOLIS','514T-10', 3),
+    ('PQ. SÃO LUCAS / METRÔ TATUAPÉ', '524L-10', 3),
+    ('MASCARENHAS DE MORAIS / SHOP. ARICANDUVA', '524M-10', 3);
+
+insert into onibus values
+	('13080', 'CBM-0688', 1),
+	('16494', 'EVB-1786', 1),    
+    ('64442', 'NXC-7891', 2),
+	('21665', 'EMM-0916', 2),    
+    ('20884', 'BPB-4425', 3),
+	('35075', 'CWH-2972', 3),
+	('43254', 'EEZ-8764', 3),    
+    ('45475', 'GBN-7380', 4),    
+    ('54453', 'DSD-7053', 5),
+	('74262', 'CLF-9025', 5),
+	('80437', 'EZV-8655', 5),    
+    ('85670', 'EDG-1784', 6),
+	('22063', 'ETH-9604', 6),    
+    ('30790', 'ETC-9109', 7),
+	('56080', 'GCR-2128', 7),
+	('66934', 'CES-6498', 7),    
+    ('69231', 'BJI-7600', 8),    
+    ('71263', 'GCS-5938', 9),
+	('73721', 'ESX-1701', 9),    
+    ('79872', 'CQA-0813', 10),
+	('82496', 'BOX-5531', 10),    
+    ('88324', 'DFU-3877', 11),    
+    ('92344', 'EQV-1097', 12),
+	('97136', 'FBZ-8372', 12),
+	('97784', 'BWN-4629', 12);
+
+	insert into sensor values
+	('Entrada',1),
+    ('Saída',1),
+    ('Catraca',1),
+    ('Entrada',2),
+    ('Saída',2),
+    ('Catraca',2),
+    ('Entrada',3),
+    ('Saída',3),
+    ('Catraca',3),
+    ('Entrada',4),
+    ('Saída',4),
+    ('Catraca',4),    
+    ('Entrada',5),
+    ('Saída',5),
+    ('Catraca',5),    
+    ('Entrada',6),
+    ('Saída',6),
+    ('Catraca',6),    
+    ('Entrada',7),
+    ('Saída',7),
+    ('Catraca',7),    
+    ('Entrada',8),
+    ('Saída',8),
+    ('Catraca',8),    
+    ('Entrada',9),
+    ('Saída',9),
+    ('Catraca',9),    
+    ('Entrada',10),
+    ('Saída',10),
+    ('Catraca',10),    
+    ('Entrada',11),
+    ('Saída',11),
+    ('Catraca',11),    
+    ('Entrada',12),
+    ('Saída',12),
+    ('Catraca',12),    
+    ('Entrada',13),
+    ('Saída',13),
+    ('Catraca',13),    
+    ('Entrada',14),
+    ('Saída',14),
+    ('Catraca',14),    
+    ('Entrada',15),
+    ('Saída',15),
+    ('Catraca',15),    
+    ('Entrada',16),
+    ('Saída',16),
+    ('Catraca',16),    
+    ('Entrada',17),
+    ('Saída',17),
+    ('Catraca',17),    
+    ('Entrada',18),
+    ('Saída',18),
+    ('Catraca',18),    
+    ('Entrada',19),
+    ('Saída',19),
+    ('Catraca',19),    
+    ('Entrada',20),
+    ('Saída',20),
+    ('Catraca',20),    
+    ('Entrada',21),
+    ('Saída',21),
+    ('Catraca',21),    
+    ('Entrada',22),
+    ('Saída',22),
+    ('Catraca',22),    
+    ('Entrada',23),
+    ('Saída',23),
+    ('Catraca',23),    
+    ('Entrada',24),
+    ('Saída',24),
+    ('Catraca',24),    
+    ('Entrada',25),
+    ('Saída',25),
+    ('Catraca',25);
+
+	insert into registro values 
+(1, '2022-04-15 04:17:17', 1),
+(1, '2022-04-15 04:49:17', 2),
+(1, '2022-04-15 04:19:17', 3),
+(2, '2022-04-16 13:17:17', 4),
+(2, '2022-04-16 13:49:17', 5),
+(2, '2022-04-16 13:19:17', 6),
+(3, '2022-04-17 10:17:17', 7),
+(3, '2022-04-17 10:49:17', 8),
+(3, '2022-04-17 10:19:17', 9),
+(4, '2022-04-18 23:17:17', 10),
+(4, '2022-04-18 23:49:17', 11),
+(4, '2022-04-18 23:19:17', 12),
+(5, '2022-04-19 03:17:17', 13),
+(5, '2022-04-19 03:49:17', 14),
+(5, '2022-04-19 03:19:17', 15),
+(6, '2022-04-20 20:17:17', 16),
+(6, '2022-04-20 20:49:17', 17),
+(6, '2022-04-20 20:19:17', 18),
+(7, '2022-04-21 14:17:17', 19),
+(7, '2022-04-21 14:49:17', 20),
+(7, '2022-04-21 14:19:17', 21),
+(8, '2022-04-22 11:17:17', 22),
+(8, '2022-04-22 11:49:17', 23),
+(8, '2022-04-22 11:19:17', 24),
+(9, '2022-04-23 21:17:17', 25),
+(9, '2022-04-23 21:49:17', 26),
+(9, '2022-04-23 21:19:17', 27),
+(10, '2022-04-24 05:17:17', 28),
+(10, '2022-04-24 05:49:17', 29),
+(10, '2022-04-24 05:19:17', 30),
+(11, '2022-04-25 15:17:17', 31),
+(11, '2022-04-25 15:49:17', 32),
+(11, '2022-04-25 15:19:17', 33),
+(12, '2022-04-26 06:17:17', 34),
+(12, '2022-04-26 06:49:17', 35),
+(12, '2022-04-26 06:19:17', 36),
+(13, '2022-04-27 16:17:17', 37),
+(13, '2022-04-27 16:49:17', 38),
+(13, '2022-04-27 16:19:17', 39),
+(14, '2022-04-28 07:17:17', 40),
+(14, '2022-04-28 07:49:17', 41),
+(14, '2022-04-28 07:19:17', 42),
+(15, '2022-04-29 17:17:17', 43),
+(15, '2022-04-29 17:49:17', 44),
+(15, '2022-04-29 17:19:17', 45),
+(16, '2022-04-30 08:17:17', 46),
+(16, '2022-04-30 08:49:17', 47),
+(16, '2022-04-30 08:19:17', 48),
+(17, '2022-05-01 18:17:17', 49),
+(17, '2022-05-01 18:49:17', 50),
+(17, '2022-05-01 18:19:17', 51),
+(18, '2022-05-02 09:17:17', 52),
+(18, '2022-05-02 09:49:17', 53),
+(18, '2022-05-02 09:19:17', 54),
+(19, '2022-05-03 19:17:17', 55),
+(19, '2022-05-03 19:49:17', 56),
+(19, '2022-05-03 19:19:17', 57),
+(20, '2022-05-04 13:17:17', 58),
+(20, '2022-05-04 13:49:17', 59),
+(20, '2022-05-04 13:19:17', 60),
+(21, '2022-05-05 23:17:17', 61),
+(21, '2022-05-05 23:49:17', 62),
+(21, '2022-05-05 23:19:17', 63),
+(22, '2022-05-06 15:17:17', 64),
+(22, '2022-05-06 15:49:17', 65),
+(22, '2022-05-06 15:19:17', 66),
+(23, '2022-05-07 19:17:17', 67),
+(23, '2022-05-07 19:49:17', 68),
+(23, '2022-05-07 19:19:17', 69),
+(24, '2022-05-08 11:17:17', 70),
+(24, '2022-05-08 11:49:17', 71),
+(24, '2022-05-08 11:19:17', 72),
+(25, '2022-05-09 22:17:17', 73),
+(25, '2022-05-09 22:49:17', 74),
+(25, '2022-05-09 22:19:17', 75);
