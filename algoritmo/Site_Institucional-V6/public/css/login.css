@@ -22,6 +22,21 @@ body::-webkit-scrollbar-thumb {
   background-image: linear-gradient(to bottom, #00408b, rgb(0, 0, 27), black);
 }
 /* -----------------------------------------------------BANNER-LOGIN------------------------------------------------------------------ */
+/* -------- gif do login -------- */
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+  
+  
+}
+/* --------------------------------- */
 .bannerlogin {
   height: 600px;
   background-image: linear-gradient(to bottom, black, rgb(0, 0, 20), #00408c);

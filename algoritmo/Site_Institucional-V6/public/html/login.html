@@ -41,6 +41,9 @@
             </select></div>
             
             <a onclick="selecionarUsuario()" class="loginbtn">Entrar</a>
+            <div id="div_aguardar" class="loading-div">
+              <img class="classLoading-gif" src="../assets/circle-loading.gif" id="loading-gif"> 
+            </div>
             <p class="p_login"> <a
                 href="https://wa.me/5511912567194?text=Eu%20tenho%20interesse%20no%20serviço%20da%20Log%20Mobility,%20Quero%20Saber%20Mais%20Sobre%20o%20Sistema">
                 Não tem uma conta?<br />
@@ -58,7 +61,7 @@
 
 <script>
   function selecionarUsuario() {
-    
+    aguardar();
 
     var emailVar = input_email.value;
     var senhaVar = input_senha.value;
@@ -67,7 +70,7 @@
 
     if (emailVar == "" || senhaVar == "" || empresaVAR == "0") {
       alert("Os campos não podem estar em branco")
-        
+      finalizarAguardar();
     } else {
       if (emailVar.indexOf("@") == -1){
           alert("O e-mail está incorreto")
@@ -118,6 +121,11 @@
 
         console.log("Houve um erro ao tentar realizar o login!");
 
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+        
       
       }
 
@@ -127,6 +135,8 @@
 
     return false;
   }
-
+  function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
   
 </script>

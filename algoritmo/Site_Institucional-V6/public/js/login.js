@@ -1,5 +1,5 @@
 function entrar() {
-    
+    aguardar();
 
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
 
@@ -49,8 +49,7 @@ function entrar() {
 }
 
 function validarSessao() {
-    
-
+    aguardar();
     
     var email = sessionStorage.EMAIL_USUARIO;
     var senha = sessionStorage.SENHA_USUARIO;
@@ -63,7 +62,7 @@ function validarSessao() {
         // window.alert(`Seja bem-vindo, ${nome}!`);
         h1Titulo.innerHTML = `${login}`;
 
-        
+        finalizarAguardar();
     } else {
         window.location = "login.html";
     }
