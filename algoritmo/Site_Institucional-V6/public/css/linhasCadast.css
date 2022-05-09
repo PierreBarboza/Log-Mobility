@@ -1,7 +1,11 @@
-.bannerLinhas {
+.banner_linha {
   background-image: url(../img/background-cadastro-linhas.png);
   background-size: cover;
   background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .containerLinhas {
@@ -18,13 +22,14 @@
   height: 85%;
   width: 50%;
   box-sizing: border-box;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .cardLinhas h2 {
   color: white;
+  text-align: center;
 }
 
 .cardLinhas label {
@@ -46,6 +51,7 @@
 .button-linha {
   padding: 8px 20px 8px 20px;
   transition: 150ms;
+  cursor: pointer;
 }
 
 .button-linha:hover {
@@ -76,4 +82,19 @@
 .boxRodapé li a {
   text-decoration: none;
   color: white;
+}
+.table{
+color: black;
+height: 60%;
+background-color: white;
+overflow-y: scroll;
+width: 70%;
+
+
+}
+.titulo_tables{
+background-color: aqua;
+padding: 0%;
+margin: 0%;
+
 }
