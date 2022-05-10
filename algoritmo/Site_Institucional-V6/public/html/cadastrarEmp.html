@@ -125,14 +125,24 @@
       var tel2EmpresaCadasVar = input_telefone2.value;
       var emailUsuarioVar = input_emailUsuario.value;
       var senhaUsuarioVar = input_senhaUsuario.value;
-      var nomeEmpresaUsuarioVar = slt_nomeEmpresa.value;  
+      var nomeEmpresaUsuarioVar = slt_nomeEmpresa.value;
+
+      //Validações dos dados
       if (
         nomeEmpresaCadasVar == "" || cnpjEmpresaCadasVar == "" || ruaEmpresaCadasVar == "" || numeroEmpresaCadasVar == "" ||
         bairroEmpresaCadasVar == "" || cidadeEmpresaCadasVar == "" || estadoEmpresaCadasVar == "" || cepEmpresaCadasVar == "" ||
         tel1EmpresaCadasVar == "" || tel2EmpresaCadasVar == ""  || emailUsuarioVar == ""|| senhaUsuarioVar == ""|| nomeEmpresaUsuarioVar == ""
         ) {
           alert ("Existem campos não preenchidos")
+
+      } else if (cnpjEmpresaCadasVar.length != 14 ){
+        alert ("CNPJ invalido !")
+
+      } else if (emailUsuarioVar.indexOf("@") == -1){
+        alert ("Email invalido !")
       }
+
+
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
           method: "POST",
