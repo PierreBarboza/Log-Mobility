@@ -5,6 +5,9 @@ var usuarioController = require("../controllers/usuarioController");
 // Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 // Aqui podemos criar novas ROUTEs para mais a frente criar novas unções:
 // OBS: Ao criar novar ROUTEs devemos apanas copiar umas exatamente como estar e mudar o nome que estar dentro das () e após o usuarioController.
+router.get("/listar", function (req, res) {
+    usuarioController.listar(req, res);
+});
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
