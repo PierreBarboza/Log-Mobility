@@ -19,6 +19,11 @@ create table empresa (
   foreign key (empresaGestora) references empresa(idEmpresa)
 );
 
+insert into empresa values
+	( 'SPTrans', '558004101000110', 'Rua Boa Vista', '274', 'Centro', 'São Paulo', 'SP', '01014000', '8000110156', '156', null),
+	( 'MOBIBRASIL', '558004101000118', 'Avenida Engenheiro George Corbisier', '1100', 'Jabaquara', 'São Paulo', 'SP', '04345001', '1156722100', '', 1),
+    ( 'Move Bus', '558004101000119', 'Rua Murta do Campo', '405', 'Vila Alpina', 'São Paulo', 'SP', '03210010', '1129110675', '1123027920', 1);
+
 create table usuario (
   idUsuario int primary key identity,
   emailUsuario varchar(45),
@@ -27,6 +32,10 @@ create table usuario (
   foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
+insert into usuario values 
+	('antonio.sptrans@hotmail.com', 'antonioMobibrasil7522', 1),
+	('silva.mobibrasil@gmail.com', 'Maria25022008', 2),
+    ('joana.movebus@outlook.com', '@Joanna7885', 3);
 
 create table linha (
   idLinha int primary key identity,
@@ -35,42 +44,7 @@ create table linha (
   fkEmpresa int,
   foreign key (fkEmpresa) references empresa(idEmpresa)
 );
-
-create table onibus (
-	idOnibus int primary key identity,
-    numeroOnibus varchar(45),
-    placaOnibus varchar(45),
-    fkLinha int,
-    foreign key (fkLinha) references linha(idLinha)
-);
-
-
-
-create table sensor (
-	idSensor int primary key identity,
-    tipoSensor varchar(45),
-    fkOnibus int,
-    foreign key (fkOnibus) references onibus(idOnibus)
-);
-
-create table registro (
-	idRegistro int,
-	dataHora datetime,
-	fkSensor int,
-	primary key (idRegistro,fkSensor),
-	foreign key (fkSensor) references sensor(idSensor)
-);
-insert into empresa values
-	( 'SPTrans', '558004101000110', 'Rua Boa Vista', '274', 'Centro', 'São Paulo', 'SP', '01014000', '8000110156', '156', null),
-	( 'MOBIBRASIL', '558004101000118', 'Avenida Engenheiro George Corbisier', '1100', 'Jabaquara', 'São Paulo', 'SP', '04345001', '1156722100', '', 1),
-    ( 'Move Bus', '558004101000119', 'Rua Murta do Campo', '405', 'Vila Alpina', 'São Paulo', 'SP', '03210010', '1129110675', '1123027920', 1);
-
-insert into usuario values 
-	('antonio.sptrans@hotmail.com', 'antonioMobibrasil7522', 1),
-	('silva.mobibrasil@gmail.com', 'Maria25022008', 2),
-    ('joana.movebus@outlook.com', '@Joanna7885', 3);
-	
-	insert into linha values
+insert into linha values
 	('Terminal Piraporinha / Terminal Eldorado', '13EP', 2),
     ('Terminal Piraporinha / Jardim Gazuza', '14P', 2),
     ('Terminal Piraporinha / Jardim Arco-Íris', '16P', 2),
@@ -84,6 +58,13 @@ insert into usuario values
     ('PQ. SÃO LUCAS / METRÔ TATUAPÉ', '524L-10', 3),
     ('MASCARENHAS DE MORAIS / SHOP. ARICANDUVA', '524M-10', 3);
 
+create table onibus (
+	idOnibus int primary key identity,
+    numeroOnibus varchar(45),
+    placaOnibus varchar(45),
+    fkLinha int,
+    foreign key (fkLinha) references linha(idLinha)
+);
 insert into onibus values
 	('13080', 'CBM-0688', 1),
 	('16494', 'EVB-1786', 1),    
@@ -111,7 +92,15 @@ insert into onibus values
 	('97136', 'FBZ-8372', 12),
 	('97784', 'BWN-4629', 12);
 
-	insert into sensor values
+
+
+create table sensor (
+	idSensor int primary key identity,
+    tipoSensor varchar(45),
+    fkOnibus int,
+    foreign key (fkOnibus) references onibus(idOnibus)
+);
+insert into sensor values
 	('Entrada',1),
     ('Saída',1),
     ('Catraca',1),
@@ -188,6 +177,13 @@ insert into onibus values
     ('Saída',25),
     ('Catraca',25);
 
+create table registro (
+	idRegistro int,
+	dataHora datetime,
+	fkSensor int,
+	primary key (idRegistro,fkSensor),
+	foreign key (fkSensor) references sensor(idSensor)
+);
 	insert into registro values 
 (1, '2022-04-15 04:17:17', 1),
 (1, '2022-04-15 04:49:17', 2),

@@ -44,8 +44,27 @@
 
     <div class="container-empCadastradas">
       <div class="div_container_empresas_cadast">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nome da Empresa</th>
+              <th scope="col">CNJP da Empresa</th>
+              <th scope="col">Telefone da Empresa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="nomedaEmpresa"></td>
+              <td id="cnpjdaEmpresa"></td>
+              <td id="telefonedaEmpresa"></td>
+            </tr>
+          </tbody>
+        </table>
         <div id="sltEmpresasCadastradas"></div>
-        <button onclick="listar()">Visualisar</button>
+        <button onclick="listarEmpresasCadastradas()">Visualisar</button>
+        <div id="div_aguardar" class="loading-div">
+          <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
+        </div>
       </div>
     </div>
 
@@ -79,76 +98,39 @@
   </body>
 </html>
 <script>
-   function listar() {
-        // aguardar();   
-        fetch("/usuarios/listar").then(function (resposta) {
+   function listarEmpresasCadastradas() {
+        aguardar();   
+        fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    // sltEmpresasCadastradas.innerHTML = "Nenhum resultado encontrado."
                     feed.appendChild(mensagem);
+                    finalizarAguardar();
                     throw "Nenhum resultado encontrado!!";
                 }
-
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    sltEmpresasCadastradas.innerHTML += JSON.stringify(resposta);
-                    
-
+                  resposta.json().then(function (resposta) {
                     var feed = document.getElementById("feed_container");
-                    // sltEmpresasCadastradas.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-
-                        // criando e manipulando elementos do HTML via JavaScript
-                        // var divPublicacao = document.createElement("div");
-                        // var spanID = document.createElement("span");
-                        // var spanTitulo = document.createElement("span");
-                        // var spanNome = document.createElement("span");
-                        // var divDescricao = document.createElement("div");
-                        // var divButtons = document.createElement("div");
-                        // var btnEditar = document.createElement("button");
-                        // var btnDeletar = document.createElement("button");
-
-
-                        // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        // spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        // spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        // divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        // btnEditar.innerHTML = "Editar";
-                        // btnDeletar.innerHTML = "Deletar";
-
-                        // divPublicacao.className = "publicacao";
-                        // spanTitulo.id = "inputNumero" + publicacao.idAviso;
-                        // spanNome.className = "publicacao-nome";
-                        // spanTitulo.className = "publicacao-titulo";
-                        // divDescricao.className = "publicacao-descricao";
-
-                        // divButtons.className = "div-buttons"
-
-                        // btnEditar.className = "publicacao-btn-editar"
-                        // btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
-
-                        // btnDeletar.className = "publicacao-btn-editar"
-                        // btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        // btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
-
-                        // divPublicacao.appendChild(spanID);
-                        // divPublicacao.appendChild(spanNome);
-                        // divPublicacao.appendChild(spanTitulo);
-                        // divPublicacao.appendChild(divDescricao);
-                        // divPublicacao.appendChild(divButtons);
-                        // divButtons.appendChild(btnEditar);
-                        // divButtons.appendChild(btnDeletar);
-                        // feed.appendChild(divPublicacao);
+                      for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i]; // i é a posição 0
+                            console.log(publicacao);
+                            
+                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                            // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let nome = publicacao.nomeEmpresa
+                            let cnpj = publicacao.cnpj
+                            let telefone = publicacao.telefoneContato1
+                            
+                            // Aqui eu aponto para onde meus dados irão para serem apresentados:
+                            nomedaEmpresa.innerHTML += `${nome} <br>`
+                            cnpjdaEmpresa.innerHTML += `${cnpj} <br>`
+                            telefonedaEmpresa.innerHTML += `${telefone} <br>`
                     }
-
-                    // finalizarAguardar();
+                    finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');
+                finalizarAguardar();
             }
         }).catch(function (resposta) {
             console.error(resposta);

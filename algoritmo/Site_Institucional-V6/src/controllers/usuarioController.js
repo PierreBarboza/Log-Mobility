@@ -8,8 +8,8 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-function listar(req, res) {
-    usuarioModel.listar()
+function listarEmpresasCadastradas(req, res) {
+    usuarioModel.listarEmpresasCadastradas()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -232,7 +232,7 @@ module.exports = {
     cadastrolinha,
     cadastrarOnibus,
     cadastrar,
-    listar,
+    listarEmpresasCadastradas,
     testar
     
 }
