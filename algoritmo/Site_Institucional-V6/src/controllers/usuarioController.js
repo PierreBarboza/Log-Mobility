@@ -1,7 +1,30 @@
 // Essa var provavelmente direciona os dados do usuarioController.js para usuarioModel.js:
 var usuarioModel = require("../models/usuarioModel");
+var sessoes = [];
 // Aqui vamos adicionar novas funções (funções essas com os nomes das routes que criamos).
 // Dentro das funções vamos adicionar as variaveis, verificações e adcionar as variaveis ao usuarioModel.
+function testar(req, res) {
+    console.log("ENTRAMOS NA usuarioController");
+    res.json("ESTAMOS FUNCIONANDO!");
+}
+
+function listar(req, res) {
+    usuarioModel.listar()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+} 
+
 function entrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo .html:
     var email = req.body.emailServer;
@@ -209,5 +232,7 @@ module.exports = {
     cadastrolinha,
     cadastrarOnibus,
     cadastrar,
+    listar,
+    testar
     
 }

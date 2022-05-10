@@ -6,6 +6,14 @@ var database = require("../database/config")
 // E após adicionarmos as variaveis vamos criar uma var instrucao = `` e dentro da `` vamos colocar as QUERIS que desejamos (insert into, select e por ai vai...)
 // OBS: Quando nós mexemos das QUERYs devemos colocar delas o campo do banco que vamos dar o comando exatamente como está escrito no banco de dados, não inserimos apenas as VARs.
 // No caso do login vamos umar uma QUERY de SELECT e vamos utilizar o WHERE para localizar os dados informados nas VARs.
+function listar() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM usuario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 function entrar(email, senha, empresa, tipoUsuario) { // Adicionamos as variaveis aqui
     console.log(`
     ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> 
@@ -122,5 +130,6 @@ module.exports = {
     cadastrar,
     cadastrolinha,
     cadastrarOnibus,
+    listar,
     cadastrarfunc    
 };
