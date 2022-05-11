@@ -132,18 +132,12 @@ function cadastrar(req, res) {
         res.status(400).send("Sua tel1EmpresaCadas está undefined!");
     } else if (tel2EmpresaCadas == undefined) {
         res.status(400).send("Sua tel2EmpresaCadas está undefined!");
-    } else if (emailUsuario == undefined) {  // A partir daqui são as validações dos dados dos usuarios cadastrado pela empresa gestora:
-        res.status(400).send("Sua emailUsuario está undefined!");
-    } else if (senhaUsuario == undefined) {
-        res.status(400).send("Sua senhaUsuario está undefined!");
-    } else if (nomeEmpresaUsuario == undefined) {
-        res.status(400).send("Sua nomeEmpresaUsuari está undefined!");
     } else {
         // Aqui encaminhamos ela para o usuarioModel.js:
         usuarioModel.cadastrar(
             nomeEmpresaCadas, cnpjEmpresaCadas, ruaEmpresaCadas, numeroEmpresaCadas,
             bairroEmpresaCadas, cidadeEmpresaCadas, estadoEmpresaCadas, cepEmpresaCadas,
-            tel1EmpresaCadas, tel2EmpresaCadas, emailUsuario, senhaUsuario, nomeEmpresaUsuario
+            tel1EmpresaCadas, tel2EmpresaCadas
         )
             .then(
                 function (resultado) {

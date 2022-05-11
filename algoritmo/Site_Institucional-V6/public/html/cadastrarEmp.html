@@ -131,7 +131,7 @@
       if (
         nomeEmpresaCadasVar == "" || cnpjEmpresaCadasVar == "" || ruaEmpresaCadasVar == "" || numeroEmpresaCadasVar == "" ||
         bairroEmpresaCadasVar == "" || cidadeEmpresaCadasVar == "" || estadoEmpresaCadasVar == "" || cepEmpresaCadasVar == "" ||
-        tel1EmpresaCadasVar == "" || tel2EmpresaCadasVar == ""  || emailUsuarioVar == ""|| senhaUsuarioVar == ""|| nomeEmpresaUsuarioVar == ""
+        tel1EmpresaCadasVar == "" || tel2EmpresaCadasVar == ""
         ) {
           alert ("Existem campos não preenchidos")
 
@@ -141,8 +141,6 @@
       } else if (emailUsuarioVar.indexOf("@") == -1){
         alert ("Email invalido !")
       }
-
-
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
           method: "POST",
@@ -162,11 +160,10 @@
               cepEmpresaCadasServer : cepEmpresaCadasVar, 
               tel1EmpresaCadasServer : tel1EmpresaCadasVar, 
               tel2EmpresaCadasServer : tel2EmpresaCadasVar, 
-              emailUsuarioServer: emailUsuarioVar,
-              senhaUsuarioServer: senhaUsuarioVar,
-              nomeEmpresaUsuarioServer: nomeEmpresaUsuarioVar,              
+                       
           })
       })
+      window.location.href = "cadastroUsuario.html" 
   }
   function a_limpar(){
     input_nomeEmpresa.value = "";

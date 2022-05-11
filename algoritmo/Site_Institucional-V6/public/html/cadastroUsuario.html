@@ -14,7 +14,7 @@
 
 <body>
   <!-------------------------------HEADER SITE-------------------------->
-  <div class="header-das-empreas">
+  <!-- <div class="header-das-empreas">
     <div class="containerLinha">
       <div class="container-navbarLinha">
         <div class="logo-empresa">
@@ -34,7 +34,7 @@
         <a href="../index.html"> Sair</a>
       </div>
     </div>
-  </div>
+  </div> -->
   <!---------------------------------CORPO DO SITE------------------------------------------>
   <div class="container-login">
     <div class="formulario">
@@ -52,7 +52,8 @@
 
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
-        <a><button class="btnCadastrarLinha" onclick="cadastro()">Cadastrar</button></a>
+        <button onclick="cadastro()">Cadastrar</button>
+        <a href="empCadast-cheio.html">Sair</a>
       </div>
     </div>
   </div>
@@ -110,6 +111,7 @@
               empresafuncServer : empresafuncVar              
           })
       })
+      window.location.href = "empCadast-cheio.html" 
   }
   function button_limpar(){
     input_nomeLinha.value = "";
