@@ -108,9 +108,6 @@ function cadastrar(req, res) {
     var cepEmpresaCadas = req.body.cepEmpresaCadasServer
     var tel1EmpresaCadas = req.body.tel1EmpresaCadasServer
     var tel2EmpresaCadas = req.body.tel2EmpresaCadasServer
-    var emailUsuario = req.body.emailUsuarioServer
-    var senhaUsuario = req.body.senhaUsuarioServer
-    var nomeEmpresaUsuario = req.body.nomeEmpresaUsuarioServer
     // Aqui encaminhamos ela para o usuarioModel.js:
     if (nomeEmpresaCadas == undefined) {
         res.status(400).send("Seu nomeEmpresaCadas está undefined!");

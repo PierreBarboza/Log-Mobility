@@ -67,14 +67,14 @@ function cadastrarfunc(
 function cadastrar(
     nomeEmpresaCadas, cnpjEmpresaCadas, ruaEmpresaCadas, numeroEmpresaCadas,
     bairroEmpresaCadas, cidadeEmpresaCadas, estadoEmpresaCadas, cepEmpresaCadas,
-    tel1EmpresaCadas, tel2EmpresaCadas, emailUsuario, senhaUsuario, nomeEmpresaUsuario // Adicionamos as variaveis aqui
+    tel1EmpresaCadas, tel2EmpresaCadas // Adicionamos as variaveis aqui
 ) {
     console.log(`
     ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> 
     verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():
     `, nomeEmpresaCadas, cnpjEmpresaCadas, ruaEmpresaCadas, numeroEmpresaCadas, 
     bairroEmpresaCadas, cidadeEmpresaCadas, estadoEmpresaCadas, cepEmpresaCadas, 
-    tel1EmpresaCadas, tel2EmpresaCadas, emailUsuario, senhaUsuario, nomeEmpresaUsuario);// Adicionamos as variaveis aqui
+    tel1EmpresaCadas, tel2EmpresaCadas);// Adicionamos as variaveis aqui
     var instrucao = 
     //Insert na tabela empresa e na tabela usuario:
     `
@@ -82,9 +82,6 @@ function cadastrar(
     (nomeEmpresa, cnpj, logradouro, numero, bairro, cidade, estado, cep, telefoneContato1, telefoneContato2, empresaGestora ) VALUES 
     ('${nomeEmpresaCadas}', '${cnpjEmpresaCadas}', '${ruaEmpresaCadas}', '${numeroEmpresaCadas}', '${bairroEmpresaCadas}', 
     '${cidadeEmpresaCadas}', '${estadoEmpresaCadas}', '${cepEmpresaCadas}', '${tel1EmpresaCadas}', '${tel2EmpresaCadas}', '1');
-    INSERT INTO usuario 
-    (emailUsuario, senhaUsuario, fkEmpresa) VALUES 
-    ('${emailUsuario}', '${senhaUsuario}', '${nomeEmpresaUsuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

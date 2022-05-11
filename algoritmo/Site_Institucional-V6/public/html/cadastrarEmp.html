@@ -65,16 +65,7 @@
         <input id="input_telefone1" type="text" />
         <h4>Telefone (2):</h4>
         <input id="input_telefone2" type="text" />
-        <h4>Email do usuario:</h4>
-        <input id="input_emailUsuario" type="text" />
-        <h4>Senha do Usuario:</h4>
-        <input id="input_senhaUsuario" type="text" />
-        <select id="slt_nomeEmpresa">Empresa
-          <option value="0">Selecione a empresa</option>
-          <option value="2">MOBIBRASIL</option>
-          <option value="3">Move Bus</option>
-          <option value="1">SPTrans</option>
-      </select>
+        
         
       </div>
       <div class="containerbtn">
@@ -123,9 +114,7 @@
       var cepEmpresaCadasVar = input_CEP.value;
       var tel1EmpresaCadasVar = input_telefone1.value;
       var tel2EmpresaCadasVar = input_telefone2.value;
-      var emailUsuarioVar = input_emailUsuario.value;
-      var senhaUsuarioVar = input_senhaUsuario.value;
-      var nomeEmpresaUsuarioVar = slt_nomeEmpresa.value;
+
 
       //Validações dos dados
       if (
@@ -138,9 +127,7 @@
       } else if (cnpjEmpresaCadasVar.length != 15 ){
         alert ("CNPJ invalido !")
 
-      } else if (emailUsuarioVar.indexOf("@") == -1){
-        alert ("Email invalido !")
-      }
+      } 
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
           method: "POST",
@@ -159,8 +146,7 @@
               estadoEmpresaCadasServer : estadoEmpresaCadasVar, 
               cepEmpresaCadasServer : cepEmpresaCadasVar, 
               tel1EmpresaCadasServer : tel1EmpresaCadasVar, 
-              tel2EmpresaCadasServer : tel2EmpresaCadasVar, 
-                       
+              tel2EmpresaCadasServer : tel2EmpresaCadasVar,         
           })
       })
       window.location.href = "cadastroUsuario.html" 
