@@ -54,14 +54,17 @@
           </thead>
           <tbody>
             <tr>
-              <td id="nomedaEmpresa"></td>
-              <td id="cnpjdaEmpresa"></td>
-              <td id="telefonedaEmpresa"></td>
+              <td class="nome_empresa" id="nomedaEmpresa"></td>
+              <td class="informacoes_empresa" id="cnpjdaEmpresa"></td>
+              <td class="informacoes_empresa" id="telefonedaEmpresa"></td>
             </tr>
           </tbody>
         </table>
         <div id="sltEmpresasCadastradas"></div>
-        <button onclick="listarEmpresasCadastradas()">Visualisar</button>
+        <span class="span_button">
+          <button class="button_visualizar_dados" onclick="listarEmpresasCadastradas()">Visualisar</button>
+        </span>
+        
         <div id="div_aguardar" class="loading-div">
           <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
         </div>
