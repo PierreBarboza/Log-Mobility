@@ -101,16 +101,12 @@
           
           sessionStorage.TIPOUSUARIO_USUARIO = json.empresaGestora;
           sessionStorage.EMPRESA_USUARIO = json.nomeEmpresa;
+          sessionStorage.idEmpresa_USUARIO = json.idEmpresa;
           
           if (sessionStorage.EMPRESA_USUARIO == "SPTrans"){
               window.location.href = "empCadast-cheio.html"
           } else {
-            if (sessionStorage.EMPRESA_USUARIO == "MOBIBRASIL"){
-              window.location.href = "cadastrarLinha.html"
-            }else {
-              window.location.href = "termos-de-uso.html"
-            }
-            
+            window.location.href = "linhasCadast.html"
           }
 
         });

@@ -23,6 +23,7 @@ function entrar() {
                 sessionStorage.SENHA_USUARIO = json.senha;
                 sessionStorage.EMPRESA_USUARIO = json.empresa;
                 sessionStorage.TIPOUSUARIO_USUARIO = json.tipoUsuario;
+                sessionStorage.idEmpresa_USUARIO = json.idEmpresa;
                 
 
                 setTimeout(function () {

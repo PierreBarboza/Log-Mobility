@@ -16,12 +16,9 @@
     <div class="header-das-empreas">
       <div class="containerLinha">
         <div class="container-navbarLinha">
-          <div class="logo-empresa">
-            <img
-              src="../img/logo-empresa-mobiBrasil.png"
-              alt=""
-              width="150px"
-            />
+          <div id="div_empresaLogada">
+           
+            
           </div>
           <ul class="navbar-empress">
             <div class="palavras">
@@ -31,7 +28,7 @@
                 <a class="pagina-atual-empresa" href="linhasCadast.html">Linhas Cadastradas</a>
               </li>
               <hr />
-              <li><a href="cadastroUsuario.html">Cadastrar Usuario</a></li>
+              <li><a href="cadastroUsuarioEmpresas.html">Cadastrar Usuario</a></li>
             </div>
           </ul>
         </div>
@@ -107,8 +104,13 @@
 <script>
   
    window.onload = function listarlinhas() {
-        aguardar();   
-        fetch("/usuarios/listarlinhas").then(function (resposta) {
+    
+        aguardar();
+        var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
+        var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+        div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
+        
+        fetch(`/usuarios/listarlinhas/${idEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -131,14 +133,21 @@
                          
                             // Aqui eu aponto para onde meus dados irão para serem apresentados:
                             nomedalinha.innerHTML += `${nomelinha} <br>`
-                            rotalinha.innerHTML += `${rota} <br>`
+                            rotalinha.innerHTML += `${rota}   <button>Visualizar Linha</button><br> `
                             
+                            
+                            
+
                     }
                     finalizarAguardar();
-                });
+                })
             } else {
                 throw ('Houve um erro na API!');
+                
+                
+
                 finalizarAguardar();
+
             }
         }).catch(function (resposta) {
             console.error(resposta);

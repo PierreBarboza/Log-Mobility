@@ -15,10 +15,10 @@ function listarEmpresasCadastradas() {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-function listarlinhas() {
+function listarlinhas(idEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT * FROM linha WHERE fkEmpresa = '2';
+        SELECT * FROM linha WHERE fkEmpresa = ${idEmpresa};
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

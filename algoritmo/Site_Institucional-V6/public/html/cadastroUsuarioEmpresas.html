@@ -14,7 +14,28 @@
 
 <body>
   <!-------------------------------HEADER SITE-------------------------->
- 
+  <div class="header-das-empreas">
+    <div class="containerLinha">
+      <div class="container-navbarLinha">
+        <div id="div_empresaLogada">
+           
+            
+        </div>
+        <ul class="navbar-empress">
+          <div class="palavras">
+            <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
+            <hr />
+            <li><a href="linhasCadast.html">Linhas Cadastradas</a></li>
+            <hr />
+            <li><a class="pagina-atual-empresa" href="cadastroUsuario.html">Cadastrar Usuario</a></li>
+          </div>
+        </ul>
+      </div>
+      <div class="boxSair">
+        <a href="../index.html"> Sair</a>
+      </div>
+    </div>
+  </div>
   <!---------------------------------CORPO DO SITE------------------------------------------>
   <div class="container-login">
     <div class="formulario">
@@ -29,15 +50,11 @@
         <h4>Senha do usuario:</h4>
         <input id="input_senhafunc" />
       </div>
-      
-      Selecione a empresa que o usuario vai trabalhar:
-      <select id="slt_idempresas">    
-      </select>
 
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
         <button onclick="cadastro()">Cadastrar</button>
-        <a href="empCadast-cheio.html">Sair</a>
+        <a href="../html/linhasCadast.html">Sair</a>
       </div>
     </div>
   </div>
@@ -72,10 +89,13 @@
 </html>
 
 <script>
+        var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
+        var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+        div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
   function cadastro() { 
       var emailfuncVar = input_emailfunc.value
       var senhafuncVar = input_senhafunc.value
-      var empresafuncVar = slt_idempresas.value
+      var empresafuncVar = idEmpresa
       if (
         emailfuncVar == "" || senhafuncVar == "" || empresafuncVar == ""
         ) {
@@ -95,48 +115,48 @@
               empresafuncServer : empresafuncVar              
           })
       })
-      window.location.href = "empCadast-cheio.html" 
+      window.location.href = "../html/linhasCadast.html" 
   }
-  window.onload = function listarEmpresasCadastradas() {
-        // aguardar();   
-        fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
-                    var mensagem = document.createElement("span");
-                    feed.appendChild(mensagem);
+  // window.onload = function listarEmpresasCadastradas() {
+  //       // aguardar();   
+  //       fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
+  //           if (resposta.ok) {
+  //               if (resposta.status == 204) {
+  //                   var feed = document.getElementById("feed_container");
+  //                   var mensagem = document.createElement("span");
+  //                   feed.appendChild(mensagem);
                     
-                    throw "Nenhum resultado encontrado!!";
-                }
-                  resposta.json().then(function (resposta) {
-                    var feed = document.getElementById("feed_container");
-                      for (let i = 1; i < resposta.length; i++) {
-                        var publicacao = resposta[i]; // i é a posição 0
-                            console.log(publicacao);
+  //                   throw "Nenhum resultado encontrado!!";
+  //               }
+  //                 resposta.json().then(function (resposta) {
+  //                   var feed = document.getElementById("feed_container");
+  //                     for (let i = 1; i < resposta.length; i++) {
+  //                       var publicacao = resposta[i]; // i é a posição 0
+  //                           console.log(publicacao);
                             
-                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
-                            // Temos que colocar publicação.Nome do campo do banco de dados:
-                            let idempresa = publicacao.idEmpresa
-                            let nome = publicacao.nomeEmpresa
-                            // teste
-                            slt_idempresas.innerHTML += ` 
+  //                           // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+  //                           // Temos que colocar publicação.Nome do campo do banco de dados:
+  //                           let idempresa = publicacao.idEmpresa
+  //                           let nome = publicacao.nomeEmpresa
+  //                           // teste
+  //                           slt_idempresas.innerHTML += ` 
                             
-                            <option value="${idempresa}">${nome}</option>
+  //                           <option value="${idempresa}">${nome}</option>
                             
-                            `
+  //                           `
                             
-                    }
+  //                   }
                     
-                });
-            } else {
-                throw ('Houve um erro na API!');
+  //               });
+  //           } else {
+  //               throw ('Houve um erro na API!');
                 
-            }
-        }).catch(function (resposta) {
-            console.error(resposta);
+  //           }
+  //       }).catch(function (resposta) {
+  //           console.error(resposta);
             
-        });
-    }
+  //       });
+  //   }
   function button_limpar(){
     input_nomeLinha.value = "";
     input_rota.value = "";

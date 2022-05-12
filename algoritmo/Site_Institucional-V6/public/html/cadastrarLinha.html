@@ -17,8 +17,14 @@
   <div class="header-das-empreas">
     <div class="containerLinha">
       <div class="container-navbarLinha">
-        <div class="logo-empresa">
-          <img src="../img/logo-empresa-mobiBrasil.png" alt="" width="150px" />
+        <div id="div_empresaLogada">
+          <!-- class="logo-empresa" -->
+          <!-- <img
+            src="../img/logo-empresa-mobiBrasil.png"
+            alt=""
+            width="150px"
+          /> -->
+          
         </div>
         <ul class="navbar-empress">
           <div class="palavras">
@@ -87,10 +93,13 @@
 </html>
 
 <script>
+  var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
+  var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+  div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
   function cadastrolinha() { 
       var nomeLinhaVar = input_nomeLinha.value
       var rotaVar = input_rota.value
-      var empresapertVar = 2
+      var empresapertVar = idEmpresa
       
       if (
         nomeLinhaVar == "" || rotaVar == "" || empresapertVar ==""

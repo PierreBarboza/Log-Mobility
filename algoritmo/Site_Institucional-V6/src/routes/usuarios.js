@@ -8,7 +8,7 @@ var usuarioController = require("../controllers/usuarioController");
 router.get("/listarEmpresasCadastradas", function (req, res) {
     usuarioController.listarEmpresasCadastradas(req, res);
 });
-router.get("/listarlinhas", function (req, res) {
+router.get("/listarlinhas/:idEmpresa", function (req, res) {
     usuarioController.listarlinhas(req, res);
 });
 router.post("/cadastrar", function (req, res) {

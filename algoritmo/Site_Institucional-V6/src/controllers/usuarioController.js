@@ -25,8 +25,10 @@ function listarEmpresasCadastradas(req, res) {
         );
 } 
 function listarlinhas(req, res) {
+
+    var varIdEmpresa = req.params.idEmpresa;
     
-    usuarioModel.listarlinhas()
+    usuarioModel.listarlinhas(varIdEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -64,7 +66,8 @@ function entrar(req, res) {
                     if (resultado.length == 1) {
                         var empresaGestora = resultado[0].empresaGestora
                         var nomeEmpresa = resultado[0].nomeEmpresa
-                        res.json({ empresaGestora, nomeEmpresa });
+                        var idEmpresa = resultado[0].idEmpresa
+                        res.json({ empresaGestora, nomeEmpresa, idEmpresa });
 
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
