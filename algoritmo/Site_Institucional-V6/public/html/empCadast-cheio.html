@@ -48,7 +48,7 @@
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
 
-    <!-- EMPRESA ALFA RODO BUS -->
+    
 
     <div class="container-empCadastradas">
       <div class="div_container_empresas_cadast">
@@ -68,16 +68,18 @@
             </tr>
           </tbody>
         </table>
+        
         <div id="sltEmpresasCadastradas"></div>
-        <span class="span_button">
-          <button class="button_visualizar_dados" onclick="listarEmpresasCadastradas()">Visualisar</button>
-        </span>
+        
         
         <div id="div_aguardar" class="loading-div">
           <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
         </div>
+        
       </div>
+      
     </div>
+    
 
 
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
@@ -109,7 +111,7 @@
   </body>
 </html>
 <script>
-   function listarEmpresasCadastradas() {
+   window.onload = function listarEmpresasCadastradas() {
         aguardar();   
         fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
             if (resposta.ok) {
@@ -128,10 +130,16 @@
                             
                             // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
                             // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let idempresa = publicacao.idEmpresa
                             let nome = publicacao.nomeEmpresa
                             let cnpj = publicacao.cnpj
                             let telefone = publicacao.telefoneContato1
+                            // teste
+                            // testeselect.innerHTML += ` 
                             
+                            // <option value="${idempresa}">${nome}</option>
+                            
+                            // `
                             // Aqui eu aponto para onde meus dados irão para serem apresentados:
                             nomedaEmpresa.innerHTML += `${nome} <br>`
                             cnpjdaEmpresa.innerHTML += `${cnpj} <br>`

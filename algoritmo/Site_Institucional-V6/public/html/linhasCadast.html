@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/header-footer.css" />
-    <link rel="stylesheet" href="../css/linhasCadast.css" />
+    <link rel="stylesheet" href="../css/header-footer.css" type="text/css" />
+    <link rel="stylesheet" href="../css/empCadast-cheio.css" type="text/css" />
     <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
-    <title>Linhas cadastradas</title>
+    <title>Empresa cadastrada</title>
     <script src="../js/funcoes.js"></script>
   </head>
 
   <body>
-    <!-------------------------------HEADER SITE-------------------------->
+    <!------------------------------HEADER DO SITE ----------------------------------------- -->
     <div class="header-das-empreas">
       <div class="containerLinha">
         <div class="container-navbarLinha">
@@ -41,65 +41,41 @@
       </div>
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
-    <div class="banner_linha">
-      <table class="table" id="customers">
-        <tr class="titulo_tables" >
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Berglunds snabbköp</td>
-          <td>Christina Berglund</td>
-          <td>Sweden</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>Roland Mendel</td>
-          <td>Austria</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>Helen Bennett</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Königlich Essen</td>
-          <td>Philip Cramer</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>Yoshi Tannamuri</td>
-          <td>Canada</td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>Giovanni Rovelli</td>
-          <td>Italy</td>
-        </tr>
-        <tr>
-          <td>North/South</td>
-          <td>Simon Crowther</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Paris spécialités</td>
-          <td>Marie Bertrand</td>
-          <td>France</td>
-        </tr>
-      </table>
+
+    
+
+    <div class="container-empCadastradas">
+      <div class="div_container_empresas_cadast">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nome da Linha</th>
+              <th scope="col">Rota</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="nome_empresa" id="nomedalinha"></td>
+              <td class="informacoes_empresa" id="rotalinha"></td>
+              
+            </tr>
+          </tbody>
+        </table>
+        
+        <div id="sltEmpresasCadastradas"></div>
+        
+        
+        <div id="div_aguardar" class="loading-div">
+          <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
+        </div>
+        
+      </div>
+      
     </div>
+    
+
+
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
     <div class="footer">
       <div class="container">
@@ -115,9 +91,9 @@
         <div class="RedesSocias">
           <h2>Redes Sociais</h2>
           <div class="BoxImgs">
-            <img class="efeito-scale" src="../img/logo-instagram.png" width="30px" alt="" />
-            <img class="efeito-scale" src="../img/logo-facebook.png" width="30px" alt="" />
-            <img class="efeito-scale" src="../img/logo-twitter.png" width="30px" alt="" />
+            <img src="../img/logo-instagram.png" width="30px" alt="" />
+            <img src="../img/logo-facebook.png" width="30px" alt="" />
+            <img src="../img/logo-twitter.png" width="30px" alt="" />
           </div>
         </div>
       </div>
@@ -128,3 +104,45 @@
     </div>
   </body>
 </html>
+<script>
+  
+   window.onload = function listarlinhas() {
+        aguardar();   
+        fetch("/usuarios/listarlinhas").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    feed.appendChild(mensagem);
+                    finalizarAguardar();
+                    throw "Nenhum resultado encontrado!!";
+                }
+                  resposta.json().then(function (resposta) {
+                    var feed = document.getElementById("feed_container");
+                      for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i]; // i é a posição 0
+                            console.log(publicacao);
+                            
+                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                            // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let nomelinha = publicacao.nomeLinha
+                            let rota = publicacao.rota
+                            
+                         
+                            // Aqui eu aponto para onde meus dados irão para serem apresentados:
+                            nomedalinha.innerHTML += `${nomelinha} <br>`
+                            rotalinha.innerHTML += `${rota} <br>`
+                            
+                    }
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+                finalizarAguardar();
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+</script>

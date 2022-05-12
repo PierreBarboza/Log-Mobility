@@ -49,6 +49,10 @@
         <h4>Senha do usuario:</h4>
         <input id="input_senhafunc" />
       </div>
+      
+      Selecione a empresa que o usuario vai trabalhar:
+      <select id="slt_idempresas">    
+      </select>
 
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
@@ -91,7 +95,7 @@
   function cadastro() { 
       var emailfuncVar = input_emailfunc.value
       var senhafuncVar = input_senhafunc.value
-      var empresafuncVar = 2
+      var empresafuncVar = slt_idempresas.value
       if (
         emailfuncVar == "" || senhafuncVar == "" || empresafuncVar == ""
         ) {
@@ -113,6 +117,46 @@
       })
       window.location.href = "empCadast-cheio.html" 
   }
+  window.onload = function listarEmpresasCadastradas() {
+        // aguardar();   
+        fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    feed.appendChild(mensagem);
+                    
+                    throw "Nenhum resultado encontrado!!";
+                }
+                  resposta.json().then(function (resposta) {
+                    var feed = document.getElementById("feed_container");
+                      for (let i = 1; i < resposta.length; i++) {
+                        var publicacao = resposta[i]; // i é a posição 0
+                            console.log(publicacao);
+                            
+                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                            // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let idempresa = publicacao.idEmpresa
+                            let nome = publicacao.nomeEmpresa
+                            // teste
+                            slt_idempresas.innerHTML += ` 
+                            
+                            <option value="${idempresa}">${nome}</option>
+                            
+                            `
+                            
+                    }
+                    
+                });
+            } else {
+                throw ('Houve um erro na API!');
+                
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            
+        });
+    }
   function button_limpar(){
     input_nomeLinha.value = "";
     input_rota.value = "";

@@ -32,11 +32,9 @@
           <div class="cardInputs">
             <div class="boxInputs"><label>Email:</label><input id="input_email" type="text" /></div>
             <div class="boxInputs"><label>Senha:</label><input id="input_senha" type="password" /></div>
+
             <div class="boxInputs"><label>Empresa:</label><select id="select_empresa">
-              <option value="0">Selecione a empresa que você trabalha</option>
-              <option value="MOBIBRASIL">MOBIBRASIL</option>
-              <option value="Move Bus">Move Bus</option>
-              <option value="SPTrans">SPTrans</option>
+              
 
             </select></div>
             
@@ -52,7 +50,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  
   <!-- ----------------------FOOTER-LOGIN--------------------------------------->
   <div class="footerlogin"></div>
 </body>
@@ -121,10 +119,10 @@
 
         console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+                // resposta.text().then(texto => {
+                //     console.error(texto);
+                //     finalizarAguardar(texto);
+                // });
         
       
       }
@@ -135,6 +133,46 @@
 
     return false;
   }
+  window.onload = function listarEmpresasCadastradas() {
+        // aguardar();   
+        fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    feed.appendChild(mensagem);
+                    
+                    throw "Nenhum resultado encontrado!!";
+                }
+                  resposta.json().then(function (resposta) {
+                    var feed = document.getElementById("feed_container");
+                      for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i]; // i é a posição 0
+                            console.log(publicacao);
+                            
+                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                            // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let idempresa = publicacao.idEmpresa
+                            let nome = publicacao.nomeEmpresa
+                            // teste
+                            select_empresa.innerHTML += ` 
+                            
+                            <option value="${idempresa}">${nome}</option>
+                            
+                            `
+                            
+                    }
+                    
+                });
+            } else {
+                throw ('Houve um erro na API!');
+                
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            
+        });
+    }
   function sumirMensagem() {
         cardErro.style.display = "none"
     }

@@ -15,6 +15,15 @@ function listarEmpresasCadastradas() {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function listarlinhas() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM linha WHERE fkEmpresa = '2';
+        
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 function entrar(email, senha, empresa, tipoUsuario) { // Adicionamos as variaveis aqui
     console.log(`
     ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> 
@@ -24,14 +33,15 @@ function entrar(email, senha, empresa, tipoUsuario) { // Adicionamos as variavei
                 SELECT
                     usuario.emailUsuario,
                     usuario.senhaUsuario,
+                    empresa.nomeEmpresa,
                     empresa.empresaGestora,
-                    empresa.nomeEmpresa
+                    empresa.idEmpresa
                     FROM usuario
                     JOIN empresa  
                     ON idEmpresa = fkEmpresa
                         WHERE emailUsuario = '${email}'
                         AND senhaUsuario = '${senha}'
-                        AND nomeEmpresa = '${empresa}';
+                        AND idEmpresa = '${empresa}';
            
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -129,5 +139,6 @@ module.exports = {
     cadastrolinha,
     cadastrarOnibus,
     listarEmpresasCadastradas,
+    listarlinhas,
     cadastrarfunc    
 };
