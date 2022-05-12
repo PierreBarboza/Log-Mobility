@@ -43,6 +43,7 @@
 
     <div class="container-empCadastradas">
       <div class="div_container_empresas_cadast">
+        <a href="../html/empOnibus.html">Ver onibus da linha</a>
         <table>
           <thead>
             <tr>
@@ -59,18 +60,20 @@
             </tr>
           </tbody>
         </table>
-        <a href="../html/empOnibus.html">Ver onibus da linha</a>
+        
+        
        
-        <div id="sltEmpresasCadastradas"></div>
+        <div id="sltEmpresasCadastradas"></div><button onclick="salvarRota()">Analisar</button>
         
         
         <div id="div_aguardar" class="loading-div">
           <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
         </div>
-        
+        <select id="select_rota"></select>
       </div>
       
     </div>
+    
     
 
 
@@ -102,14 +105,15 @@
     </div>
   </body>
 </html>
-<script>
-  
+<script>   
+var teste = 0
    window.onload = function listarlinhas() {
     
         aguardar();
         var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
         div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
+
         
         fetch(`/usuarios/listarlinhas/${idEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
@@ -130,11 +134,19 @@
                             // Temos que colocar publicação.Nome do campo do banco de dados:
                             let nomelinha = publicacao.nomeLinha
                             let rota = publicacao.rota
-                            
+                            let idLinha = publicacao.idLinha
+                            teste = idLinha
                          
                             // Aqui eu aponto para onde meus dados irão para serem apresentados:
                             nomedalinha.innerHTML += `${nomelinha} <br>`
-                            rotalinha.innerHTML += `${rota}   <button>Visualizar Linha</button><br> `
+                            rotalinha.innerHTML += `${rota}  <br> `
+                            select_rota.innerHTML += ` 
+                            <option value="${idLinha}">${rota}</option>
+                            `
+                            var rotaEscolhida = sltEmpresasCadastradas.value;
+                            const localStorageTransactions = localStorage.get
+                            
+                            
                             
                             
                             
@@ -155,4 +167,10 @@
             finalizarAguardar();
         });
     }
+    // function salvarRota(){
+    //   var rotaEscolhida = sltEmpresasCadastradas.value; 
+    //   sessionStorage.setItem(rotaEscolhida);
+    //   window.location.href = "empOnibus.html" 
+    //   alert(`oi ${teste}`)
+    // }
 </script>
