@@ -108,6 +108,7 @@ body::-webkit-scrollbar-thumb {
   background-color: white;
   margin: 0;
   height: 80px;
+
 }
 
 .containerLinha {
@@ -119,6 +120,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   align-items: center;
   width: 90%;
+  justify-content: space-evenly;
 }
 
 .logo-empresa {
@@ -138,6 +140,11 @@ body::-webkit-scrollbar-thumb {
 .pagina-atual-empresa{
   font-weight: 900;
   color: #00418c;
+}
+.div_empresaLogada{
+font-size: 18pt;
+font-weight: 300;
+
 }
 
 .palavras {

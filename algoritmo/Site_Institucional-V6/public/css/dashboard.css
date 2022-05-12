@@ -39,17 +39,17 @@
   height: 110px;
 }
 
-.boxMenu h3{
+.boxMenu h3 {
   color: white;
   margin-bottom: 10px;
 }
 
-.box_a{
+.box_a {
   width: 60%;
   background-color: #262b2f;
   color: white;
   text-align: start;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border: none;
   border-radius: 4px;
   height: 30px;
@@ -57,10 +57,9 @@
   transition: 150ms;
 }
 
-.box_a:hover{
+.box_a:hover {
   background-color: #335293;
 }
-
 
 .containerGráfico {
   height: 600px;
@@ -80,6 +79,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.grafico_dia {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 89%;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}
+.grafico_mes {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 89%;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
 }
 
 .grafico h3 {

@@ -52,23 +52,49 @@
                 </div>
                 <div class="boxMenu">
                     <h3>Análise</h3>
-                    <a href="dashboard-onibus.html"><button class="box_a">Hora</button></a><br>
-                    <a href="grafico_dia.html"><button class="box_a">Dia</button></a><br>
-                    <a href="grafico_mes.html"><button class="box_a">Mês</button></a><br>
-                    <a href="grafico_ano.html"><button class="box_a">Ano</button></a><br>
-                    <a href="linha-N103-11.html"><button class="box_a">Voltar</button></a><br>
+                    <button onclick="hora()" class="box_a">Hora</button><br>
+                    <button onclick="dia()" class="box_a">Dia</button><br>
+                    <button onclick="mes()" class="box_a">Mês</button><br>
+                    <button class="box_a">Ano</button><br>
+                    <button class="box_a">Voltar</button><br>
                 </div>
             </div>
         </div>
         <!---------------CONTEUDO DO CORPO------------------------------------------------------>
         <div class="containerGráfico">
-            <div class="grafico">
+            <div class="grafico_hora">
+                <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico em Horas</h2>
+                <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
+                <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
+            </div>
+        </div>
+    </div>
+        <div class="containerGráfico">
+            <div id="tela_grafico" class="grafico_ano">
                 <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Anual</h2>
                 <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
                 <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
             </div>
         </div>
     </div>
+    <div class="containerGráfico">
+        <div class="grafico_dia">
+            <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Diário</h2>
+            <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
+            <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
+        </div>
+    </div>
+</div>
+
+
+<div class="containerGráfico">
+    <div class="grafico_mes">
+        <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Mensal</h2>
+        <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
+        <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
+    </div>
+</div>
+</div>
 
 
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
@@ -140,4 +166,29 @@
         document.getElementById('myChart1'),
         config1
     );
+
+    function hora(){
+        document.getElementById("grafico_ano").style.display="none"
+        document.getElementById("grafico_mes").style.display="none"
+        document.getElementById("grafico_dia").style.display="none"
+        document.getElementById("grafico_hora").style.display="block"
+
+
+
+    }
+    function dia(){
+
+        document.getElementById("grafico_ano").style.display="none"
+        document.getElementById("grafico_mes").style.display="none"
+        document.getElementById("grafico_dia").style.display="none"
+        document.getElementById("grafico_hora").style.display="block"
+
+    }
+    function mes(){
+        document.getElementById("grafico_ano").style.display="none"
+        document.getElementById("grafico_hora").style.display="none"
+        document.getElementById("grafico_dia").style.display="none"
+        document.getElementById("grafico_mes").style.display="block"
+
+    }
 </script>
