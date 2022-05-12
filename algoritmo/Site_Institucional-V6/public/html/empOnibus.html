@@ -1,99 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/header-footer.css" />
-    <link rel="stylesheet" href="../css/empOnibus.css" />
+    <link rel="stylesheet" href="../css/header-footer.css" type="text/css" />
+    <link rel="stylesheet" href="../css/empCadast-cheio.css" type="text/css" />
     <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
-    <title>Ônibus cadastrado</title>
+    <title>Empresa cadastrada</title>
     <script src="../js/funcoes.js"></script>
-</head>
+  </head>
 
-<body>
-    <!-------------------------------HEADER SITE-------------------------->
+  <body>
+    <!------------------------------HEADER DO SITE ----------------------------------------- -->
     <div class="header-das-empreas">
-        <div class="containerLinha">
-            <div class="container-navbarLinha">
-                <div class="logo-empresa">
-                    <img src="../img/logo-empresa-mobiBrasil.png" alt="" width="150px" />
-                </div>
-                <ul class="navbar-empress">
-                    <div class="palavras">
-                        <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
-                        <hr />
-                        <li class="pagina-atual-empresa"><a href="linhasCadast.html">Linhas Cadastradas</a></li>
-                    </div>
-                </ul>
+      <div class="containerLinha">
+        <div class="container-navbarLinha">
+          <div id="div_empresaLogada">
+           
+            
+          </div>
+          <ul class="navbar-empress">
+            <div class="palavras">
+              <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
+              <hr />
+              <li>
+                <a class="pagina-atual-empresa" href="linhasCadast.html">Linhas Cadastradas</a>
+              </li>
+              <hr />
+              <li><a href="cadastroUsuarioEmpresas.html">Cadastrar Usuario</a></li>
             </div>
-            <div class="boxSair">
-                <a href="../index.html"> Sair</a>
-            </div>
+          </ul>
         </div>
+        <div class="boxSair">
+          <a href="../index.html"> Sair</a>
+        </div>
+      </div>
     </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
-    <div class="bannerLinhas">
-        <div class="containerLinhas">
-            <h2>Terminal Lapa - Terminal Parque Dom Pedro II</h2>
-            <div class="boxHeaderLinhas">
-                <a href="linhasCadast.html"><img src="../img/nova_seta_icone_esquerda.png" width="100%"
-                        height="20px"></a>
-                <div class="boxLinhasH2">
-                    <h2>Ônibus</h2>
-                </div>
-                <a href="cadastrarOnibus.html"><img src="../img/icone mais.png" width="70%"></a>
-            </div>
-            <div class="cardLinhas">
-                <div class="boxLinhas"><img src="../img/onibus-preto.png" width="30px"><a
-                        href="empDashboard.html"><button class="button-linha" style="border: 4px solid green">
-                            <h3>6 4442</h3>
-                        </button></a><label>Placa: NXC-7891</label></div>
-                <div class="boxLinhas">
-                    <!-- <img src="../img/onibus-preto.png" width="30px"><a href=""><button
-                                class="button-linha" style="border: 4px solid rgb(128, 0, 0)">
-                                <h3> N103-11
-                            </button></a><label>Terminal Lapa - Terminal Parque Dom Pedro II</label> -->
-                </div>
-                <div class="boxLinhas">
-                    <!-- <img src="../img/onibus-preto.png" width="30px"><a href=""><button
-                                class="button-linha" style="border: 4px solid rgb(0, 98, 255)">
-                                <h3> N103-11
-                            </button></a><label>Terminal Lapa - Terminal Parque Dom Pedro II</label> -->
-                </div>
-                <div class="boxLinhas">
-                    <!-- <img src="../img/onibus-preto.png" width="30px"><a href=""><button
-                                class="button-linha" style="border: 4px solid rgb(147, 2, 170)">
-                                <h3> N103-11
-                            </button></a><label>Terminal Lapa - Terminal Parque Dom Pedro II</label> -->
-                </div>
-                <div class="boxLinhas">
-                    <!-- <img src="../img/onibus-preto.png" width="30px"><a href=""><button
-                                class="button-linha" style="border: 4px solid rgb(105, 100, 0)">
-                                <h3> N103-11
-                            </button></a><label>Terminal Lapa - Terminal Parque Dom Pedro II</label> -->
-                </div>
-                <div class="boxLinhas">
-                    <!-- <img src="../img/onibus-preto.png" width="30px"><a href=""><button
-                                class="button-linha" style="border: 4px solid rgb(128, 0, 0)">
-                                <h3> N103-11
-                            </button></a><label>Terminal Lapa - Terminal Parque Dom Pedro II</label> -->
-                </div>
-                <div class="boxLinhas">
-                    <!-- <img src="../img/onibus-preto.png" width="30px"><a href=""><button
-                                class="button-linha" style="border: 4px solid rgb(255, 115, 0)">
-                                <h3> N103-11
-                            </button></a><label>Terminal Lapa - Terminal Parque Dom Pedro II</label> -->
-                </div>
-                <div class="boxRodapé">
-                    <ul>
-                        <li><a href="">1</a></li>
-                    </ul>
-                </div>
-            </div>
+
+    
+
+    <div class="container-empCadastradas">
+      <div class="div_container_empresas_cadast">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Numero do onibus</th>
+              <th scope="col">Placa do onibus</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="nome_empresa" id="numero_onibus"></td>
+              <td class="informacoes_empresa" id="placa_onibus"></td>
+              
+            </tr>
+          </tbody>
+        </table>
+        
+        <div id="sltEmpresasCadastradas"></div>
+        
+        
+        <div id="div_aguardar" class="loading-div">
+          <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
         </div>
+        
+      </div>
+      
     </div>
+    
+
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
     <div class="footer">
         <div class="container">
@@ -123,3 +101,57 @@
 </body>
 
 </html>
+<script>
+  
+    window.onload = function listarOnibus() {
+     
+         aguardar();
+         var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
+         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+         div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
+         
+         fetch(`/usuarios/listarOnibus/${idOnibus}`).then(function (resposta) {
+             if (resposta.ok) {
+                 if (resposta.status == 204) {
+                     var feed = document.getElementById("feed_container");
+                     var mensagem = document.createElement("span");
+                     feed.appendChild(mensagem);
+                     finalizarAguardar();
+                     throw "Nenhum resultado encontrado!!";
+                 }
+                   resposta.json().then(function (resposta) {
+                     var feed = document.getElementById("feed_container");
+                       for (let i = 0; i < resposta.length; i++) {
+                         var publicacao = resposta[i]; // i é a posição 0
+                             console.log(publicacao);
+                             
+                             // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                             // Temos que colocar publicação.Nome do campo do banco de dados:
+                             let numeroOnibus = publicacao.numeroOnibus
+                             let placaOnibus = publicacao.placaOnibus
+                             
+                          
+                             // Aqui eu aponto para onde meus dados irão para serem apresentados:
+                             numero_onibus.innerHTML += `${numeroOnibus} <br>`
+                             placa_onibus.innerHTML += `${placaOnibus}   <br> `
+                             
+                             
+                             
+ 
+                     }
+                     finalizarAguardar();
+                 })
+             } else {
+                 throw ('Houve um erro na API!');
+                 
+                 
+ 
+                 finalizarAguardar();
+ 
+             }
+         }).catch(function (resposta) {
+             console.error(resposta);
+             finalizarAguardar();
+         });
+     }
+ </script>

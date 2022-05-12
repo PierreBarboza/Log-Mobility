@@ -24,6 +24,15 @@ function listarlinhas(idEmpresa) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function listarOnibus(varidOnibus) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT onibus.numeroOnibus, onibus.placaOnibus FROM onibus join linha on fkLinha = idLinha join empresa on fkEmpresa = idEmpresa where idEmpresa = ${varidOnibus};
+        
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 function entrar(email, senha, empresa, tipoUsuario) { // Adicionamos as variaveis aqui
     console.log(`
     ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> 
@@ -140,5 +149,6 @@ module.exports = {
     cadastrarOnibus,
     listarEmpresasCadastradas,
     listarlinhas,
+    listarOnibus,
     cadastrarfunc    
 };

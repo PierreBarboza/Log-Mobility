@@ -11,6 +11,9 @@ router.get("/listarEmpresasCadastradas", function (req, res) {
 router.get("/listarlinhas/:idEmpresa", function (req, res) {
     usuarioController.listarlinhas(req, res);
 });
+router.get("/listarOnibus/:idOnibus", function (req, res) {
+    usuarioController.listarOnibus(req, res);
+});
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
