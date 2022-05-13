@@ -104,13 +104,11 @@
 <script>
     Chart.defaults.color = "white"
 
-    const labelsDias = [
+    const data1 = {
+        labels: [
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
 
-    ];
-
-    const data1 = {
-        labels: labelsDias,
+    ],
         datasets: [{
             label: 'Entrada',
             backgroundColor: '#25d398',
@@ -124,11 +122,34 @@
         }
         ]
     };
+    const data2 = {
+        labels: [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro',
+    ],
+        datasets: [{
+            label: 'Entrada',
+            backgroundColor: '#25d398',
+            borderColor: '#25d398',
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83],
+        }, {
+            label: 'Saida',
+            backgroundColor: '#fb4b7c',
+            borderColor: '#fb4b7c',
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83],
+        }
+        ]
+    };
 
 
     const config1 = {
         type: 'bar',
         data: data1,
+        options: {}
+    };
+    
+    const config2 = {
+        type: 'bar',
+        data: data2,
         options: {}
     };
 </script>
