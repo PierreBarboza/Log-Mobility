@@ -16,23 +16,30 @@
     <!-------------------------------HEADER SITE-------------------------->
     <div class="header-das-empreas">
         <div class="containerLinha">
-            <div class="container-navbarLinha">
-                <div class="logo-empresa">
-                    <img src="../img/logo-empresa-mobiBrasil.png" alt="" width="150px" />
-                </div>
-                <ul class="navbar-empress">
-                    <div class="palavras">
-                        <li class="pagina-atual-empresa"><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
-                        <hr />
-                        <li><a href="linhasCadast.html">Linhas Cadastradas</a></li>
-                    </div>
-                </ul>
+          <div class="container-navbarLinha">
+            <div id="div_empresaLogada">
+             
+              
             </div>
-            <div class="boxSair">
-                <a href="../index.html"> Sair</a>
-            </div>
+            <ul class="navbar-empress">
+              <div class="palavras">
+                <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
+                <hr />
+                <li><a class="pagina-atual-empresa" href="cadastrarOnibus.html">Cadastrar Onibus</a></li>
+                <hr />
+                <li>
+                  <a href="linhasCadast.html">Linhas Cadastradas</a>
+                </li>
+                <hr />
+                <li><a href="cadastroUsuarioEmpresas.html">Cadastrar Usuario</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="boxSair">
+            <a href="../index.html"> Sair</a>
+          </div>
         </div>
-    </div>
+      </div>
     <!---------------------------------CORPO DO SITE------------------------------------------>
     <div class="container-login">
         <div class="formulario">
@@ -48,12 +55,7 @@
                 <input id="input_placaOnibus" />
             </div>
             <select id="slt_rotaOnibus">
-                <option value="0">Selecione a rota</option>
-                <option value="1">13EP</option>
-                <option value="2">14P</option>
-                <option value="3">16P</option>
-                <option value="4">20DP</option>
-                <option value="5">22DP</option>
+                
             </select>
 
             <div class="butao">
@@ -92,6 +94,49 @@
 </html>
 
 <script>
+    window.onload = function listarlinhas() {
+    //   aguardar();
+        var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
+        var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+        div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
+        fetch(`/usuarios/listarlinhas/${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    feed.appendChild(mensagem);
+                    finalizarAguardar();
+                    throw "Nenhum resultado encontrado!!";
+                }
+                  resposta.json().then(function (resposta) {
+                    var feed = document.getElementById("feed_container");
+                      for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i]; // i é a posição 0
+                            console.log(publicacao);
+                            
+                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                            // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let nomelinha = publicacao.nomeLinha
+                            let rota = publicacao.rota
+                            let idLinha = publicacao.idLinha
+                            teste = idLinha
+                         
+                            // Aqui eu aponto para onde meus dados irão para serem apresentados:
+                            slt_rotaOnibus.innerHTML += ` 
+                            <option value="${idLinha}">${rota}</option>
+                            `
+                          }
+                    // finalizarAguardar();
+                })
+            } else {
+                throw ('Houve um erro na API!');
+                // finalizarAguardar();
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
     function cadastrarOnibus() { 
       var numeroOnibusVar = input_numeroOnibus.value
       var placaOnibusVar = input_placaOnibus.value
@@ -113,9 +158,11 @@
               // Agora vá para o arquivo routes/usuario.js              
               numeroOnibusServer : numeroOnibusVar,
               placaOnibusServer : placaOnibusVar,  
-              rotaOnibusServer : rotaOnibusVar     
+              rotaOnibusServer : rotaOnibusVar   
+                
           })
       })
+      window.location.href = "linhasCadast.html"
   }
     function button_limpar() {
         input_numeroOnibus.value = "";

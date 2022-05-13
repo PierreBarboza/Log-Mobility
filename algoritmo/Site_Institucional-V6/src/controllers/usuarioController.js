@@ -7,7 +7,6 @@ function testar(req, res) {
     console.log("ENTRAMOS NA usuarioController");
     res.json("ESTAMOS FUNCIONANDO!");
 }
-
 function listarEmpresasCadastradas(req, res) {
     usuarioModel.listarEmpresasCadastradas()
         .then(function (resultado) {
@@ -25,9 +24,7 @@ function listarEmpresasCadastradas(req, res) {
         );
 } 
 function listarlinhas(req, res) {
-
     var varIdEmpresa = req.params.idEmpresa;
-    
     usuarioModel.listarlinhas(varIdEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
@@ -44,10 +41,8 @@ function listarlinhas(req, res) {
         );
 }
 function listarOnibus(req, res) {
-
-    var varidOnibus = req.params.idOnibus;
-    
-    usuarioModel.listarOnibus(varidOnibus)
+    var rotaEscolhida = req.params.rotaEscolhidaVar;
+    usuarioModel.listarOnibus(rotaEscolhida)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -62,7 +57,6 @@ function listarOnibus(req, res) {
             }
         );
 }
-
 function entrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo .html:
     var email = req.body.emailServer;
@@ -81,13 +75,11 @@ function entrar(req, res) {
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
                     if (resultado.length == 1) {
                         var empresaGestora = resultado[0].empresaGestora
                         var nomeEmpresa = resultado[0].nomeEmpresa
                         var idEmpresa = resultado[0].idEmpresa
                         res.json({ empresaGestora, nomeEmpresa, idEmpresa });
-
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -222,7 +214,6 @@ function cadastrolinha(req, res) {
             );
     }
 }
-//----------------------------------
 function cadastrarOnibus(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo .html:
     var numeroOnibus = req.body.numeroOnibusServer
@@ -265,6 +256,5 @@ module.exports = {
     listarlinhas,
     listarOnibus,
     listarEmpresasCadastradas,
-    testar
-    
+    testar    
 }

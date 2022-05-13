@@ -24,6 +24,8 @@
             <div class="palavras">
               <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
               <hr />
+              <li><a href="cadastrarOnibus.html">Cadastrar Onibus</a></li>
+              <hr />
               <li>
                 <a class="pagina-atual-empresa" href="linhasCadast.html">Linhas Cadastradas</a>
               </li>
@@ -85,7 +87,7 @@
                 <h2>Atendimento</h2>
                 <p>suporte@logmobility.com</p>
                 <p>(11) 1234-5678</p>
-            </div>
+            </div>  
             <div class="RedesSocias">
                 <h2>Redes Sociais</h2>
                 <div class="BoxImgs">
@@ -104,15 +106,13 @@
 
 </html>
 <script>
-  var rodaEscolhida = sessionStorage.setItem(rotaEscolhida);
+  var rotaEscolhidaVar = localStorage.Escolha_Rota;
     window.onload = function listarOnibus() {
-     alert("oi")
          aguardar();
          var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
          var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
-         div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
-         
-         fetch(`/usuarios/listarOnibus/${idOnibus}`).then(function (resposta) {
+         div_empresaLogada.innerHTML= `Olá, ${nomeheader} `         
+         fetch(`/usuarios/listarOnibus/${rotaEscolhidaVar}`).then(function (resposta) {
              if (resposta.ok) {
                  if (resposta.status == 204) {
                      var feed = document.getElementById("feed_container");
@@ -125,36 +125,29 @@
                      var feed = document.getElementById("feed_container");
                        for (let i = 0; i < resposta.length; i++) {
                          var publicacao = resposta[i]; // i é a posição 0
-                             console.log(publicacao);
-                             
+                             console.log(publicacao);                             
                              // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
                              // Temos que colocar publicação.Nome do campo do banco de dados:
                              let numeroOnibus = publicacao.numeroOnibus
                              let placaOnibus = publicacao.placaOnibus
-                             let rota = publicacao.rota
-                          
+                             let rota = publicacao.rota                          
                              // Aqui eu aponto para onde meus dados irão para serem apresentados:
                              numero_onibus.innerHTML += `${numeroOnibus} <br>`
                              placa_onibus.innerHTML += `${placaOnibus}   <br> `
-                             rota_onibus.innerHTML += `${rota}   <br> `
-                             
-                             
-                             
- 
-                     }
+                             rota_onibus.innerHTML += `${rota}   <br> `   
+                             }
                      finalizarAguardar();
                  })
              } else {
                  throw ('Houve um erro na API!');
-                 
-                 
- 
-                 finalizarAguardar();
- 
+                finalizarAguardar();
              }
          }).catch(function (resposta) {
              console.error(resposta);
              finalizarAguardar();
          });
+     }
+     function teste(){
+       alert(`oi ${rodaEscolhida}`)
      }
  </script>

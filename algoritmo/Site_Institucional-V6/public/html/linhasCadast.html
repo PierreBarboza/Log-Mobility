@@ -24,6 +24,8 @@
             <div class="palavras">
               <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
               <hr />
+              <li><a href="cadastrarOnibus.html">Cadastrar Onibus</a></li>
+              <hr />
               <li>
                 <a class="pagina-atual-empresa" href="linhasCadast.html">Linhas Cadastradas</a>
               </li>
@@ -43,33 +45,31 @@
 
     <div class="container-empCadastradas">
       <div class="div_container_empresas_cadast">
-        <a href="../html/empOnibus.html">Ver onibus da linha</a>
         <table>
           <thead>
             <tr>
               <th scope="col">Nome da Linha</th>
               <th scope="col">Rota</th>
-              
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="nome_empresa" id="nomedalinha"></td>
               <td class="informacoes_empresa" id="rotalinha"></td>
-              
             </tr>
           </tbody>
         </table>
         
         
        
-        <div id="sltEmpresasCadastradas"></div><button onclick="salvarRota()">Analisar</button>
+        <div id="sltEmpresasCadastradas"></div>
         
         
         <div id="div_aguardar" class="loading-div">
           <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
         </div>
-        <select id="select_rota"></select>
+        Escolha a rota que quer analizar: <select id="select_rota"></select>
+        <button onclick="salvarRota()">Analisar</button>
       </div>
       
     </div>
@@ -106,15 +106,11 @@
   </body>
 </html>
 <script>   
-var teste = 0
-   window.onload = function listarlinhas() {
-    
-        aguardar();
+    window.onload = function listarlinhas() {
+      aguardar();
         var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
         div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
-
-        
         fetch(`/usuarios/listarlinhas/${idEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -143,34 +139,21 @@ var teste = 0
                             select_rota.innerHTML += ` 
                             <option value="${idLinha}">${rota}</option>
                             `
-                            var rotaEscolhida = sltEmpresasCadastradas.value;
-                            const localStorageTransactions = localStorage.get
-                            
-                            
-                            
-                            
-                            
-
-                    }
+                          }
                     finalizarAguardar();
                 })
             } else {
                 throw ('Houve um erro na API!');
-                
-                
-
                 finalizarAguardar();
-
             }
         }).catch(function (resposta) {
             console.error(resposta);
             finalizarAguardar();
         });
     }
-    // function salvarRota(){
-    //   var rotaEscolhida = sltEmpresasCadastradas.value; 
-    //   sessionStorage.setItem(rotaEscolhida);
-    //   window.location.href = "empOnibus.html" 
-    //   alert(`oi ${teste}`)
-    // }
+    function salvarRota(){
+      let Escolha_RotaVar = select_rota.value;
+      localStorage.setItem("Escolha_Rota",`${Escolha_RotaVar}`)
+      window.location.href = "empOnibus.html" 
+    }
 </script>
