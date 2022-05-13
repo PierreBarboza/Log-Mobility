@@ -72,6 +72,7 @@
 </html>
 
 <script>
+  listarEmpresasCadastradas()
   function cadastro() { 
       var emailfuncVar = input_emailfunc.value
       var senhafuncVar = input_senhafunc.value
@@ -97,7 +98,7 @@
       })
       window.location.href = "empCadast-cheio.html" 
   }
-  window.onload = function listarEmpresasCadastradas() {
+  function listarEmpresasCadastradas() {
         // aguardar();   
         fetch("/usuarios/listarEmpresasCadastradas").then(function (resposta) {
             if (resposta.ok) {
@@ -124,14 +125,11 @@
                             <option value="${idempresa}">${nome}</option>
                             
                             `
-                            
-                    }
-                    
-                });
+                            }
+                    });
             } else {
                 throw ('Houve um erro na API!');
-                
-            }
+                }
         }).catch(function (resposta) {
             console.error(resposta);
             
