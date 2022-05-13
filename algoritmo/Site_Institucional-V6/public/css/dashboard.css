@@ -80,7 +80,43 @@
   flex-direction: column;
   justify-content: center;
 }
-.grafico_dia {
+.div_chart_diario {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 89%;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}
+.div_chart_ano {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 89%;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}
+.div_chart_mensal {
+  background-color: #262b2f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px #000000c4;
+  width: 89%;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}
+.div_chart_hora {
   background-color: #262b2f;
   border-radius: 15px;
   padding: 20px;
