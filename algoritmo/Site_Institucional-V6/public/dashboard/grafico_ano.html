@@ -55,30 +55,30 @@
                     <button onclick="hora()" class="box_a">Hora</button><br>
                     <button onclick="dia()" class="box_a">Dia</button><br>
                     <button onclick="mes()" class="box_a">Mês</button><br>
-                    <button class="box_a">Ano</button><br>
+                    <button onclick="ano()" class="box_a">Ano</button><br>
                     <button class="box_a">Voltar</button><br>
                 </div>
             </div>
         </div>
         <!---------------CONTEUDO DO CORPO------------------------------------------------------>
-        <div class="containerGráfico">
-            <div class="grafico_hora">
+        <div id="grafico_hora" class="containerGráfico">
+            <div >
                 <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico em Horas</h2>
                 <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
                 <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
             </div>
         </div>
     </div>
-        <div class="containerGráfico">
-            <div id="tela_grafico" class="grafico_ano">
+        <div id="grafico_ano" class="containerGráfico">
+            <div id="tela_grafico" >
                 <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Anual</h2>
                 <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
-                <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
+                <canvas id="myChart2" style="position: relative; height:70vh; width:70vw"></canvas>
             </div>
         </div>
     </div>
-    <div class="containerGráfico">
-        <div class="grafico_dia">
+    <div id="grafico_dia" class="containerGráfico">
+        <div >
             <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Diário</h2>
             <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
             <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
@@ -87,8 +87,8 @@
 </div>
 
 
-<div class="containerGráfico">
-    <div class="grafico_mes">
+<div id="grafico_mes" class="containerGráfico">
+    <div >
         <h2 style="color: rgb(255, 255, 255); margin: 0;">Fluxo de Pessoas - Gráfico Mensal</h2>
         <h4 style="color: #fff;">Ônibus: 6 4442 <br>Placa: NXC-7891</h4>
         <canvas id="myChart1" style="position: relative; height:70vh; width:70vw"></canvas>
@@ -134,9 +134,28 @@
     const labelsAnos = [
         '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033',
     ];
+    const labelsDias = [
+        '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
+
+    ];
 
     const data1 = {
         labels: labelsAnos,
+        datasets: [{
+            label: 'Entrada',
+            backgroundColor: '#25d398',
+            borderColor: '#25d398',
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79],
+        }, {
+            label: 'Saida',
+            backgroundColor: '#fb4b7c',
+            borderColor: '#fb4b7c',
+            data: [32, 51, 90, 83, 78, 79, 32, 51, 90, 83, 78, 79],
+        }
+        ]
+    };
+    const data2 = {
+        labels: labelsDias,
         datasets: [{
             label: 'Entrada',
             backgroundColor: '#25d398',
@@ -157,6 +176,12 @@
         data: data1,
         options: {}
     };
+    
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    };
 </script>
 
 <script>
@@ -166,10 +191,15 @@
         document.getElementById('myChart1'),
         config1
     );
+    
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
 
     function hora(){
-        document.getElementById("grafico_ano").style.display="none"
-        document.getElementById("grafico_mes").style.display="none"
+        document.getElementById("grafico_ano").style.display ="none"
+        document.getElementById("grafico_mes").style.display ="none"
         document.getElementById("grafico_dia").style.display="none"
         document.getElementById("grafico_hora").style.display="block"
 
@@ -189,6 +219,13 @@
         document.getElementById("grafico_hora").style.display="none"
         document.getElementById("grafico_dia").style.display="none"
         document.getElementById("grafico_mes").style.display="block"
+
+    }
+    function ano(){
+        document.getElementById("grafico_mes").style.display="none"
+        document.getElementById("grafico_hora").style.display="none"
+        document.getElementById("grafico_dia").style.display="none"
+        document.getElementById("grafico_ano").style.display="block"
 
     }
 </script>
