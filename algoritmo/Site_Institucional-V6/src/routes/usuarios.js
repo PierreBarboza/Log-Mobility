@@ -14,8 +14,11 @@ router.get("/listarlinhas/:idEmpresa", function (req, res) {
     usuarioController.listarlinhas(req, res);
 });
 //Lista de onibus cadastrados nas rotas:
-router.get("/listarOnibus/:rotaEscolhidaVar", function (req, res) {
-    usuarioController.listarOnibus(req, res);
+router.get("/listagemonibustabela/:rotaEscolhidaVar", function (req, res) {
+    usuarioController.listagemonibustabela(req, res);
+});
+router.get("/onibuslistados/:rotaEscolhidaVar", function (req, res) {
+    usuarioController.onibuslistados(req, res);
 });
 //Cadastro de empresas:
 router.post("/cadastrar", function (req, res) {
