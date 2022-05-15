@@ -63,9 +63,9 @@
                     </div>
                 </div>
             </div>
-
+            
         </div>
-        <div id="dia" class="div_direita">
+        <div class="div_direita">
             <div id="dia" class="div_chart_diario">
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas diario</span><br>
@@ -73,13 +73,12 @@
                     <h4>Placa: NXC-7891</h4>
                 </div>
                 <div class="div_grafico">
-                    <canvas id="myChart1"
-                        style="position: relative; height: 320px; width: 900px; display: block "></canvas>
+                    <canvas id="myChart1" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
                 </div>
             </div>
-
-
-
+       
+       
+       
             <div id="mes" class="div_chart_mensal">
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas mensal</span><br>
@@ -87,10 +86,10 @@
                     <h4>Placa: NXC-7891</h4>
                 </div>
                 <div class="div_grafico">
-                    <canvas id="myChart2" style="position: relative; height: 320px; width: 900px;"></canvas>
+                    <canvas id="myChart2" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
                 </div>
             </div>
-
+            
             <div id="ano" class="div_chart_ano">
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas anual</span><br>
@@ -98,11 +97,10 @@
                     <h4>Placa: NXC-7891</h4>
                 </div>
                 <div class="div_grafico">
-                    <canvas id="myChart3"
-                        style="position: relative; height: 320px; width: 900px; display: block "></canvas>
+                    <canvas id="myChart3" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
                 </div>
             </div>
-
+             
             <div id="hora" class="div_chart_hora">
                 <div class="titulo_tipo">
                     <span>Fluxo de por hora</span><br>
@@ -110,8 +108,7 @@
                     <h4>Placa: NXC-7891</h4>
                 </div>
                 <div class="div_grafico">
-                    <canvas id="myChart4"
-                        style="position: relative; height: 320px; width: 900px; display: block "></canvas>
+                    <canvas id="myChart4" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
                 </div>
             </div>
         </div>
@@ -180,7 +177,7 @@
         }
         ]
     };
-
+    
     const data2 = {
         labels: labelsMeses,
         datasets: [{
@@ -234,25 +231,25 @@
         data: data1,
         options: {}
     };
-
+    
     const config2 = {
         type: 'bar',
         data: data2,
         options: {}
     };
-
+    
     const config3 = {
         type: 'bar',
         data: data3,
         options: {}
     };
-
+    
     const config4 = {
         type: 'bar',
         data: data4,
         options: {}
     };
-
+    
     const myChart2 = new Chart(
         document.getElementById('myChart2'),
         config2
@@ -265,39 +262,39 @@
         document.getElementById('myChart1'),
         config1
     );
-
+    
     const myChart3 = new Chart(
         document.getElementById('myChart3'),
         config3
     );
-
+    
     const myChart4 = new Chart(
         document.getElementById('myChart4'),
         config4
     );
 
-    function hora() {
-        document.getElementById("dia").style.display = "none"
-        document.getElementById("mes").style.display = "none"
-        document.getElementById("ano").style.display = "none"
-        document.getElementById("hora").style.display = "block"
+    function hora(){
+        document.getElementById("dia").style.display="none"
+        document.getElementById("mes").style.display="none"
+        document.getElementById("ano").style.display="none"
+        document.getElementById("hora").style.display="block"
     }
-    function dia() {
-        document.getElementById("hora").style.display = "none"
-        document.getElementById("mes").style.display = "none"
-        document.getElementById("ano").style.display = "none"
-        document.getElementById("dia").style.display = "block"
+    function dia(){
+        document.getElementById("hora").style.display="none"
+        document.getElementById("mes").style.display="none"
+        document.getElementById("ano").style.display="none"
+        document.getElementById("dia").style.display="block"
     }
-    function mes() {
-        document.getElementById("dia").style.display = "none"
-        document.getElementById("hora").style.display = "none"
-        document.getElementById("ano").style.display = "none"
-        document.getElementById("mes").style.display = "block"
+    function mes(){
+        document.getElementById("dia").style.display="none"
+        document.getElementById("hora").style.display="none"
+        document.getElementById("ano").style.display="none"
+        document.getElementById("mes").style.display="block"
     }
-    function ano() {
-        document.getElementById("dia").style.display = "none"
-        document.getElementById("hora").style.display = "none"
-        document.getElementById("mes").style.display = "none"
-        document.getElementById("ano").style.display = "block"
+    function ano(){
+        document.getElementById("dia").style.display="none"
+        document.getElementById("hora").style.display="none"
+        document.getElementById("mes").style.display="none"
+        document.getElementById("ano").style.display="block"
     }
 </script>
