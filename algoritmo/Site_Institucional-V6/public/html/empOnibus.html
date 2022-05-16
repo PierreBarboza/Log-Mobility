@@ -47,11 +47,11 @@
       <div class="div_container_empresas_cadast">
         <table>
           <thead>
+            <a href="linhasCadast.html"><img class="seta_voltar" src="../img/nova_seta_icone_esquerda.png" alt="" width="30px"></a>
             <tr>
               <th scope="col">Numero do onibus</th>
               <th scope="col">Placa do onibus</th>
-              <th scope="col">Rota</th>
-              
+              <th scope="col">Rota</th>           
             </tr>
           </thead>
           <tbody>
@@ -70,12 +70,22 @@
         <div id="div_aguardar" class="loading-div">
           <img class="classLoading-gif" src="../assets/loadingif1.gif" id="loading-gif"> 
         </div>
-        Selecione o onibus que deseja analizar: 
-        <select id="select_onibus"></select>
-        <button onclick="salvaridOnibus()">Analisar Onibus</button>
+        
+        
         
       </div>
       
+      <div class="content_visualisar_linha">
+        <div class="div_selecioneRota">
+          Selecione o Onibus que deseja Visualizar: <br>
+          <select class="selectDado" id="select_onibus"></select>
+        </div>
+          
+        <div class="div_button_analisar">
+          <button onclick="salvaridOnibus()">Analisar Onibus</button>
+        </div>
+      </div>
+
     </div>
     
     
@@ -89,15 +99,15 @@
             </div>
             <div class="Boxtext">
                 <h2>Atendimento</h2>
-                <p>suporte@logmobility.com</p>
+                <p><a class="color_efeito" href="mailto:suporte@logmobility.com?subject=Estou com Problemas no Sistema">suporte@logmobility.com</a></p>
                 <p>(11) 1234-5678</p>
             </div>  
             <div class="RedesSocias">
                 <h2>Redes Sociais</h2>
                 <div class="BoxImgs">
-                    <img src="../img/logo-instagram.png" width="30px" alt="" />
-                    <img src="../img/logo-facebook.png" width="30px" alt="" />
-                    <img src="../img/logo-twitter.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-instagram.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-facebook.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-twitter.png" width="30px" alt="" />
                 </div>
             </div>
         </div>
@@ -115,7 +125,7 @@
          aguardar();
          var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
          var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
-         div_empresaLogada.innerHTML= `Olá, ${nomeheader} `         
+         div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `         
          fetch(`/usuarios/listagemonibustabela/${rotaEscolhidaVar}`).then(function (resposta) {
              if (resposta.ok) {
                  if (resposta.status == 204) {

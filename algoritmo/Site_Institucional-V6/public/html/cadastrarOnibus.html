@@ -47,16 +47,21 @@
 
             <div class="dados">
                 <h4>Numero do ônibus:</h4>
-                <input id="input_numeroOnibus">
+                <input class="style-campo-dados" id="input_numeroOnibus">
             </div>
 
             <div class="dados">
                 <h4>Placa do ônibus:</h4>
-                <input id="input_placaOnibus" />
+                <input class="style-campo-dados" id="input_placaOnibus" />
             </div>
-            <select id="slt_rotaOnibus">
+            
+            <div class="dados">
+                <h4>Selecione a Rota: </h4> 
+                <select class="style-campo-dados" id="slt_rotaOnibus"></select> 
+            </div>
+            
                 
-            </select>
+            
 
             <div class="butao">
                 <button onclick="button_limpar()">Limpar</button>
@@ -73,15 +78,15 @@
             </div>
             <div class="Boxtext">
                 <h2>Atendimento</h2>
-                <p>suporte@logmobility.com</p>
+                <p><a class="color_efeito" href="mailto:suporte@logmobility.com?subject=Estou com Problemas no Sistema">suporte@logmobility.com</a></p>
                 <p>(11) 1234-5678</p>
             </div>
             <div class="RedesSocias">
                 <h2>Redes Sociais</h2>
                 <div class="BoxImgs">
-                    <img src="../img/logo-instagram.png" width="30px" alt="" />
-                    <img src="../img/logo-facebook.png" width="30px" alt="" />
-                    <img src="../img/logo-twitter.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-instagram.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-facebook.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-twitter.png" width="30px" alt="" />
                 </div>
             </div>
         </div>
@@ -98,7 +103,7 @@
     //   aguardar();
         var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
-        div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
+        div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
         fetch(`/usuarios/listarlinhas/${idEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {

@@ -104,6 +104,12 @@ body::-webkit-scrollbar-thumb {
 
 /* ------------------------------HEADER-DAS-EMPRESAS-------------------------------------------- */
 
+.nome_da_empresa{
+  color: #000;
+  font-weight: 700;
+  font-size: 19px;
+}
+
 .header-das-empreas {
   background-color: white;
   margin: 0;
@@ -190,6 +196,11 @@ font-weight: 300;
 .footer .container a {
   text-decoration: none;
   color: white;
+  transition: 0.80s;
+}
+
+.color_efeito:hover{
+  color: #60a1d6 !important;
 }
 
 .Boxtext {

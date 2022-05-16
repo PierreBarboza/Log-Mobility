@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/header-footer.css" />
   <link rel="stylesheet" href="../css/cadastrarLinha.css" />
   <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
-  <title>Cadastro de linha</title>
+  <title>Cadastro de Usuário</title>
   <script src="../js/funcoes.js"></script>
 </head>
 
@@ -31,7 +31,7 @@
               <a href="linhasCadast.html">Linhas Cadastradas</a>
             </li>
             <hr />
-            <li><a class="pagina-atual-empresa" href="cadastroUsuarioEmpresas.html">Cadastrar Usuario</a></li>
+            <li><a class="pagina-atual-empresa" href="cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
           </div>
         </ul>
       </div>
@@ -43,7 +43,7 @@
   <!---------------------------------CORPO DO SITE------------------------------------------>
   <div class="container-login">
     <div class="formulario">
-      <h1>Cadastro de Usuario</h1>
+      <h1>Cadastro de Usuário</h1>
 
       <div class="dados">
         <h4>Email do funcionario:</h4>
@@ -71,7 +71,7 @@
       </div>
       <div class="Boxtext">
         <h2>Atendimento</h2>
-        <p>suporte@logmobility.com</p>
+        <p><a class="color_efeito" href="mailto:suporte@logmobility.com?subject=Estou com Problemas no Sistema">suporte@logmobility.com</a></p>
         <p>(11) 1234-5678</p>
       </div>
       <div class="RedesSocias">
@@ -95,7 +95,7 @@
 <script>
         var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
-        div_empresaLogada.innerHTML= `Olá, ${nomeheader} `
+        div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
   function cadastro() { 
       var emailfuncVar = input_emailfunc.value
       var senhafuncVar = input_senhafunc.value

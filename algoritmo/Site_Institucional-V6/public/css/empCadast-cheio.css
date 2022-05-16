@@ -30,7 +30,7 @@
 }
 
 .div_container_empresas_cadast::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.582); /* Cor do scroll Thub */
+  background-color: rgb(172, 44, 44); /* Cor do scroll Thub */
   border-radius: 20px; /* Curvatura do Scroll thumb */
   border: 2px solid #4d4d4d; /*Criar uma Borda com cor no Scroll thumb*/
 }
@@ -54,16 +54,15 @@ a {
 
 .div_container_empresas_cadast {
   height: 300px;
-  background-color: #262b2f;
+  background-color: #191d20;
   width: 70vw;
   flex-direction: column;
   overflow-y: scroll  ;
-  position: absolute;
   overflow-x: hidden;
   padding: 20px;
-  border-radius: 50px;
+  border-radius: 50px 0px 0px 50px;
   display: flex;
-  box-shadow: 0 0 1em rgb(119, 119, 119);
+  box-shadow: 0 0 1em rgb(95, 95, 95);
 }
 
 .container-empCadastradas-footer {
@@ -108,13 +107,13 @@ a {
 
 /* -----------------Dados Cadastrados dentro da tabela------------------------- */
 .nome_empresa{
-  color: rgb(172, 172, 172);
+  color: rgb(179, 179, 179);
   font-family: monospace;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 40px;
 }
 .informacoes_empresa{
-  color: #868686;
+  color: rgb(179, 179, 179);
   font-family: monospace;
   font-size: 17px;
   line-height: 40px;
@@ -123,7 +122,7 @@ table{
   width: 100%;
 }
 th{
-  color: rgb(255, 255, 255);
+  color: rgb(172, 44, 44);
   font-size: 18px;
 }
 tbody{
@@ -150,4 +149,51 @@ tbody{
 .button_visualizar_dados:hover{
   transform: scale(1.1);
   cursor: pointer;
+}
+
+
+/* --------------------------------------- */
+.content_visualisar_linha{
+  margin-top: 30px;
+  padding: 20px 0px 20px 0px;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #191d20;
+  box-shadow: 0 0 1em rgb(85, 85, 85);
+  color: #fff;
+  text-align: center;
+  transition: 1s;
+}
+
+.selectDado{
+  margin-top: 7px;
+  text-align: center;
+  border-radius: 20px;
+  width: 300px;
+  height: 25px;
+  margin-bottom: 30px;
+}
+
+.content_visualisar_linha button{
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  transition: 0.80s;
+}
+
+.content_visualisar_linha button:hover{
+  background-color: rgb(223, 117, 117);
+}
+
+.seta_voltar{
+  transition: 1s;
+}
+.seta_voltar:hover{
+  transform: scale(1.5);
 }

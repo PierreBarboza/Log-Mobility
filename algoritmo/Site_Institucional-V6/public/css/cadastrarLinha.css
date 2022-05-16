@@ -1,3 +1,4 @@
+
 .container-login {
   width: 100%;
   background-image: url(../img/background-cadastro-linhas.png);
@@ -59,6 +60,7 @@
   transition: 150ms;
   cursor: pointer;
   height: 40%;
+  transition: 0.80s;
 }
 .butao {
   height: 100px;
@@ -66,10 +68,11 @@
   align-items: center;
   width: 100%;
 }
-.butao button:hover {
+.butao button:hover{
   color: white;
-  background-color: #1d1d1d;
+  background-color: #00418c;
 }
+
 
 .butao .btnCadastrarLinha {
   border: none;

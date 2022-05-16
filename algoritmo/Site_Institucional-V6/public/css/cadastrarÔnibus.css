@@ -37,11 +37,14 @@
   flex-direction: column;
   color: white;
 }
-.dados input {
-  border-radius: 18px;
+.style-campo-dados {
   height: 25px;
+  border-radius: 15px 0 15px 0;
   border: none;
+  outline: none;
+  transition: 400ms;
 }
+
 
 .dados h4 {
   margin: 35px 0 0 0;
@@ -57,11 +60,12 @@
   transition: 150ms;
   margin-top: 15px;
   cursor: pointer;
+  transition: 0.80s;
 }
 
 .butao button:hover {
   color: white;
-  background-color: #1d1d1d;
+  background-color: #00418c;
 }
 
 .butao .btnCadastrarLinha {
