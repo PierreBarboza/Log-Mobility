@@ -49,6 +49,8 @@
         <input id="input_nomeEmpresa" type="text" />
         <h4>CNPJ:</h4>
         <input id="input_CNPJ" type="text" />
+        <h4>CEP:</h4>
+        <input id="input_cep" onblur="pesquisacep(this.value);" type="text" />
         <h4>Rua:</h4>
         <input id="input_rua" type="text" />
         <h4>Numero:</h4>
@@ -59,8 +61,7 @@
         <input id="input_cidade" type="text" />
         <h4>Estado:</h4>
         <input id="input_estado" type="text" />
-        <h4>CEP:</h4>
-        <input id="input_CEP" type="text" />
+       
         <h4>Telefone (1):</h4>
         <input id="input_telefone1" type="text" />
         <h4>Telefone (2):</h4>
@@ -111,7 +112,7 @@
       var bairroEmpresaCadasVar = input_bairro.value;
       var cidadeEmpresaCadasVar = input_cidade.value;
       var estadoEmpresaCadasVar = input_estado.value;
-      var cepEmpresaCadasVar = input_CEP.value;
+      var cepEmpresaCadasVar = input_cep.value;
       var tel1EmpresaCadasVar = input_telefone1.value;
       var tel2EmpresaCadasVar = input_telefone2.value;
 
@@ -163,4 +164,73 @@
     input_telefone1.value = "";
     input_telefone2.value = "";
   }
+  function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('input_rua').value=("");
+            document.getElementById('input_bairro').value=("");
+            document.getElementById('input_cidade').value=("");
+            document.getElementById('input_estado').value=("");
+            
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('input_rua').value=(conteudo.logradouro);
+            document.getElementById('input_bairro').value=(conteudo.bairro);
+            document.getElementById('input_cidade').value=(conteudo.localidade);
+            document.getElementById('input_estado').value=(conteudo.uf);
+            
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('input_rua').value="...";
+                document.getElementById('input_bairro').value="...";
+                document.getElementById('input_cidade').value="...";
+                document.getElementById('input_estado').value="...";
+                
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+
 </script>

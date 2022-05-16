@@ -19,8 +19,7 @@
         <div class="container-navbar">
 
             <div class="brand-sptrans">
-                <!----LOGO--->
-                <img src="../img/SPTrans_logo.png" alt="" width="70px">
+                
             </div>
 
             <ul class="navbar-da-gestao">
@@ -51,7 +50,10 @@
             <div class="container-logo">
                 <div class="logo">
                     <div class="boxLogo">
-                        <img src="../img/logo-empresa-mobiBrasil.png" alt="" width="65%" height="100px">
+                        <div id="div_empresaLogada">
+           
+            
+                        </div>
                     </div>
                     <div class="boxMenu">
                         <h3>Análise</h3>
@@ -146,6 +148,9 @@
 </html>
 
 <script>
+        var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
+         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+         div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
     Chart.defaults.color = "white"
 
     const labelsDias = [
