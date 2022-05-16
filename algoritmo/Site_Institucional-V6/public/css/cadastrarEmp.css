@@ -41,10 +41,22 @@
   margin: 3px;
   height: 25px;
   border: none;
-  border-radius: 18px;
+  border-radius: 15px 0 15px 0;
   width: 40%;
   font-size: 15px;
+  outline: none;
+  transition: 160ms;
 }
+.form-boxCadastrarEmp input:focus{
+width: 41%;
+height: 27px;
+}
+.form-boxCadastrarEmp input:focus >.form-boxCadastrarEmp h4{
+color: blue;
+
+}
+
+
 
 .cardCadastrarEmp .containerCadastrarEmp {
   margin: 15px;

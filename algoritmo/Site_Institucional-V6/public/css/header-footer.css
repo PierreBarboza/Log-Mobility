@@ -44,6 +44,7 @@ body::-webkit-scrollbar-thumb {
   margin: 0;
   padding: 10px;
   text-decoration: none;
+  top: 0;
 }
 .navbar a {
   color: rgb(203, 203, 203);
