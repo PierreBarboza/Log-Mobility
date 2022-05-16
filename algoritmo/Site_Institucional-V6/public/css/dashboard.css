@@ -3,18 +3,25 @@
   justify-content: center;
   width: 60%;
 }
+.banner{
+display: flex;
+flex-direction: row;
+background-color: #1a1f23;
+align-items: center;
+}
 
 .containerDashboard {
   display: flex;
-  height: 600px;
   justify-content: space-around;
   background-color: #1a1f23;
   align-items: center;
   justify-content: flex-start;
+  height: 100%;
+  width: 22%;
 }
 
 .container-logo {
-  width: 25%;
+  width: 100%;
   height: 600px;
   display: flex;
   justify-content: center;
@@ -60,6 +67,13 @@
 .box_a:hover {
   background-color: #335293;
 }
+.div_direita{
+height: 100%;
+width: 78%;
+display: flex;
+
+
+}
 
 .containerGráfico {
   height: 600px;
@@ -67,6 +81,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding: 20px;
 }
 
 .grafico {
@@ -86,16 +101,17 @@
   padding: 20px;
   box-shadow: 2px 2px 5px #000000c4;
   width: 89%;
-  height: 520px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   display: none;
+  margin: 0%;
 }
 .div_chart_ano {
   background-color: #262b2f;
   border-radius: 15px;
-  padding: 20px;
+  padding: 30px;
   box-shadow: 2px 2px 5px #000000c4;
   width: 89%;
   height: 520px;
@@ -107,7 +123,7 @@
 .div_chart_mensal {
   background-color: #262b2f;
   border-radius: 15px;
-  padding: 20px;
+  padding: 40px;
   box-shadow: 2px 2px 5px #000000c4;
   width: 89%;
   height: 520px;
@@ -119,7 +135,7 @@
 .div_chart_hora {
   background-color: #262b2f;
   border-radius: 15px;
-  padding: 20px;
+  padding: 30px;
   box-shadow: 2px 2px 5px #000000c4;
   width: 89%;
   height: 520px;
