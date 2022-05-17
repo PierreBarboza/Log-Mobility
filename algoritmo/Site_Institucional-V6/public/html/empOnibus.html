@@ -120,6 +120,8 @@
 
 </html>
 <script>
+  let numeroOnibusHeader = ""
+  let placaOnibusHeader = ""
   var rotaEscolhidaVar = localStorage.Escolha_Rota;
     window.onload = function listagemonibustabela() {
          aguardar();
@@ -172,6 +174,7 @@
      function salvaridOnibus(){
       let Escolha_OnibusVar = select_onibus.value;
       localStorage.setItem("Escolha_onibus",`${Escolha_OnibusVar}`)
+    
       window.location.href = "/dashboard/dash2.html" 
     }
     

@@ -3,6 +3,11 @@
   justify-content: center;
   width: 60%;
 }
+.graph {
+  width: 80%;
+  margin: auto;
+  padding-top: 45px;
+}
 .banner{
 display: flex;
 flex-direction: row;
@@ -106,7 +111,7 @@ color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  display: none;
+  /* display: none; */
   margin: 0%;
 }
 .div_chart_ano {

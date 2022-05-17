@@ -58,9 +58,9 @@ function listagemonibustabela(req, res) {
         );
 }
 //------------
-function onibuslistados(req, res) {
+function gerarSensor(req, res) {
     var rotaEscolhida = req.params.rotaEscolhidaVar;
-    usuarioModel.onibuslistados(rotaEscolhida)
+    usuarioModel.gerarSensor(rotaEscolhida)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -263,6 +263,32 @@ function cadastrarOnibus(req, res) {
             );
     }
 }
+function cadastrarSensor(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo .html:
+    var onibusAtual = req.body.onibusAtualServer
+    
+    //Verificações das variaveis:
+    if (onibusAtual == undefined) {
+        res.status(400).send("Sua onibusAtual está undefined!");
+    }else {
+        // Aqui encaminhamos ela para o usuarioModel.js:
+        usuarioModel.cadastrarSensor(onibusAtual)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
 // Esse é um arquivo que propavelmente encaminha os dados entras as funções.js:
 // Aqui dentro temos que adicionar o nome das novas funções que criamos acima:
 module.exports = {
@@ -273,7 +299,8 @@ module.exports = {
     cadastrar,
     listarlinhas,
     listagemonibustabela,
-    onibuslistados,
+    gerarSensor,
     listarEmpresasCadastradas,
+    cadastrarSensor,
     testar    
 }

@@ -33,10 +33,10 @@ function listagemonibustabela(rotaEscolhida) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-function onibuslistados(rotaEscolhida) {
+function gerarSensor() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    SELECT idOnibus, numeroOnibus FROM onibus join linha on fkLinha = idLinha join empresa on fkEmpresa = idEmpresa where fkLinha = ${rotaEscolhida};
+    select top 1 * from  onibus order by idOnibus desc;
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -83,6 +83,26 @@ function cadastrarfunc(
                 INSERT INTO usuario 
                 (emailUsuario, senhaUsuario, fkEmpresa) VALUES 
                 ('${emailfunc}', '${senhafunc}', '${empresafunc}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+function cadastrarSensor(
+    onibusAtual
+) {
+    console.log(`
+    ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> 
+    verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():
+    `,onibusAtual);
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+                insert into sensor 
+                (tipoSensor,fkOnibus) values  
+                ('Entrada', '${onibusAtual}');
+                insert into sensor 
+                (tipoSensor,fkOnibus) values  
+                ('Saida', '${onibusAtual}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -159,6 +179,7 @@ module.exports = {
     listarEmpresasCadastradas,
     listarlinhas,
     listagemonibustabela,
-    onibuslistados,
+    gerarSensor,
+    cadastrarSensor,
     cadastrarfunc    
 };

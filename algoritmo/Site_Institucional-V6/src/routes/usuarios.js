@@ -17,8 +17,13 @@ router.get("/listarlinhas/:idEmpresa", function (req, res) {
 router.get("/listagemonibustabela/:rotaEscolhidaVar", function (req, res) {
     usuarioController.listagemonibustabela(req, res);
 });
-router.get("/onibuslistados/:rotaEscolhidaVar", function (req, res) {
-    usuarioController.onibuslistados(req, res);
+//Gerar o sensor
+router.get("/gerarSensor", function (req, res) {
+    usuarioController.gerarSensor(req, res);
+});
+// Cadastrar sensor:
+router.post("/cadastrarSensor", function (req, res) {
+    usuarioController.cadastrarSensor(req, res);
 });
 //Cadastro de empresas:
 router.post("/cadastrar", function (req, res) {

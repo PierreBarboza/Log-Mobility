@@ -12,9 +12,9 @@
     <script src="../js/funcoes.js"></script>
 </head>
 
-<body>
+<body onload="gerarSensor()">
     <!-------------------------------HEADER SITE-------------------------->
-    <div class="header-das-empreas">
+    <!-- <div class="header-das-empreas">
         <div class="containerLinha">
           <div class="container-navbarLinha">
             <div id="div_empresaLogada">
@@ -39,10 +39,10 @@
             <a href="../index.html"> Sair</a>
           </div>
         </div>
-      </div>
+      </div> -->
     <!---------------------------------CORPO DO SITE------------------------------------------>
     <div class="container-login">
-        <div class="formulario">
+        <!-- <div class="formulario">
             <h1>Cadastro de Ônibus</h1>
 
             <div class="dados">
@@ -67,7 +67,7 @@
                 <button onclick="button_limpar()">Limpar</button>
                 <a><button class="btnCadastrarLinha" onclick="cadastrarOnibus()">Cadastrar</button></a>
             </div>
-        </div>
+        </div> -->
     </div>
     <!---------------------------------RODAPÉ DO SITE------------------------------------------>
     <div class="footer">
@@ -99,12 +99,9 @@
 </html>
 
 <script>
-    window.onload = function listarlinhas() {
-    //   aguardar();
-        var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
-        var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
-        div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
-        fetch(`/usuarios/listarlinhas/${idEmpresa}`).then(function (resposta) {
+    function gerarSensor(){
+        
+        fetch(`/usuarios/gerarSensor`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -121,39 +118,35 @@
                             
                             // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
                             // Temos que colocar publicação.Nome do campo do banco de dados:
-                            let nomelinha = publicacao.nomeLinha
-                            let rota = publicacao.rota
-                            let idLinha = publicacao.idLinha
-                            teste = idLinha
-                         
+                            let ultimoOnibus = publicacao.idOnibus
+
+
+                            localStorage.setItem("idOnibusCadastrado",`${ultimoOnibus}`)
+                            cadastrarSensor()
+
                             // Aqui eu aponto para onde meus dados irão para serem apresentados:
-                            slt_rotaOnibus.innerHTML += ` 
-                            <option value="${idLinha}">${rota}</option>
-                            `
+                            
                           }
-                    // finalizarAguardar();
+                    
                 })
             } else {
                 throw ('Houve um erro na API!');
-                // finalizarAguardar();
+                
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            // finalizarAguardar();
+            
         });
     }
-    function cadastrarOnibus() { 
-      var numeroOnibusVar = input_numeroOnibus.value
-      var placaOnibusVar = input_placaOnibus.value
-      var rotaOnibusVar = slt_rotaOnibus.value
-      
-      if (
-        numeroOnibusVar == "" || placaOnibusVar == "" || rotaOnibusVar ==""
+    function cadastrarSensor(){
+            var onibusAtualVar = localStorage.idOnibusCadastrado
+            if (
+                onibusAtualVar == "" 
         ) {
           alert ("Existem campos não preenchidos")
       }
       // Enviando o valor da nova input
-      fetch("/usuarios/cadastrarOnibus", {
+      fetch("/usuarios/cadastrarSensor", {
           method: "POST",
           headers: {
               "Content-Type": "application/json"
@@ -161,16 +154,17 @@
           body: JSON.stringify({
               // crie um atributo que recebe o valor recuperado aqui
               // Agora vá para o arquivo routes/usuario.js              
-              numeroOnibusServer : numeroOnibusVar,
-              placaOnibusServer : placaOnibusVar,  
-              rotaOnibusServer : rotaOnibusVar   
+              onibusAtualServer : onibusAtualVar  
                 
           })
       })
-      window.location.href = "aguardeSensor.html"
-  }
-    function button_limpar() {
-        input_numeroOnibus.value = "";
-        input_placaOnibus.value = "";
+      
+
+
+
+      window.location.href = "linhasCadast.html"
     }
+    
+    
+    
 </script>
