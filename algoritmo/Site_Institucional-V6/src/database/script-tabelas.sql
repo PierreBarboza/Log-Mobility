@@ -179,7 +179,6 @@ insert into sensor values
 
 create table medida (
 	idmedida int identity,
-	dataHora datetime,
     dht11_umidade DECIMAL,
 	dht11_temperatura DECIMAL,
 	luminosidade DECIMAL,
@@ -191,12 +190,12 @@ create table medida (
 	foreign key (fkSensor) references sensor(idSensor)
 );
 	
-insert into medida (dht11_umidade,dht11_temperatura,momento, fkSensor) values 
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1),
-('5511', '4411', CURRENT_TIMESTAMP ,1);
+insert into medida (chave, momento, fkSensor) values 
+(10, CURRENT_TIMESTAMP ,1),
+(20, CURRENT_TIMESTAMP ,1),
+(30, CURRENT_TIMESTAMP ,1),
+(10, CURRENT_TIMESTAMP ,1),
+(50, CURRENT_TIMESTAMP ,1),
+(80, CURRENT_TIMESTAMP ,1),
+(40, CURRENT_TIMESTAMP ,1),
+(30, CURRENT_TIMESTAMP ,1);
