@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas(idAquario, limite_linhas) {
 
-    instrucaoSql = '' 
+    instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
@@ -10,8 +10,15 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                         medida.momento, 
                         CONVERT(varchar, momento, 108) as momento_grafico
                         from sensor join medida on idsensor = fksensor where fkOnibus = ${idAquario}
-                        and sensor.tipoSensor ='entrada' order by idmedida desc`;
-    } 
+                        and sensor.tipoSensor = 'entrada' order by idmedida desc;`;
+
+                        instrucaoSql += `select top ${limite_linhas}
+                        sensor.tipoSensor, medida.chave, 
+                        medida.momento, 
+                        CONVERT(varchar, momento, 108) as momento_grafico
+                        from sensor join medida on idsensor = fksensor where fkOnibus = ${idAquario}
+                        and sensor.tipoSensor = 'saída' order by idmedida desc`;
+    }
     // else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
     //     instrucaoSql = `select 
     //     dht11_temperatura as temperatura, 
@@ -42,11 +49,19 @@ function buscarMedidasEmTempoReal(idAquario) {
                         from sensor join medida on idsensor = fksensor where fkOnibus = ${idAquario}
                         and sensor.tipoSensor = 'entrada' 
                         order by idmedida desc;
-                        
                         `;
-                        
 
-    } 
+        instrucaoSql += `select top 7
+                        sensor.tipoSensor, medida.chave, 
+                        medida.momento, 
+                        CONVERT(varchar, momento, 108) as momento_grafico
+                        from sensor join medida on idsensor = fksensor where fkOnibus = ${idAquario}
+                        and sensor.tipoSensor = 'saída' 
+                        order by idmedida desc;
+                        `;
+
+
+    }
     // else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
     //     instrucaoSql = `select 
     //                     dht11_temperatura as temperatura, 

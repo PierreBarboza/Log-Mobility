@@ -268,8 +268,9 @@
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico: ${dados}`);
+                    // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(novoRegistro)
 
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro

@@ -36,7 +36,16 @@ function executar(instrucao) {
                 return sql.query(instrucao);
             }).then(function (resultados) {
                 console.log(resultados);
-                resolve(resultados.recordset);
+                /*
+                 Aqui, eu verifico se a query retorna uma lista de listas;
+                 Caso positivo, eu retorno a propriedade "recordsets";
+                 Caso negativo, eu retorno a propriedade "recordset".
+                 */
+                if (resultados.recordsets.length > 1) {
+                    resolve(resultados.recordsets);
+                } else {
+                    resolve(resultados.recordset);
+                }
             }).catch(function (erro) {
                 reject(erro);
                 console.log('ERRO: ', erro);
