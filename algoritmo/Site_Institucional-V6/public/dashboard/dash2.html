@@ -278,8 +278,14 @@
                     
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                     dados.datasets[0].data.push(novoRegistro[0].chave); // incluir uma nova medida de umidade
-                    
-                    
+                    var array_entrada= [novoRegistro[0]]
+                    var array_saida= [novoRegistro[1]]
+                    var seg_array_entrada=[array_entrada[0]]
+                    var seg_array_saida=[array_saida[0]]
+                    var entrada =[seg_array_entrada[0].length]
+                    var saida =[seg_array_saida[0].length]
+                    console.log(`entrada${entrada}`)
+                    console.log(`saida ${saida}`)
 
                     window.grafico_linha.update();
 
