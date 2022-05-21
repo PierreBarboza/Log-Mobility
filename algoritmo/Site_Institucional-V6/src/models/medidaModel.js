@@ -42,7 +42,7 @@ function buscarMedidasEmTempoReal(idAquario) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 7
+        instrucaoSql = `select top 1
                         sensor.tipoSensor, medida.chave, 
                         medida.momento, 
                         CONVERT(varchar, momento, 108) as momento_grafico
@@ -51,7 +51,7 @@ function buscarMedidasEmTempoReal(idAquario) {
                         order by idmedida desc;
                         `;
 
-        instrucaoSql += `select top 7
+        instrucaoSql += `select top 1
                         sensor.tipoSensor, medida.chave, 
                         medida.momento, 
                         CONVERT(varchar, momento, 108) as momento_grafico

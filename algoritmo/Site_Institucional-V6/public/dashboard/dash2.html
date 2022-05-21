@@ -20,7 +20,7 @@
         <div class="container-navbar">
 
             <div class="brand-sptrans">
-                
+
             </div>
 
             <ul class="navbar-da-gestao">
@@ -52,8 +52,8 @@
                 <div class="logo">
                     <div class="boxLogo">
                         <div id="div_empresaLogada">
-           
-            
+
+
                         </div>
                     </div>
                     <div class="boxMenu">
@@ -66,22 +66,22 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="div_direita">
             <div id="dia" class="div_chart_diario">
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas</span><br>
-                    
+
                 </div>
-                
+
                 <div class="graph">
                     <canvas id="canvas_grafico"></canvas>
                 </div>
             </div>
             <!-- style="position: relative; height: 200px; width: 600px; display: block " -->
-       
-       
+
+
             <!-- <div id="mes" class="div_chart_mensal">
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas mensal</span><br>
@@ -113,8 +113,8 @@
                 <div class="div_grafico">
                     <canvas id="myChart4" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
                 </div> -->
-            </div>
         </div>
+    </div>
     </div>
 
 
@@ -149,22 +149,25 @@
 </html>
 
 <script>
-        var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
-         var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
-         div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
+    var entrada = ""
+    var check = ""
+    var qtd_entrada = 0
+    var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
+    var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+    div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
     // Chart.defaults.color = "white"
-   
-    
 
 
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
     let proximaAtualizacao;
     // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
@@ -179,18 +182,21 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
+        fetch(`/medidas/ultimas/${idAquario}`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        alert(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
 
-                    plotarGrafico(resposta, idAquario);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
+                        plotarGrafico(resposta, idAquario);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
@@ -204,22 +210,21 @@
 
         var dados = {
             labels: [],
-            datasets: [
-                {
-                    yAxisID: 'y-entrada',
-                    label: 'Entrada',
-                    borderColor: '#32B9CD',
-                    backgroundColor: '#32b9cd8f',
-                    fill: true,
-                    data: []
-                }]
+            datasets: [{
+                yAxisID: 'y-entrada',
+                label: 'Entrada',
+                borderColor: '#32B9CD',
+                backgroundColor: '#32b9cd8f',
+                fill: true,
+                data: []
+            }]
         };
 
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            dados.labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.chave);
-            
+        for (i = 0; i < resposta[0].length; i++) {
+            qtd_entrada++;
+            dados.labels.push(resposta[0][0].momento_grafico);
+            dados.datasets[0].data.push(qtd_entrada);
+
         }
 
         console.log(JSON.stringify(dados));
@@ -229,7 +234,9 @@
             data: dados,
             options: {
                 responsive: true,
-                animation: { duration: 500 },
+                animation: {
+                    duration: 500
+                },
                 hoverMode: 'index',
                 stacked: false,
                 title: {
@@ -237,8 +244,7 @@
                     text: 'Histórico de fluxo atual de entrada'
                 },
                 scales: {
-                    yAxes: [
-                        {
+                    yAxes: [{
                         type: 'linear',
                         display: true,
                         position: 'left',
@@ -253,10 +259,10 @@
             }
         });
 
-        setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+        setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
     }
 
-    
+
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 
 
@@ -264,47 +270,70 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idAquario, dados) {
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
+        fetch(`/medidas/tempo-real/${idAquario}`, {
+                cache: 'no-store'
+            }).then(function (response) {
 
-                    // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(novoRegistro)
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+                        entrada = novoRegistro[0][0].momento
+                        console.log("Fznd a checagem de tempor real")
+                        // var hora = array_entrada[0].momento_grafico
+                        
+                        if(check==""){
+                            check=entrada
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+        
+                        }
+                        else if (check == entrada) {
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+                        } else {
+                            qtd_entrada++
+                            check=entrada
 
-                    // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-                    
-                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].chave); // incluir uma nova medida de umidade
-                    var array_entrada= [novoRegistro[0]]
-                    var array_saida= [novoRegistro[1]]
-                    var seg_array_entrada=[array_entrada[0]]
-                    var seg_array_saida=[array_saida[0]]
-                    var entrada =[seg_array_entrada[0].length]
-                    var saida =[seg_array_saida[0].length]
-                    console.log(`entrada${entrada}`)
-                    console.log(`saida ${saida}`)
+                            // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                            console.log(entrada);
+                            // tirando e colocando valores no gráfico
+                            dados.labels.shift(); // apagar o primeiro
+                            dados.labels.push(novoRegistro[0][0]
+                            .momento_grafico); // incluir um novo momento
+                            // for (var i=0;i<novoRegistro[0].length;i++ ){
 
-                    window.grafico_linha.update();
+                            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                            dados.datasets[0].data.push(qtd_entrada); // incluir uma nova medida de umidade
+                            // var array_entrada = [novoRegistro[0]]
+                            // var array_saida = [novoRegistro[1]]
+                            // var entrada = array_entrada[0][0].chave
+                            // var saida = array_saida[0][0].chave
 
+
+
+                            // var entrada =[seg_array_entrada[0].length]
+                            // var saida =[seg_array_saida[0].length]
+                            // console.log(`entrada${chave}`)
+                            // console.log(`saida ${saida}`)
+
+                            window.grafico_linha.update();
+
+                            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+                        }
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
-            }
-        })
+
+                }
+            })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
+
     }
 
 
-//---------------------------------------------------------------------------------------------------------------------------------
-   
+    //---------------------------------------------------------------------------------------------------------------------------------
 </script>
