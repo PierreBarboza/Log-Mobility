@@ -26,16 +26,13 @@
 
             <ul class="navbar-da-gestao">
                 <li>
-                    <a href="">
-                        Cadastrar<br>
-                        Empresas
-                    </a>
+                    <a href="../html/cadastrarLinha.html">Cadastrar Linha</a>
                 </li>
-                <li class="pagina-atual">
-                    <a href="empCadast-cheio.html">
-                        Empresas<br>
-                        Cadastradas
-                    </a>
+                <li>
+                    <a href="../html/cadastrarOnibus.html">Cadastrar Onibus</a>
+                </li>
+                <li>
+                    <a href="../html/linhasCadast.html">Linhas Cadastradas</a>
                 </li>
                 <li>
                     <a href="../index.html"> Sair</a>
@@ -80,40 +77,7 @@
                     <canvas id="canvas_grafico"></canvas>
                 </div>
             </div>
-            <!-- style="position: relative; height: 200px; width: 600px; display: block " -->
-
-
-            <!-- <div id="mes" class="div_chart_mensal">
-                <div class="titulo_tipo">
-                    <span>Fluxo de pessoas mensal</span><br>
-                    <h4>Ônibus: 6 4442</h4><br>
-                    <h4>Placa: NXC-7891</h4>
-                </div>
-                <div class="div_grafico">
-                    <canvas id="myChart2" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
-                </div>
-            </div>
             
-            <div id="ano" class="div_chart_ano">
-                <div class="titulo_tipo">
-                    <span>Fluxo de pessoas anual</span><br>
-                    <h4>Ônibus: 6 4442</h4><br>
-                    <h4>Placa: NXC-7891</h4>
-                </div>
-                <div class="div_grafico">
-                    <canvas id="myChart3" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
-                </div>
-            </div>
-             
-            <div id="hora" class="div_chart_hora">
-                <div class="titulo_tipo">
-                    <span>Fluxo de por hora</span><br>
-                    <h4>Ônibus: 6 4442</h4><br>
-                    <h4>Placa: NXC-7891</h4>
-                </div>
-                <div class="div_grafico">
-                    <canvas id="myChart4" style="position: relative; height: 320px; width: 900px; display: block "></canvas>
-                </div> -->
         </div>
     </div>
     </div>
@@ -172,7 +136,7 @@
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        alert(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         resposta.reverse();
 
                         plotarGrafico(resposta, idAquario);
@@ -298,5 +262,5 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-    //---------------------------------------------------------------------------------------------------------------------------------
+    
 </script>

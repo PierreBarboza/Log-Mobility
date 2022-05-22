@@ -102,7 +102,7 @@ function cadastrarSensor(
                 ('Entrada', '${onibusAtual}');
                 insert into sensor 
                 (tipoSensor,fkOnibus) values  
-                ('Saida', '${onibusAtual}');
+                ('Saída', '${onibusAtual}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
