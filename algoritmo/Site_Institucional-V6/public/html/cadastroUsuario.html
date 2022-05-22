@@ -15,10 +15,41 @@
 
 <body>
   <!-------------------------------HEADER SITE-------------------------->
- 
+  <div class="header-da-gestao">
+    <div class="container-navbar">
+      <div class="brand-sptrans">
+        <!----LOGO--->
+        <img src="../img/SPTrans_logo.png" alt="" width="70px" />
+      </div>
+
+      <ul class="navbar-da-gestao">
+        <li class="pagina-atual">
+          <a href="cadastrarEmp.html">
+            Cadastrar<br />
+            Empresas
+          </a>
+        </li>
+        <li>
+          <a href="empCadast-cheio.html">
+            Empresas<br />
+            Cadastradas
+          </a>
+        </li>
+        <li>
+          <a href="../index.html"> Sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <!---------------------------------CORPO DO SITE------------------------------------------>
   <div class="container-login">
     <div class="formulario">
+
+      <div class="seta_voltar">
+        <a class="efeito-scale" href="./cadastrarEmp.html"><img src="../img/nova_seta_icone_esquerda.png" alt="" width="35px"></a>
+      </div>
+      
       <h1>Cadastro de Usuário</h1>
 
       <div class="dados">
@@ -31,14 +62,15 @@
         <input id="input_senhafunc" />
       </div>
       
-      Selecione a empresa que o usuario vai trabalhar:
-      <select id="slt_idempresas">    
-      </select>
+      <div class="dados">
+        <h4>Selecione a empresa que o usuario vai trabalhar:</h4>
+        <select id="slt_idempresas"></select>
+      </div>
 
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
         <button onclick="cadastro()">Cadastrar</button>
-        <a href="empCadast-cheio.html">Sair</a>
+        <a href="empCadast-cheio.html">Finalizar<br>Cadastro</a>
       </div>
     </div>
   </div>

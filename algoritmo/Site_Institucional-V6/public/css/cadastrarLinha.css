@@ -46,6 +46,13 @@
   outline: none;
   transition: 400ms;
 }
+.dados select {
+  height: 25px;
+  border-radius: 15px 0 15px 0;
+  border: none;
+  outline: none;
+  transition: 400ms;
+}
 
 .dados h4 {
   margin: 35px 0 0 0;
@@ -72,7 +79,27 @@
   color: white;
   background-color: #00418c;
 }
+.butao a {
+  border: none;
+  border-radius: 10px;
+  font-weight: 300;
+  width: 30%;
+  transition: 150ms;
+  cursor: pointer;
+  height: 40%;
+  transition: 0.80s;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.33px;
+}
 
+.butao a:hover{
+  color: white;
+  background-color: #00418c;
+}
 
 .butao .btnCadastrarLinha {
   border: none;
@@ -90,4 +117,9 @@ color: white;
 color: black;
 
 
+}
+
+.seta_voltar{
+  width: 100%;
+  display: flex;
 }
