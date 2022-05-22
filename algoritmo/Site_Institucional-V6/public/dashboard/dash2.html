@@ -150,31 +150,14 @@
 
 <script>
     var entrada = ""
+    var saida = ""
     var check = ""
+    var check2 = ""
     var qtd_entrada = 0
     var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
     var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
     div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
-    // Chart.defaults.color = "white"
-
-
-
-
-
-
-
-
-
-
-
-
     let proximaAtualizacao;
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico() {
         var idAquario = localStorage.Escolha_onibus;
 
@@ -201,13 +184,8 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, idAquario) {
         console.log('iniciando plotagem do gráfico...');
-
         var dados = {
             labels: [],
             datasets: [{
@@ -219,16 +197,12 @@
                 data: []
             }]
         };
-
         for (i = 0; i < resposta[0].length; i++) {
             qtd_entrada++;
             dados.labels.push(resposta[0][0].momento_grafico);
             dados.datasets[0].data.push(qtd_entrada);
-
         }
-
         console.log(JSON.stringify(dados));
-
         var ctx = canvas_grafico.getContext('2d');
         window.grafico_linha = Chart.Line(ctx, {
             data: dados,
@@ -258,82 +232,70 @@
                 }
             }
         });
-
-        setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+        setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
     }
-
-
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idAquario, dados) {
 
         fetch(`/medidas/tempo-real/${idAquario}`, {
                 cache: 'no-store'
             }).then(function (response) {
-
                 if (response.ok) {
                     response.json().then(function (novoRegistro) {
-                        entrada = novoRegistro[0][0].momento
-                        console.log("Fznd a checagem de tempor real")
-                        // var hora = array_entrada[0].momento_grafico
-                        
-                        if(check==""){
-                            check=entrada
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
-        
+                        if(novoRegistro[1][0]==undefined){
+                            saida=""
+                        }else if (novoRegistro!=""){
+                            saida = novoRegistro[1][0].momento
                         }
-                        else if (check == entrada) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+                        entrada = novoRegistro[0][0].momento
+
+                        console.log(novoRegistro[1][0])
+                        console.log(novoRegistro[0][0])
+                        console.log("Fznd a checagem de tempor real")
+
+                        if (check == "" ) {
+                            check = entrada
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                        }
+                         else if (check == entrada) {
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
                         } else {
                             qtd_entrada++
                             check=entrada
 
-                            // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                             console.log(entrada);
-                            // tirando e colocando valores no gráfico
-                            dados.labels.shift(); // apagar o primeiro
-                            dados.labels.push(novoRegistro[0][0]
-                            .momento_grafico); // incluir um novo momento
-                            // for (var i=0;i<novoRegistro[0].length;i++ ){
+                            dados.labels.shift();
+                            dados.labels.push(novoRegistro[0][0].momento_grafico);
 
-                            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-                            dados.datasets[0].data.push(qtd_entrada); // incluir uma nova medida de umidade
-                            // var array_entrada = [novoRegistro[0]]
-                            // var array_saida = [novoRegistro[1]]
-                            // var entrada = array_entrada[0][0].chave
-                            // var saida = array_saida[0][0].chave
-
-
-
-                            // var entrada =[seg_array_entrada[0].length]
-                            // var saida =[seg_array_saida[0].length]
-                            // console.log(`entrada${chave}`)
-                            // console.log(`saida ${saida}`)
-
+                            dados.datasets[0].data.shift();
+                            dados.datasets[0].data.push(qtd_entrada);
                             window.grafico_linha.update();
-
-                            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        }                        
+                        if (check2 == "" ) {
+                            check2 = saida
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                        }
+                         else if (check2 == saida) {
                             proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+                        } else {
+                            qtd_entrada--
+                            check2=saida
+                            console.log(entrada);
+                            dados.labels.shift();
+                            dados.labels.push(novoRegistro[0][0].momento_grafico);
+                            dados.datasets[0].data.shift();
+                            dados.datasets[0].data.push(qtd_entrada);
+                            window.grafico_linha.update();
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
                         }
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
-
                 }
             })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-
-
     }
-
-
     //---------------------------------------------------------------------------------------------------------------------------------
 </script>
