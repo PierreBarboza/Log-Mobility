@@ -192,6 +192,7 @@ font-weight: 300;
   width: 100%;
   justify-content: space-evenly;
   background-color: black;
+  text-align: center;
 }
 
 .footer .container a {
@@ -224,9 +225,9 @@ font-weight: 300;
 .efeito-scale:hover{transform: scale(1.2);}
 
 .BoxImgs {
-  width: 100%;
+  width: 50%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .footer .container h2 {
