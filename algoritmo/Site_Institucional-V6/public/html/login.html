@@ -24,6 +24,9 @@
       </div>
       <div class="cardlogin">
         <div class="boxlogin">
+          <div class="box_alert_login">
+            <div id="mensagem_erro" class="alerta_sucesso"> <!---Aqui Aparece a Mensagem de Validação (ALERT) ---> </div>
+          </div>
           <div class="containerbox">
             <a class="voltarIndex" href="../index.html"><img class="imgloginseta"
                 src="../img/nova_seta_icone_esquerda.png" /></a>
@@ -66,14 +69,26 @@
     var tipoUsuarioVar = 0;
     var empresaVAR = select_empresa.value;
 
+    // ---------------------- VALIDAÇÕES DE EMAIL E CAMPO ---------------------------//
+
     if (emailVar == "" || senhaVar == "" || empresaVAR == "0") {
-      alert("Os campos não podem estar em branco")
-      finalizarAguardar();
-    } else {
-      if (emailVar.indexOf("@") == -1){
-          alert("O e-mail está incorreto")
-        }
-    }
+      mensagem_erro.innerHTML = `Existem campos Não preenchidos !`
+      document.getElementById("mensagem_erro").style.display="flex";
+      
+
+    } else if (emailVar.indexOf("@gmail.com") == -1 ||
+                emailVar.indexOf("@outlook.com") == -1 || 
+                emailVar.indexOf("@hotmail.com") == -1 ||
+                emailVar.indexOf("@yahoo.com") == -1 ||
+                emailVar.indexOf("@sptech.com") == -1 ||
+                emailVar.indexOf("@terra.com") == -1 ||
+                emailVar.indexOf("@sptrans.com") == -1){
+
+        mensagem_erro.innerHTML = `E-mail Inválido !`
+        document.getElementById("mensagem_erro").style.display="flex";
+        
+    }finalizarAguardar();
+  
 
     fetch("/usuarios/autenticar", {
       method: "POST",
