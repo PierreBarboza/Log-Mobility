@@ -15,6 +15,7 @@
     <script src="//code.jivosite.com/widget/fICoc6GW84" async></script>
 </head>
 
+
 <body class="background-dashboard">
 
     <!-------------------------------HEADER SITE-------------------------->
@@ -69,11 +70,12 @@
             
         </div>
         <div class="div_direita">
+            <div id="aviso" class="aviso"></div>
             <div id="dia" class="div_chart_diario">
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas em tempo real :</span><br>
                     <div class="analytics">
-                        <div id="numero_tempo_real" class="container_analytics">
+                        <div  id="numero_tempo_real" class="container_analytics">
                             24
                         </div>
                     </div>
@@ -126,21 +128,24 @@
     var check = ""
     var check2 = ""
     var qtd_entrada = 0
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
     var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
     var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
     div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
-    let proximaAtualizacao;
-    function obterDadosGrafico() {
-        var idAquario = localStorage.Escolha_onibus;
+mudar_cor()
 
+
+
+let proximaAtualizacao;
+function obterDadosGrafico() {
+        var idAquario = localStorage.Escolha_onibus;
+        
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
-
+        
         fetch(`/medidas/ultimas/${idAquario}`, {
-                cache: 'no-store'
-            }).then(function (response) {
+            cache: 'no-store'
+        }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -155,8 +160,8 @@
             })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
+            });}
+    
     function plotarGrafico(resposta, idAquario) {
         console.log('iniciando plotagem do gráfico...');
         var dados = {
@@ -177,7 +182,7 @@
         }
         console.log(JSON.stringify(dados));
         var ctx = canvas_grafico.getContext('2d');
-        window.grafico_linha = Chart.Line(ctx, {
+        window.grafico_linha = Chart.Line(ctx, {  
             data: dados,
             options: {
                 responsive: true,
@@ -208,23 +213,23 @@
         setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
     }
     function atualizarGrafico(idAquario, dados) {
-
+        
         fetch(`/medidas/tempo-real/${idAquario}`, {
-                cache: 'no-store'
-            }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (novoRegistro) {
-                        if(novoRegistro[1][0]==undefined){
-                            saida=""
-                        }else if (novoRegistro!=""){
-                            saida = novoRegistro[1][0].momento
-                        }
+            cache: 'no-store'
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    if(novoRegistro[1][0]==undefined){
+                        saida=""
+                    }else if (novoRegistro!=""){
+                        saida = novoRegistro[1][0].momento
+                    }
                         entrada = novoRegistro[0][0].momento
 
                         console.log(novoRegistro[1][0])
                         console.log(novoRegistro[0][0])
                         console.log("Fznd a checagem de tempor real")
-
+                        
                         if (check == "" ) {
                             check = entrada
                             proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
@@ -234,7 +239,7 @@
                         } else {
                             qtd_entrada++
                             check=entrada
-
+                            
                             console.log(entrada);
                             dados.labels.shift();
                             dados.labels.push(novoRegistro[0][0].momento_grafico);
@@ -242,12 +247,16 @@
                             dados.datasets[0].data.shift();
                             dados.datasets[0].data.push(qtd_entrada);
                             window.grafico_linha.update();
+                            mudar_cor()
+                            setTimeout(() => {checarAlertas()}, 60000);  
+
+                            
                         }                        
                         if (check2 == "" ) {
                             check2 = saida
                             proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
                         }
-                         else if (check2 == saida) {
+                        else if (check2 == saida) {
                             proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
                         } else {
                             qtd_entrada--
@@ -259,6 +268,11 @@
                             dados.datasets[0].data.push(qtd_entrada);
                             window.grafico_linha.update();
                             proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                            mudar_cor()
+                          setTimeout(() => {checarAlertas()}, 60000);  
+                            
+                            
+                            
                         }
                     });
                 } else {
@@ -270,5 +284,74 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
+
     
+    function mudar_cor(){
+        if(qtd_entrada == 0){
+            numero_tempo_real.style.borderColor="white"
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
+
+        } else if(qtd_entrada <5){
+            numero_tempo_real.style.borderColor="#2E86C1"
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
+
+}else if(qtd_entrada<7){
+    numero_tempo_real.style.borderColor="#2ECC71"
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
+
+}else if(qtd_entrada<9){
+    numero_tempo_real.style.borderColor="#F1C40F"
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
+
+}else if(qtd_entrada==10){
+    numero_tempo_real.style.borderColor="crimson"
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
+
+}else if (qtd_entrada>10){
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
+
+}
+}
+function checarAlertas(){
+    if(qtd_entrada == 0){
+        numero_tempo_real.style.borderColor="white"
+    aviso.innerHTML=`Onibus vazio por muito tempo alerta sendo enviado`
+    aviso.style.borderColor="white"
+    aviso.style.color="white"
+    document.getElementById("aviso").style.display="flex"
+} else if(qtd_entrada <10){
+    numero_tempo_real.style.borderColor="#2E86C1"
+    aviso.innerHTML=`Onibus com nivel de movimento baixo`
+    aviso.style.borderColor="#2E86C1"
+    aviso.style.color="#2E86C1"
+    document.getElementById("aviso").style.display="flex"
+    
+}else if(qtd_entrada<25){
+    numero_tempo_real.style.borderColor="#2ECC71"
+    aviso.style.borderColor="#2ECC71"
+    aviso.style.color="#2ECC71"
+}else if(qtd_entrada<44){
+    numero_tempo_real.style.borderColor="#F1C40F"
+    aviso.innerHTML=`Onibus perto do limite de passageiros!`
+    aviso.style.borderColor="#F1C40F"
+    aviso.style.color="#F1C40F"
+    document.getElementById("aviso").style.display="flex"
+}else if(qtd_entrada==45){
+    numero_tempo_real.style.borderColor="crimson"
+    aviso.innerHTML=`Onibus no limite de passageiros alerta sendo enviado`
+    aviso.style.borderColor="crimson"
+    aviso.style.color="crimson"
+    document.getElementById("aviso").style.display="flex"
+    
+}else if (qtd_entrada>45){
+    numero_tempo_real.style.borderColor="#8E44AD"
+    aviso.innerHTML=`Onibus acima do limite de passageiros alerta sendo enviado!`
+    aviso.style.borderColor="#8E44AD"
+    aviso.style.color="#8E44AD"
+    document.getElementById("aviso").style.display="flex"
+    
+}
+}
+
+
 </script>

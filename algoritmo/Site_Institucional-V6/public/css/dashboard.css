@@ -89,6 +89,7 @@ width: 78%;
 display: flex;
 color: white;
 flex-direction: column;
+align-items: center ;
 
 
 }
@@ -204,8 +205,16 @@ font-size: 22pt;
 display: flex;
 flex-direction: row ;
 justify-content: space-around;
-
-
 }
-
+.aviso{
+height: 50px;
+width: 80%;
+border-bottom:1px crimson  solid;
+margin-bottom: 20px;
+font-weight: 300;
+font-size: 22pt;
+text-align: center;
+color: crimson;
+display: none;
+}
 
