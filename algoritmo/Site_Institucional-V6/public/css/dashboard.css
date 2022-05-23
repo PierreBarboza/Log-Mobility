@@ -88,6 +88,7 @@ height: 100%;
 width: 78%;
 display: flex;
 color: white;
+flex-direction: column;
 
 
 }
@@ -182,3 +183,29 @@ color: white;
 .grafico label {
   color: white;
 }
+.analytics{
+height: 50px;
+width: 75px;
+background-color: #262b2f;
+border-radius: 15px;
+}
+.container_analytics{
+margin: 0% auto;
+height: 83%;
+width: 80%;
+border-bottom: 1px solid cornflowerblue;
+font-weight: 300;
+font-size: 22pt;
+text-align: center;
+}
+.titulo_tipo{
+font-weight: 300;
+font-size: 22pt;
+display: flex;
+flex-direction: row ;
+justify-content: space-around;
+
+
+}
+
+

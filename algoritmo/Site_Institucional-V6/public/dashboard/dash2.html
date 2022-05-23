@@ -66,12 +66,17 @@
                     </div>
                 </div>
             </div>
-
+            
         </div>
         <div class="div_direita">
             <div id="dia" class="div_chart_diario">
                 <div class="titulo_tipo">
-                    <span>Fluxo de pessoas</span><br>
+                    <span>Fluxo de pessoas em tempo real :</span><br>
+                    <div class="analytics">
+                        <div id="numero_tempo_real" class="container_analytics">
+                            24
+                        </div>
+                    </div>
 
                 </div>
 
@@ -121,6 +126,7 @@
     var check = ""
     var check2 = ""
     var qtd_entrada = 0
+    numero_tempo_real.innerHTML=`${qtd_entrada}`
     var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
     var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
     div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
