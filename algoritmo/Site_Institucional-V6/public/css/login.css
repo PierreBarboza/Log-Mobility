@@ -21,13 +21,30 @@ body::-webkit-scrollbar-thumb {
   height: 100px;
   background-image: linear-gradient(to bottom, #00408b, rgb(0, 0, 27), black);
 }
+.box_alert_login{
+  height: 80px;
+  display: flex;
+  justify-content: center;
+}
+.alerta_sucesso{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 60px;
+  align-self: center;
+  width: 80%;
+  border-bottom: 2px solid rgb(221, 0, 0);
+  font-weight: 300;
+  color: rgb(224, 0, 0);
+  font-size: 18px;
+}
 /* -----------------------------------------------------BANNER-LOGIN------------------------------------------------------------------ */
 /* -------- gif do login -------- */
 .loading-div {
   width: 50px;
   margin: auto;
   display: none;
-
 }
 
 .loading-div img {
