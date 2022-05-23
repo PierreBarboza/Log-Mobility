@@ -27,15 +27,15 @@
         </div>
         <ul class="navbar-empress">
           <div class="palavras">
-            <li><a href="cadastrarLinha.html">Cadastrar <br>Linha</a></li>
+            <li><a href="/html/cadastrarLinha.html">Cadastrar <br>Linha</a></li>
             <hr />
-            <li><a href="cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
+            <li><a href="/html/cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
             <hr />
             <li>
-              <a href="linhasCadast.html">Linhas Cadastradas</a>
+              <a href="/html/linhasCadast.html">Linhas Cadastradas</a>
             </li>
             <hr />
-            <li><a href="cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
+            <li><a href="/html/cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
           </div>
         </ul>
       </div>
@@ -59,10 +59,7 @@
                     </div>
                     <div class="boxMenu">
                         <h3>Análise</h3>
-                        <button onclick="obterDadosGrafico()" class="box_a">Hora</button><br>
-                        <button onclick="dia()" class="box_a">Dia</button><br>
-                        <button onclick="mes()" class="box_a">Mês</button><br>
-                        <button onclick="ano()" class="box_a">Ano</button><br>
+                        <button onclick="obterDadosGrafico()" class="box_a">Tempo real</button><br>
                         <button class="box_a">Voltar</button><br>
                     </div>
                 </div>
@@ -148,7 +145,6 @@ function obterDadosGrafico() {
         }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         // alert(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         resposta.reverse();
 
@@ -180,7 +176,6 @@ function obterDadosGrafico() {
             dados.labels.push(resposta[0][0].momento_grafico);
             dados.datasets[0].data.push(qtd_entrada);
         }
-        console.log(JSON.stringify(dados));
         var ctx = canvas_grafico.getContext('2d');
         window.grafico_linha = Chart.Line(ctx, {  
             data: dados,
@@ -226,21 +221,18 @@ function obterDadosGrafico() {
                     }
                         entrada = novoRegistro[0][0].momento
 
-                        console.log(novoRegistro[1][0])
-                        console.log(novoRegistro[0][0])
                         console.log("Fznd a checagem de tempor real")
                         
                         if (check == "" ) {
                             check = entrada
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
                         }
                          else if (check == entrada) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
                         } else {
                             qtd_entrada++
                             check=entrada
                             
-                            console.log(entrada);
                             dados.labels.shift();
                             dados.labels.push(novoRegistro[0][0].momento_grafico);
 
@@ -253,20 +245,19 @@ function obterDadosGrafico() {
                         }                        
                         if (check2 == "" ) {
                             check2 = saida
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
                         }
                         else if (check2 == saida) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 1000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
                         } else {
                             qtd_entrada--
                             check2=saida
-                            console.log(entrada);
                             dados.labels.shift();
                             dados.labels.push(novoRegistro[0][0].momento_grafico);
                             dados.datasets[0].data.shift();
                             dados.datasets[0].data.push(qtd_entrada);
                             window.grafico_linha.update();
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
                             mudar_cor()
                             
                             
@@ -275,7 +266,7 @@ function obterDadosGrafico() {
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
                 }
             })
             .catch(function (error) {
