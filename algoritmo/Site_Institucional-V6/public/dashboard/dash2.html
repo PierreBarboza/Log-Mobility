@@ -248,7 +248,6 @@ function obterDadosGrafico() {
                             dados.datasets[0].data.push(qtd_entrada);
                             window.grafico_linha.update();
                             mudar_cor()
-                            setTimeout(() => {checarAlertas()}, 60000);  
 
                             
                         }                        
@@ -269,7 +268,6 @@ function obterDadosGrafico() {
                             window.grafico_linha.update();
                             proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
                             mudar_cor()
-                          setTimeout(() => {checarAlertas()}, 60000);  
                             
                             
                             
@@ -313,6 +311,7 @@ function obterDadosGrafico() {
 }
 }
 function checarAlertas(){
+    console.log("Chequei os alertas")
     if(qtd_entrada == 0){
         numero_tempo_real.style.borderColor="white"
     aviso.innerHTML=`Onibus vazio por muito tempo alerta sendo enviado`
@@ -352,6 +351,7 @@ function checarAlertas(){
     
 }
 }
+setInterval(() => checarAlertas(),10000);  
 
 
 </script>
