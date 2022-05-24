@@ -1,0 +1,96 @@
+/* ----------------------------------BANNER-CADASTRAR-EMPRESA-------------------------------------------------------- */
+
+.bannerCadastrarEmp {
+  height: 600px;
+  background-image: url(../img/BannerCadastrarEmp.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.bannerCadastrarEmp .containerCadastrarEmp {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+/* --------------------------BOX DE LOGIN-CADASTRAR-EMPRESA------------------------- */
+
+.form-boxCadastrarEmp {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 60%;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.form-boxCadastrarEmp h4 {
+  margin: 15px 0 2px 5px;
+  color: #fff;
+  font: small-caption;
+}
+
+.containerCadastrarEmp h1 {
+  margin-top: 0;
+}
+
+.form-boxCadastrarEmp input {
+  margin: 3px;
+  height: 25px;
+  border: none;
+  border-radius: 15px 0 15px 0;
+  width: 40%;
+  font-size: 15px;
+  outline: none;
+  transition: 160ms;
+}
+.form-boxCadastrarEmp input:focus{
+width: 41%;
+height: 27px;
+}
+
+
+
+.cardCadastrarEmp .containerCadastrarEmp {
+  margin: 15px;
+  height: 50px;
+}
+
+.containerbtn a {
+  color: #e02b23;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+  width: 30%;
+  padding: 6px;
+  transition: 150ms;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.containerbtn a:hover {
+  color: #f7f7f7;
+  background-color: #e02b23;
+}
+
+.bannerCadastrarEmp .cardCadastrarEmp {
+  background-color: #0000007c;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.containerbtn {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 25px;
+  width: 35%;
+  align-self: center;
+}

@@ -1,0 +1,108 @@
+.bannerCalculadoraGestão {
+  background-image: url(../img/background1.png);
+  background-size: cover;
+  height: 600px;
+}
+
+.containerCalculadoraGestão {
+  height: 100%;
+  display: flex;
+  background-image: linear-gradient(to right, rgb(77 74 74 / 54%), #00000054);
+}
+
+.ipt-valor h4 {
+  margin: 0%;
+  font: small-caption;
+  color: rgb(0, 0, 0);
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ipt-valor input {
+  width: 45%;
+  height: 25px;
+  margin-bottom: auto;
+  font-size: 15px;
+}
+
+.ipt-calc {
+  width: 50%;
+  align-self: center;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.ipt-calc h2 {
+  color: rgb(0, 0, 0);
+}
+
+.ipt-valor {
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  justify-content: center;
+}
+
+.containerbutton {
+  width: 80%;
+}
+
+.containerbutton button {
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 0;
+  font-weight: bolder;
+  background-color: #00418c;
+  height: 30px;
+  width: 30%;
+  border: 0;
+  box-shadow: 1px 1px 1px grey;
+  transition: 150ms;
+}
+
+.containerbutton button:hover {
+  border-radius: 100px;
+}
+
+.boxResul {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.boxResul {
+  color: white;
+}
+
+.resul {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.pCalculadora {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+}

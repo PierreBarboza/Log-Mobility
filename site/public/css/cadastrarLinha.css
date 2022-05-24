@@ -1,0 +1,125 @@
+
+.container-login {
+  width: 100%;
+  background-image: url(../img/background-cadastro-linhas.png);
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container-login .formulario {
+  color: aliceblue;
+  width: 400px;
+  height: 500px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario h1 {
+  margin: 20px 0 0 0;
+}
+
+.formulario .butao {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 20px;
+  justify-content: space-evenly;
+}
+
+.formulario .dados {
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  color: white;
+}
+.dados input {
+  height: 25px;
+  border-radius: 15px 0 15px 0;
+  border: none;
+  outline: none;
+  transition: 400ms;
+}
+.dados select {
+  height: 25px;
+  border-radius: 15px 0 15px 0;
+  border: none;
+  outline: none;
+  transition: 400ms;
+}
+
+.dados h4 {
+  margin: 35px 0 0 0;
+  font: small-caption;
+}
+
+.butao button {
+  border: none;
+  border-radius: 10px;
+  font-weight: 300;
+  width: 30%;
+  transition: 150ms;
+  cursor: pointer;
+  height: 40%;
+  transition: 0.80s;
+}
+.butao {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.butao button:hover{
+  color: white;
+  background-color: #00418c;
+}
+.butao a {
+  border: none;
+  border-radius: 10px;
+  font-weight: 300;
+  width: 30%;
+  transition: 150ms;
+  cursor: pointer;
+  height: 40%;
+  transition: 0.80s;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.33px;
+}
+
+.butao a:hover{
+  color: white;
+  background-color: #00418c;
+}
+
+.butao .btnCadastrarLinha {
+  border: none;
+  width: 120%;
+}
+
+a{
+text-decoration: none;
+color: white;
+
+
+}
+
+.butao a {
+color: black;
+
+
+}
+
+.seta_voltar{
+  width: 100%;
+  display: flex;
+}

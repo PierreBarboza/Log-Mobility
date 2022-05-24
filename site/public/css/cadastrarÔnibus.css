@@ -1,0 +1,74 @@
+.container-login {
+  width: 100%;
+  background-image: url(../img/background-cadastro-linhas.png);
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container-login .formulario {
+  color: aliceblue;
+  width: 400px;
+  height: 500px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulario h1 {
+  margin: 20px 0 0 0;
+}
+
+.formulario .butao {
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.formulario .dados {
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  color: white;
+}
+.style-campo-dados {
+  height: 25px;
+  border-radius: 15px 0 15px 0;
+  border: none;
+  outline: none;
+  transition: 400ms;
+}
+
+
+.dados h4 {
+  margin: 35px 0 0 0;
+  font: small-caption;
+}
+
+.butao button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bolder;
+  width: 35%;
+  transition: 150ms;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.80s;
+}
+
+.butao button:hover {
+  color: white;
+  background-color: #00418c;
+}
+
+.butao .btnCadastrarLinha {
+  border: none;
+  width: 120%;
+}

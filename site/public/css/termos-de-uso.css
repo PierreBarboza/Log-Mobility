@@ -1,0 +1,15 @@
+.banner-termos {
+  display: flex;
+  justify-content: center;
+}
+
+.container-termos {
+  display: flex;
+  justify-content: center;
+  padding: 80px;
+  width: 60%;
+  background-color: rgb(187, 187, 187);
+  border-radius: 60px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

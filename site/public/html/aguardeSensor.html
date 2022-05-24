@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/header-footer.css" />
+    <link rel="stylesheet" href="../css/cadastrarÔnibus.css" />
+    <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+    <title>Cadastro de ônibus</title>
+    <script src="../js/funcoes.js"></script>
+</head>
+
+<body onload="gerarSensor()">
+    <!-------------------------------HEADER SITE-------------------------->
+    <!-- <div class="header-das-empreas">
+        <div class="containerLinha">
+          <div class="container-navbarLinha">
+            <div id="div_empresaLogada">
+             
+              
+            </div>
+            <ul class="navbar-empress">
+              <div class="palavras">
+                <li><a href="cadastrarLinha.html">Cadastrar Linha</a></li>
+                <hr />
+                <li><a class="pagina-atual-empresa" href="cadastrarOnibus.html">Cadastrar Onibus</a></li>
+                <hr />
+                <li>
+                  <a href="linhasCadast.html">Linhas Cadastradas</a>
+                </li>
+                <hr />
+                <li><a href="cadastroUsuarioEmpresas.html">Cadastrar Usuario</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="boxSair">
+            <a href="../index.html"> Sair</a>
+          </div>
+        </div>
+      </div> -->
+    <!---------------------------------CORPO DO SITE------------------------------------------>
+    <div class="container-login">
+        <!-- <div class="formulario">
+            <h1>Cadastro de Ônibus</h1>
+
+            <div class="dados">
+                <h4>Numero do ônibus:</h4>
+                <input class="style-campo-dados" id="input_numeroOnibus">
+            </div>
+
+            <div class="dados">
+                <h4>Placa do ônibus:</h4>
+                <input class="style-campo-dados" id="input_placaOnibus" />
+            </div>
+            
+            <div class="dados">
+                <h4>Selecione a Rota: </h4> 
+                <select class="style-campo-dados" id="slt_rotaOnibus"></select> 
+            </div>
+            
+                
+            
+
+            <div class="butao">
+                <button onclick="button_limpar()">Limpar</button>
+                <a><button class="btnCadastrarLinha" onclick="cadastrarOnibus()">Cadastrar</button></a>
+            </div>
+        </div> -->
+    </div>
+    <!---------------------------------RODAPÉ DO SITE------------------------------------------>
+    <div class="footer">
+        <div class="container">
+            <div class="Boxtext">
+                <h2>Saiba Mais</h2>
+                <p><a href="termos-de-uso.html">Termos de Uso</a></p>
+            </div>
+            <div class="Boxtext">
+                <h2>Atendimento</h2>
+                <p><a class="color_efeito" href="mailto:suporte@logmobility.com?subject=Estou com Problemas no Sistema">suporte@logmobility.com</a></p>
+                <p>(11) 1234-5678</p>
+            </div>
+            <div class="RedesSocias">
+                <h2>Redes Sociais</h2>
+                <div class="BoxImgs">
+                    <img class="efeito-scale" src="../img/logo-instagram.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-facebook.png" width="30px" alt="" />
+                    <img class="efeito-scale" src="../img/logo-twitter.png" width="30px" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <div class="direitos">
+            Log Mobility - 2022 Todos os direitos reservados
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function gerarSensor(){
+        
+        fetch(`/usuarios/gerarSensor`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    feed.appendChild(mensagem);
+                    finalizarAguardar();
+                    throw "Nenhum resultado encontrado!!";
+                }
+                  resposta.json().then(function (resposta) {
+                    var feed = document.getElementById("feed_container");
+                      for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i]; // i é a posição 0
+                            console.log(publicacao);
+                            
+                            // Aqui eu crio as var (let é a mesma coisa que var) dos dados que quero apresentar no site:
+                            // Temos que colocar publicação.Nome do campo do banco de dados:
+                            let ultimoOnibus = publicacao.idOnibus
+
+
+                            localStorage.setItem("idOnibusCadastrado",`${ultimoOnibus}`)
+                            cadastrarSensor()
+
+                            // Aqui eu aponto para onde meus dados irão para serem apresentados:
+                            
+                          }
+                    
+                })
+            } else {
+                throw ('Houve um erro na API!');
+                
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            
+        });
+    }
+    function cadastrarSensor(){
+            var onibusAtualVar = localStorage.idOnibusCadastrado
+            if (
+                onibusAtualVar == "" 
+        ) {
+          alert ("Existem campos não preenchidos")
+      }
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrarSensor", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js              
+              onibusAtualServer : onibusAtualVar  
+                
+          })
+      })
+      
+
+
+
+      window.location.href = "linhasCadast.html"
+    }
+    
+    
+    
+</script>

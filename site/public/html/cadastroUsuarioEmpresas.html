@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/header-footer.css" />
+  <link rel="stylesheet" href="../css/cadastrarLinha.css" />
+  <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
+  <title>Cadastro de Usuário</title>
+  <script src="../js/funcoes.js"></script>
+  <script src="//code.jivosite.com/widget/fICoc6GW84" async></script>
+</head>
+
+<body>
+  <!-------------------------------HEADER SITE-------------------------->
+  <div class="header-das-empreas">
+    <div class="containerLinha">
+      <div class="container-navbarLinha">
+        <div id="div_empresaLogada">
+         
+          
+        </div>
+        <ul class="navbar-empress">
+          <div class="palavras">
+            <li><a href="cadastrarLinha.html">Cadastrar <br>Linha</a></li>
+            <hr />
+            <li><a href="cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
+            <hr />
+            <li>
+              <a href="linhasCadast.html">Linhas Cadastradas</a>
+            </li>
+            <hr />
+            <li><a class="pagina-atual-empresa" href="cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
+          </div>
+        </ul>
+      </div>
+      <div class="boxSair">
+        <a href="../index.html"> Sair</a>
+      </div>
+    </div>
+  </div>
+  <!---------------------------------CORPO DO SITE------------------------------------------>
+  <div class="container-login">
+    <div class="formulario">
+      <h1>Cadastro de Usuário</h1>
+
+      <div class="dados">
+        <h4>Email do funcionario:</h4>
+        <input id="input_emailfunc">
+      </div>
+
+      <div class="dados">
+        <h4>Senha do usuario:</h4>
+        <input id="input_senhafunc" />
+      </div>
+
+      <div class="butao">
+        <button onclick="button_limpar()">Limpar</button>
+        <button onclick="cadastro()">Cadastrar</button>
+        <a href="../html/linhasCadast.html">Finalizar<br>Cadastro</a>
+      </div>
+    </div>
+  </div>
+  <!---------------------------------RODAPÉ DO SITE------------------------------------------>
+  <div class="footer">
+    <div class="container">
+      <div class="Boxtext">
+        <h2>Saiba Mais</h2>
+        <p><a href="termos-de-uso.html">Termos de Uso</a></p>
+      </div>
+      <div class="Boxtext">
+        <h2>Atendimento</h2>
+        <p><a class="color_efeito" href="mailto:suporte@logmobility.com?subject=Estou com Problemas no Sistema">suporte@logmobility.com</a></p>
+        <p>(11) 1234-5678</p>
+      </div>
+      <div class="RedesSocias">
+        <h2>Redes Sociais</h2>
+        <div class="BoxImgs">
+          <img class="efeito-scale" src="../img/logo-instagram.png" width="30px" alt="" />
+          <img class="efeito-scale" src="../img/logo-facebook.png" width="30px" alt="" />
+          <img class="efeito-scale" src="../img/logo-twitter.png" width="30px" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="direitos">
+      Log Mobility - 2022 Todos os direitos reservados
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+        var idEmpresa = sessionStorage.getItem('idEmpresa_USUARIO');
+        var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
+        div_empresaLogada.innerHTML= `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
+  function cadastro() { 
+      var emailfuncVar = input_emailfunc.value
+      var senhafuncVar = input_senhafunc.value
+      var empresafuncVar = idEmpresa
+      if (
+        emailfuncVar == "" || senhafuncVar == "" || empresafuncVar == ""
+        ) {
+          alert ("Existem campos não preenchidos")
+      }
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrarfunc", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js              
+              emailfuncServer : emailfuncVar,
+              senhafuncServer : senhafuncVar,
+              empresafuncServer : empresafuncVar              
+          })
+      })
+      window.location.href = "../html/linhasCadast.html" 
+  }
+  function button_limpar(){
+    input_nomeLinha.value = "";
+    input_rota.value = "";
+  }
+</script>
