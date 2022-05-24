@@ -309,31 +309,31 @@ function checarAlertas(){
     aviso.style.borderColor="white"
     aviso.style.color="white"
     document.getElementById("aviso").style.display="flex"
-} else if(qtd_entrada <10){
+} else if(qtd_entrada <5){
     numero_tempo_real.style.borderColor="#2E86C1"
     aviso.innerHTML=`Onibus com nivel de movimento baixo`
     aviso.style.borderColor="#2E86C1"
     aviso.style.color="#2E86C1"
     document.getElementById("aviso").style.display="flex"
     
-}else if(qtd_entrada<25){
+}else if(qtd_entrada<7){
     numero_tempo_real.style.borderColor="#2ECC71"
     aviso.style.borderColor="#2ECC71"
     aviso.style.color="#2ECC71"
-}else if(qtd_entrada<44){
+}else if(qtd_entrada<9){
     numero_tempo_real.style.borderColor="#F1C40F"
     aviso.innerHTML=`Onibus perto do limite de passageiros!`
     aviso.style.borderColor="#F1C40F"
     aviso.style.color="#F1C40F"
     document.getElementById("aviso").style.display="flex"
-}else if(qtd_entrada==45){
+}else if(qtd_entrada==10){
     numero_tempo_real.style.borderColor="crimson"
     aviso.innerHTML=`Onibus no limite de passageiros alerta sendo enviado`
     aviso.style.borderColor="crimson"
     aviso.style.color="crimson"
     document.getElementById("aviso").style.display="flex"
     
-}else if (qtd_entrada>45){
+}else if (qtd_entrada>10){
     numero_tempo_real.style.borderColor="#8E44AD"
     aviso.innerHTML=`Onibus acima do limite de passageiros alerta sendo enviado!`
     aviso.style.borderColor="#8E44AD"
