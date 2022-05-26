@@ -89,11 +89,12 @@ function deletar(idAviso) {
     return database.executar(instrucao);
 }
 
+
 module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
 }

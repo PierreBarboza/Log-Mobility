@@ -131,6 +131,7 @@ function deletar(req, res) {
         );
 }
 
+
 module.exports = {
     testar,
     listar,
@@ -138,5 +139,5 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
 }

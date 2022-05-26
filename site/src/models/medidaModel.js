@@ -79,9 +79,20 @@ function buscarMedidasEmTempoReal(idAquario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function gerarAlerta( tipoRegistro,onibus) {
+    console.log(tipoRegistro)
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ",tipoRegistro,onibus);
+    var instrucao = `
+        INSERT INTO Central (fkAlerta, fkAlertaOnibus, dtAlerta) VALUES ('${tipoRegistro}', '${onibus}',CURRENT_TIMESTAMP);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    gerarAlerta
+
 }

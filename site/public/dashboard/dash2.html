@@ -121,19 +121,37 @@
 </html>
 
 <script>
+    var Onibus= localStorage.getItem('Escolha_onibus');
     var entrada = ""
     var saida = ""
     var check = ""
     var check2 = ""
     var qtd_entrada = 0
+    var tipo_registro=""
     var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
     var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
     div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
 mudar_cor()
-
+alert(Onibus)
 
 
 let proximaAtualizacao;
+function enviarAlerta() { 
+
+      
+// Enviando o valor da nova input
+fetch("/medidas/gerarAlerta", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+  tipo_resultadoServer:tipo_registro ,    
+  onibusServer:Onibus     
+    })
+    
+})
+}
 function obterDadosGrafico() {
         var idAquario = localStorage.Escolha_onibus;
         
@@ -226,10 +244,10 @@ function obterDadosGrafico() {
                         
                         if (check == "" ) {
                             check = entrada
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
                         }
                          else if (check == entrada) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
                         } else {
                             qtd_entrada++
                             check=entrada
@@ -246,10 +264,10 @@ function obterDadosGrafico() {
                         }                        
                         if (check2 == "" ) {
                             check2 = saida
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
                         }
                         else if (check2 == saida) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
                         } else {
                             qtd_entrada--
                             check2=saida
@@ -258,7 +276,7 @@ function obterDadosGrafico() {
                             dados.datasets[0].data.shift();
                             dados.datasets[0].data.push(qtd_entrada);
                             window.grafico_linha.update();
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
                             mudar_cor()
                             
                             
@@ -267,7 +285,7 @@ function obterDadosGrafico() {
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 5000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
                 }
             })
             .catch(function (error) {
@@ -310,12 +328,16 @@ function checarAlertas(){
     aviso.style.borderColor="white"
     aviso.style.color="white"
     document.getElementById("aviso").style.display="flex"
+    tipo_registro=1
+    enviarAlerta() 
 } else if(qtd_entrada <5){
     numero_tempo_real.style.borderColor="#2E86C1"
     aviso.innerHTML=`Onibus com nivel de movimento baixo`
     aviso.style.borderColor="#2E86C1"
     aviso.style.color="#2E86C1"
     document.getElementById("aviso").style.display="flex"
+    tipo_registro=2
+    enviarAlerta() 
     
 }else if(qtd_entrada<7){
     numero_tempo_real.style.borderColor="#2ECC71"
@@ -327,12 +349,16 @@ function checarAlertas(){
     aviso.style.borderColor="#F1C40F"
     aviso.style.color="#F1C40F"
     document.getElementById("aviso").style.display="flex"
+    tipo_registro=3
+    enviarAlerta() 
 }else if(qtd_entrada==10){
     numero_tempo_real.style.borderColor="crimson"
     aviso.innerHTML=`Onibus no limite de passageiros alerta sendo enviado`
     aviso.style.borderColor="crimson"
     aviso.style.color="crimson"
     document.getElementById("aviso").style.display="flex"
+    tipo_registro=4
+    enviarAlerta() 
     
 }else if (qtd_entrada>10){
     numero_tempo_real.style.borderColor="#8E44AD"
@@ -340,10 +366,11 @@ function checarAlertas(){
     aviso.style.borderColor="#8E44AD"
     aviso.style.color="#8E44AD"
     document.getElementById("aviso").style.display="flex"
-    
+    tipo_registro=4
+    enviarAlerta()
 }
 }
-setInterval(() => checarAlertas(),10000);  
+setInterval(() => checarAlertas(),30000);  
 
 
 </script>
