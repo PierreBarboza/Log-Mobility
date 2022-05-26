@@ -9,6 +9,9 @@ var usuarioController = require("../controllers/usuarioController");
 router.get("/listarEmpresasCadastradas", function (req, res) {
     usuarioController.listarEmpresasCadastradas(req, res);
 });
+router.post("/gerarResumos", function (req, res) {
+    usuarioController.gerarResumo(req, res);
+});
 //Lista de linhas das empresas cadastradas:
 router.get("/listarlinhas/:idEmpresa", function (req, res) {
     usuarioController.listarlinhas(req, res);

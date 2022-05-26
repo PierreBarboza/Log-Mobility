@@ -57,6 +57,24 @@ function listagemonibustabela(req, res) {
             }
         );
 }
+function gerarResumo(req, res)
+{ console.log(req.params.onibusServer)
+var onibus =req.params.onibusServer; 
+   usuarioModel.gerarResumo(onibus)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+        }
 //------------
 function gerarSensor(req, res) {
     var rotaEscolhida = req.params.rotaEscolhidaVar;
@@ -302,5 +320,6 @@ module.exports = {
     gerarSensor,
     listarEmpresasCadastradas,
     cadastrarSensor,
-    testar    
+    testar,
+    gerarResumo
 }
