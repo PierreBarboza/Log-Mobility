@@ -22,7 +22,7 @@ function listarEmpresasCadastradas(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-} 
+}
 function listarlinhas(req, res) {
     var varIdEmpresa = req.params.idEmpresa;
     usuarioModel.listarlinhas(varIdEmpresa)
@@ -57,13 +57,13 @@ function listagemonibustabela(req, res) {
             }
         );
 }
-function gerarResumo(req, res)
-{ console.log(req.params.onibusServer)
-var onibus =req.params.onibusServer; 
-   usuarioModel.gerarResumo(onibus)
+function gerarResumo(req, res) {
+    var onibus = req.body.onibusServer;
+    usuarioModel.gerarResumo(onibus)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
+                console.log(resultado)
             } else {
                 res.status(204).send("Nenhum resultado encontrado!")
             }
@@ -74,7 +74,7 @@ var onibus =req.params.onibusServer;
                 res.status(500).json(erro.sqlMessage);
             }
         );
-        }
+}
 //------------
 function gerarSensor(req, res) {
     var rotaEscolhida = req.params.rotaEscolhidaVar;
@@ -229,9 +229,9 @@ function cadastrolinha(req, res) {
         res.status(400).send("Sua nomeLinha está undefined!");
     } else if (rota == undefined) {
         res.status(400).send("Sua rota está undefined!");
-    }else if (empresapert == undefined) {
+    } else if (empresapert == undefined) {
         res.status(400).send("Sua empresapert está undefined!");
-    }else {
+    } else {
         // Aqui encaminhamos ela para o usuarioModel.js:
         usuarioModel.cadastrolinha(nomeLinha, rota, empresapert)
             .then(
@@ -253,16 +253,16 @@ function cadastrolinha(req, res) {
 function cadastrarOnibus(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo .html:
     var numeroOnibus = req.body.numeroOnibusServer
-    var placaOnibus = req.body.placaOnibusServer  
+    var placaOnibus = req.body.placaOnibusServer
     var rotaOnibus = req.body.rotaOnibusServer
     //Verificações das variaveis:
     if (numeroOnibus == undefined) {
         res.status(400).send("Sua numeroOnibus está undefined!");
     } else if (placaOnibus == undefined) {
         res.status(400).send("Sua placaOnibus está undefined!");
-    }else if (rotaOnibus == undefined) {
+    } else if (rotaOnibus == undefined) {
         res.status(400).send("Sua rotaOnibus está undefined!");
-    }else {
+    } else {
         // Aqui encaminhamos ela para o usuarioModel.js:
         usuarioModel.cadastrarOnibus(numeroOnibus, placaOnibus, rotaOnibus)
             .then(
@@ -284,11 +284,11 @@ function cadastrarOnibus(req, res) {
 function cadastrarSensor(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo .html:
     var onibusAtual = req.body.onibusAtualServer
-    
+
     //Verificações das variaveis:
     if (onibusAtual == undefined) {
         res.status(400).send("Sua onibusAtual está undefined!");
-    }else {
+    } else {
         // Aqui encaminhamos ela para o usuarioModel.js:
         usuarioModel.cadastrarSensor(onibusAtual)
             .then(

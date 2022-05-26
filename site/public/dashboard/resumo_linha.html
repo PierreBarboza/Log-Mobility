@@ -19,75 +19,79 @@
 <body class="background-dashboard">
 
     <!-------------------------------HEADER SITE-------------------------->
-  <div class="header-das-empreas">
-    <div class="containerLinha">
-      <div class="container-navbarLinha">
-        <div id="div_empresaLogada_nav">
-            <!-- - Nome da Empresa aqui de acordo com storage-- -->
+    <div class="header-das-empreas">
+        <div class="containerLinha">
+            <div class="container-navbarLinha">
+                <div id="div_empresaLogada_nav">
+                    <!-- - Nome da Empresa aqui de acordo com storage-- -->
+                </div>
+                <ul class="navbar-empress">
+                    <div class="palavras">
+                        <li><a href="/html/cadastrarLinha.html">Cadastrar <br>Linha</a></li>
+                        <hr />
+                        <li><a href="/html/cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
+                        <hr />
+                        <li>
+                            <a href="/html/linhasCadast.html">Linhas Cadastradas</a>
+                        </li>
+                        <hr />
+                        <li><a href="/html/cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="boxSair">
+                <a href="../index.html"> Sair</a>
+            </div>
         </div>
-        <ul class="navbar-empress">
-          <div class="palavras">
-            <li><a href="/html/cadastrarLinha.html">Cadastrar <br>Linha</a></li>
-            <hr />
-            <li><a href="/html/cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
-            <hr />
-            <li>
-              <a href="/html/linhasCadast.html">Linhas Cadastradas</a>
-            </li>
-            <hr />
-            <li><a href="/html/cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
-          </div>
-        </ul>
-      </div>
-      <div class="boxSair">
-        <a href="../index.html"> Sair</a>
-      </div>
     </div>
-  </div>
 
 
     <!-- banner -->
 
     <div class="banner">
-        <div class="container_lateral"> 
-             <div class="container-logo">
+        <div class="container_lateral">
+            <div class="container-logo">
                 <div class="boxLogo">
                     <div id="div_empresaLogada">
                     </div>
                 </div>
-            <button class="box_a" >Voltar</button>
-            
-        </div></div>
+                <button onclick="voltar()" class="box_a">Voltar</button>
+
+            </div>
+        </div>
         <div class="div_direita_resumo">
             <div class="texto_resumo">
                 Ultimos Alertas da linha
             </div>
             <div class="container_resumos">
-                <div class="card_resumo">
-                    <div class="txt_dado">
-                        <h2>tipo de alerta</h2>
-                        <h3>Alertas registrados</h3>
-                    </div>
-                </div>  <div class="card_resumo">
-                    <div class="txt_dado">
-                        <h2>tipo de alerta</h2>
-                        <h3>Alertas registrados</h3>
-                    </div>
-                </div>  <div class="card_resumo">
-                    <div class="txt_dado">
-                        <h2>tipo de alerta</h2>
-                        <h3>Alertas registrados</h3>
-                    </div>
-                </div>  <div class="card_resumo">
-                    <div class="txt_dado">
-                        <h2>tipo de alerta</h2>
-                        <h3>Alertas registrados</h3>
+                <div id="onibus_vazio" class="card_resumo">
+                    <div id="txt_vazio" class="txt_dado_vazio">
+                        <h2></h2>
+                        <h3></h3>
                     </div>
                 </div>
-                
+                <div id="onibus_baixo" class="card_resumo">
+                    <div class="txt_dado_baixo">
+                        <h2></h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div id="prox_capacidade" class="card_resumo">
+                    <div class="txt_dado_prox_capacidade">
+                        <h2></h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div id="capacidade" class="card_resumo">
+                    <div class="txt_dado_capacidade">
+                        <h2></h2>
+                        <h3></h3>
+                    </div>
+                </div>
+
             </div>
         </div>
-       
+
     </div>
     </div>
 
@@ -124,40 +128,73 @@
 </html>
 
 <script>
-    var onibus= localStorage.getItem('Escolha_onibus');
+    var onibus = localStorage.getItem('Escolha_onibus');
     var entrada = ""
     var saida = ""
     var check = ""
     var check2 = ""
     var qtd_entrada = 0
-    var tipo_registro=""
+    var tipo_registro = ""
     var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
     var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
     div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
 
+    function voltar() {
+        window.location = "dash2.html"
 
+    }
 
 
     window.onload = function gerarResumos() {
         fetch("/usuarios/gerarResumos", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        onibusServer: onibus
-        
-      } )
-    }) .then(function (resposta) {
-            if (resposta.ok) {
-                console.log(then)
-               
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                onibusServer: onibus
+
+            })
+        }).then(function (resultado) {
+            if (true) {
+                resultado.json()
+                    .then(json => {
+                        console.log(json);
+                        var alerta_onibus_vazio = json.filter(res => res.fkAlerta == 1)
+                        var alerta_nivel_abaixo = json.filter(res => res.fkAlerta == 2)
+                        var alerta_proximo_da_capacidade_maxima = json.filter(res => res.fkAlerta == 3)
+                        var alerta_lotacao_maxima = json.filter(res => res.fkAlerta == 4)
+                        onibus_vazio.innerHTML = `
+                        <div class="txt_dado_vazio">
+                        <h2>Alertas de onibus vazio</h2>
+                        <h3>Alertas registrados : ${alerta_onibus_vazio.length}</h3>
+                    </div>`
+                        onibus_baixo.innerHTML = `
+                        <div class="txt_dado_baixo">
+                        <h2>Alerta onibus com movimento baixo</h2>
+                        <h3>Alertas registrados : ${alerta_nivel_abaixo.length}</h3>
+                    </div>`
+                        prox_capacidade.innerHTML = `
+                        <div class="txt_dado_prox_capacidade">
+                        <h2>Alerta onibus perto do limite de passageiros</h2>
+                        <h3>Alertas registrados : ${alerta_proximo_da_capacidade_maxima.length}</h3>
+                    </div>`
+                        capacidade.innerHTML = `
+                        <div class="txt_dado_capacidade">
+                        <h2>Alerta onibus Viajando na capacidade maxima</h2>
+                        <h3>Alertas registrados : ${alerta_lotacao_maxima.length}</h3>
+                    </div>`
+
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
             } else {
                 throw ('Houve um erro na API!');
                 finalizarAguardar();
             }
-        }).catch(function (resposta) {
-            console.error(resposta);
+        }).catch(function (resultado) {
+            console.error(resultado);
             finalizarAguardar();
         });
     }

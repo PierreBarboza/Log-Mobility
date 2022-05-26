@@ -19,31 +19,31 @@
 <body class="background-dashboard">
 
     <!-------------------------------HEADER SITE-------------------------->
-  <div class="header-das-empreas">
-    <div class="containerLinha">
-      <div class="container-navbarLinha">
-        <div id="div_empresaLogada_nav">
-            <!-- - Nome da Empresa aqui de acordo com storage-- -->
+    <div class="header-das-empreas">
+        <div class="containerLinha">
+            <div class="container-navbarLinha">
+                <div id="div_empresaLogada_nav">
+                    <!-- - Nome da Empresa aqui de acordo com storage-- -->
+                </div>
+                <ul class="navbar-empress">
+                    <div class="palavras">
+                        <li><a href="/html/cadastrarLinha.html">Cadastrar <br>Linha</a></li>
+                        <hr />
+                        <li><a href="/html/cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
+                        <hr />
+                        <li>
+                            <a href="/html/linhasCadast.html">Linhas Cadastradas</a>
+                        </li>
+                        <hr />
+                        <li><a href="/html/cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="boxSair">
+                <a href="../index.html"> Sair</a>
+            </div>
         </div>
-        <ul class="navbar-empress">
-          <div class="palavras">
-            <li><a href="/html/cadastrarLinha.html">Cadastrar <br>Linha</a></li>
-            <hr />
-            <li><a href="/html/cadastrarOnibus.html">Cadastrar <br>Onibus</a></li>
-            <hr />
-            <li>
-              <a href="/html/linhasCadast.html">Linhas Cadastradas</a>
-            </li>
-            <hr />
-            <li><a href="/html/cadastroUsuarioEmpresas.html">Cadastrar Usuário</a></li>
-          </div>
-        </ul>
-      </div>
-      <div class="boxSair">
-        <a href="../index.html"> Sair</a>
-      </div>
     </div>
-  </div>
 
 
     <!-- banner -->
@@ -60,12 +60,12 @@
                     <div class="boxMenu">
                         <h3>Análise</h3>
                         <button onclick="obterDadosGrafico()" class="box_a">Tempo real</button><br>
-                        <button class="box_a">Voltar</button><br>
                         <a href="resumo_linha.html"><button class="box_a">Resumo</button><br></a>
+                        <button class="box_a">Voltar</button><br>
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="div_direita">
             <div id="aviso" class="aviso"></div>
@@ -73,7 +73,7 @@
                 <div class="titulo_tipo">
                     <span>Fluxo de pessoas em tempo real :</span><br>
                     <div class="analytics">
-                        <div  id="numero_tempo_real" class="container_analytics">
+                        <div id="numero_tempo_real" class="container_analytics">
                             24
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <canvas id="canvas_grafico"></canvas>
                 </div>
             </div>
-            
+
         </div>
     </div>
     </div>
@@ -122,63 +122,63 @@
 </html>
 
 <script>
-    var Onibus= localStorage.getItem('Escolha_onibus');
+    var Onibus = localStorage.getItem('Escolha_onibus');
     var entrada = ""
     var saida = ""
     var check = ""
     var check2 = ""
     var qtd_entrada = 0
-    var tipo_registro=""
+    var tipo_registro = ""
     var idOnibus = sessionStorage.getItem('idEmpresa_USUARIO');
     var nomeheader = sessionStorage.getItem('EMPRESA_USUARIO');
     div_empresaLogada.innerHTML = `Olá, <span class="nome_da_empresa">${nomeheader}</span> `
-mudar_cor()
-alert(Onibus)
+    mudar_cor()
 
 
 
-let proximaAtualizacao;
-function enviarAlerta() { 
+    let proximaAtualizacao;
+    function enviarAlerta() {
 
-      
-// Enviando o valor da nova input
-fetch("/medidas/gerarAlerta", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-  tipo_resultadoServer:tipo_registro ,    
-  onibusServer:Onibus     
-    })
-    
-})
-}
-function obterDadosGrafico() {
+
+        // Enviando o valor da nova input
+        fetch("/medidas/gerarAlerta", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tipo_resultadoServer: tipo_registro,
+                onibusServer: Onibus
+            })
+
+        })
+    }
+    function obterDadosGrafico() {
         var idAquario = localStorage.Escolha_onibus;
-        
+
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
-        
+
         fetch(`/medidas/ultimas/${idAquario}`, {
             cache: 'no-store'
         }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        // alert(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    // alert(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-                        plotarGrafico(resposta, idAquario);
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
+                    plotarGrafico(resposta, idAquario);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });}
-    
+            });
+    }
+
     function plotarGrafico(resposta, idAquario) {
         console.log('iniciando plotagem do gráfico...');
         var dados = {
@@ -198,7 +198,7 @@ function obterDadosGrafico() {
             dados.datasets[0].data.push(qtd_entrada);
         }
         var ctx = canvas_grafico.getContext('2d');
-        window.grafico_linha = Chart.Line(ctx, {  
+        window.grafico_linha = Chart.Line(ctx, {
             data: dados,
             options: {
                 responsive: true,
@@ -229,150 +229,150 @@ function obterDadosGrafico() {
         setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
     }
     function atualizarGrafico(idAquario, dados) {
-        
+
         fetch(`/medidas/tempo-real/${idAquario}`, {
             cache: 'no-store'
         }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
-                    if(novoRegistro[1][0]==undefined){
-                        saida=""
-                    }else if (novoRegistro!=""){
+                    if (novoRegistro[1][0] == undefined) {
+                        saida = ""
+                    } else if (novoRegistro != "") {
                         saida = novoRegistro[1][0].momento
                     }
-                        entrada = novoRegistro[0][0].momento
+                    entrada = novoRegistro[0][0].momento
 
-                        console.log("Fznd a checagem de tempor real")
-                        
-                        if (check == "" ) {
-                            check = entrada
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
-                        }
-                         else if (check == entrada) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
-                        } else {
-                            qtd_entrada++
-                            check=entrada
-                            
-                            dados.labels.shift();
-                            dados.labels.push(novoRegistro[0][0].momento_grafico);
+                    console.log("Fznd a checagem de tempor real")
 
-                            dados.datasets[0].data.shift();
-                            dados.datasets[0].data.push(qtd_entrada);
-                            window.grafico_linha.update();
-                            mudar_cor()
+                    if (check == "") {
+                        check = entrada
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
+                    }
+                    else if (check == entrada) {
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
+                    } else {
+                        qtd_entrada++
+                        check = entrada
 
-                            
-                        }                        
-                        if (check2 == "" ) {
-                            check2 = saida
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
-                        }
-                        else if (check2 == saida) {
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
-                        } else {
-                            qtd_entrada--
-                            check2=saida
-                            dados.labels.shift();
-                            dados.labels.push(novoRegistro[0][0].momento_grafico);
-                            dados.datasets[0].data.shift();
-                            dados.datasets[0].data.push(qtd_entrada);
-                            window.grafico_linha.update();
-                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
-                            mudar_cor()
-                            
-                            
-                            
-                        }
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
-                }
-            })
+                        dados.labels.shift();
+                        dados.labels.push(novoRegistro[0][0].momento_grafico);
+
+                        dados.datasets[0].data.shift();
+                        dados.datasets[0].data.push(qtd_entrada);
+                        window.grafico_linha.update();
+                        mudar_cor()
+
+
+                    }
+                    if (check2 == "") {
+                        check2 = saida
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
+                    }
+                    else if (check2 == saida) {
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
+                    } else {
+                        qtd_entrada--
+                        check2 = saida
+                        dados.labels.shift();
+                        dados.labels.push(novoRegistro[0][0].momento_grafico);
+                        dados.datasets[0].data.shift();
+                        dados.datasets[0].data.push(qtd_entrada);
+                        window.grafico_linha.update();
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
+                        mudar_cor()
+
+
+
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 10000);
+            }
+        })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
 
-    
-    function mudar_cor(){
-        if(qtd_entrada == 0){
-            numero_tempo_real.style.borderColor="white"
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
 
-        } else if(qtd_entrada <5){
-            numero_tempo_real.style.borderColor="#2E86C1"
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
+    function mudar_cor() {
+        if (qtd_entrada == 0) {
+            numero_tempo_real.style.borderColor = "white"
+            numero_tempo_real.innerHTML = `${qtd_entrada}`
 
-}else if(qtd_entrada<7){
-    numero_tempo_real.style.borderColor="#2ECC71"
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
+        } else if (qtd_entrada < 5) {
+            numero_tempo_real.style.borderColor = "#2E86C1"
+            numero_tempo_real.innerHTML = `${qtd_entrada}`
 
-}else if(qtd_entrada<9){
-    numero_tempo_real.style.borderColor="#F1C40F"
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
+        } else if (qtd_entrada < 7) {
+            numero_tempo_real.style.borderColor = "#2ECC71"
+            numero_tempo_real.innerHTML = `${qtd_entrada}`
 
-}else if(qtd_entrada==10){
-    numero_tempo_real.style.borderColor="crimson"
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
+        } else if (qtd_entrada < 9) {
+            numero_tempo_real.style.borderColor = "#F1C40F"
+            numero_tempo_real.innerHTML = `${qtd_entrada}`
 
-}else if (qtd_entrada>10){
-    numero_tempo_real.innerHTML=`${qtd_entrada}`
+        } else if (qtd_entrada == 10) {
+            numero_tempo_real.style.borderColor = "crimson"
+            numero_tempo_real.innerHTML = `${qtd_entrada}`
 
-}
-}
-function checarAlertas(){
-    console.log("Chequei os alertas")
-    if(qtd_entrada == 0){
-        numero_tempo_real.style.borderColor="white"
-    aviso.innerHTML=`Onibus vazio por muito tempo alerta sendo enviado`
-    aviso.style.borderColor="white"
-    aviso.style.color="white"
-    document.getElementById("aviso").style.display="flex"
-    tipo_registro=1
-    enviarAlerta() 
-} else if(qtd_entrada <5){
-    numero_tempo_real.style.borderColor="#2E86C1"
-    aviso.innerHTML=`Onibus com nivel de movimento baixo`
-    aviso.style.borderColor="#2E86C1"
-    aviso.style.color="#2E86C1"
-    document.getElementById("aviso").style.display="flex"
-    tipo_registro=2
-    enviarAlerta() 
-    
-}else if(qtd_entrada<7){
-    numero_tempo_real.style.borderColor="#2ECC71"
-    aviso.style.borderColor="#2ECC71"
-    aviso.style.color="#2ECC71"
-}else if(qtd_entrada<9){
-    numero_tempo_real.style.borderColor="#F1C40F"
-    aviso.innerHTML=`Onibus perto do limite de passageiros!`
-    aviso.style.borderColor="#F1C40F"
-    aviso.style.color="#F1C40F"
-    document.getElementById("aviso").style.display="flex"
-    tipo_registro=3
-    enviarAlerta() 
-}else if(qtd_entrada==10){
-    numero_tempo_real.style.borderColor="crimson"
-    aviso.innerHTML=`Onibus no limite de passageiros alerta sendo enviado`
-    aviso.style.borderColor="crimson"
-    aviso.style.color="crimson"
-    document.getElementById("aviso").style.display="flex"
-    tipo_registro=4
-    enviarAlerta() 
-    
-}else if (qtd_entrada>10){
-    numero_tempo_real.style.borderColor="#8E44AD"
-    aviso.innerHTML=`Onibus acima do limite de passageiros alerta sendo enviado!`
-    aviso.style.borderColor="#8E44AD"
-    aviso.style.color="#8E44AD"
-    document.getElementById("aviso").style.display="flex"
-    tipo_registro=4
-    enviarAlerta()
-}
-}
-setInterval(() => checarAlertas(),30000);  
+        } else if (qtd_entrada > 10) {
+            numero_tempo_real.innerHTML = `${qtd_entrada}`
+
+        }
+    }
+    function checarAlertas() {
+        console.log("Chequei os alertas")
+        if (qtd_entrada == 0) {
+            numero_tempo_real.style.borderColor = "white"
+            aviso.innerHTML = `Onibus vazio por muito tempo alerta sendo enviado`
+            aviso.style.borderColor = "white"
+            aviso.style.color = "white"
+            document.getElementById("aviso").style.display = "flex"
+            tipo_registro = 1
+            enviarAlerta()
+        } else if (qtd_entrada < 5) {
+            numero_tempo_real.style.borderColor = "#2E86C1"
+            aviso.innerHTML = `Onibus com nivel de movimento baixo`
+            aviso.style.borderColor = "#2E86C1"
+            aviso.style.color = "#2E86C1"
+            document.getElementById("aviso").style.display = "flex"
+            tipo_registro = 2
+            enviarAlerta()
+
+        } else if (qtd_entrada < 7) {
+            numero_tempo_real.style.borderColor = "#2ECC71"
+            aviso.style.borderColor = "#2ECC71"
+            aviso.style.color = "#2ECC71"
+        } else if (qtd_entrada < 9) {
+            numero_tempo_real.style.borderColor = "#F1C40F"
+            aviso.innerHTML = `Onibus perto do limite de passageiros!`
+            aviso.style.borderColor = "#F1C40F"
+            aviso.style.color = "#F1C40F"
+            document.getElementById("aviso").style.display = "flex"
+            tipo_registro = 3
+            enviarAlerta()
+        } else if (qtd_entrada == 10) {
+            numero_tempo_real.style.borderColor = "crimson"
+            aviso.innerHTML = `Onibus no limite de passageiros alerta sendo enviado`
+            aviso.style.borderColor = "crimson"
+            aviso.style.color = "crimson"
+            document.getElementById("aviso").style.display = "flex"
+            tipo_registro = 4
+            enviarAlerta()
+
+        } else if (qtd_entrada > 10) {
+            numero_tempo_real.style.borderColor = "#8E44AD"
+            aviso.innerHTML = `Onibus acima do limite de passageiros alerta sendo enviado!`
+            aviso.style.borderColor = "#8E44AD"
+            aviso.style.color = "#8E44AD"
+            document.getElementById("aviso").style.display = "flex"
+            tipo_registro = 4
+            enviarAlerta()
+        }
+    }
+    setInterval(() => checarAlertas(), 30000);
 
 
 </script>
