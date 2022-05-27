@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/header-footer.css" type="text/css" />
   <link rel="stylesheet" href="../css/cadastrarEmp.css" type="text/css" />
+  <link rel="stylesheet" href="../css/alertas.css">
   <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
   <title>Cadastro de empresa</title>
   <script src="../js/funcoes.js"></script>
@@ -47,34 +48,39 @@
       <h1>Cadastro de Empresa</h1>
       <div class="form-boxCadastrarEmp">
         <h4>Nome da Empresa:</h4>
-        <input id="input_nomeEmpresa" type="text" />
+        <input id="input_nomeEmpresa" type="text" onclick="limparBorda_de_erro()"/>
         <h4>CNPJ:</h4>
-        <input id="input_CNPJ" type="text" />
+        <input id="input_CNPJ" type="text" onclick="limparBorda_de_erro()"/>
         <h4>CEP:</h4>
         <input id="input_cep" onblur="pesquisacep(this.value);" type="text" />
         <h4>Numero:</h4>
-        <input id="input_numero" type="text" />
+        <input id="input_numero" type="text" onclick="limparBorda_de_erro()"/>
         <h4>Rua:</h4>
-        <input id="input_rua" type="text" />        
+        <input id="input_rua" type="text" onclick="limparBorda_de_erro()"/>        
         <h4>Bairro:</h4>
-        <input id="input_bairro" type="text" />
+        <input id="input_bairro" type="text" onclick="limparBorda_de_erro()"/>
         <h4>Cidade:</h4>
-        <input id="input_cidade" type="text" />
+        <input id="input_cidade" type="text" onclick="limparBorda_de_erro()"/>
         <h4>UF:</h4>
-        <input id="input_estado" type="text" />       
+        <input id="input_estado" type="text" onclick="limparBorda_de_erro()"/>       
         <h4>Telefone (1):</h4>
-        <input id="input_telefone1" type="text" />
+        <input id="input_telefone1" type="text" onclick="limparBorda_de_erro()"/>
         <h4>Telefone (2):</h4>
-        <input id="input_telefone2" type="text" />
-        
-        
+        <input id="input_telefone2" type="text" onclick="limparBorda_de_erro()"/>
+
+        <div id="caixa_de_alerta_2" class="box_alert_2">
+          <div id="mensagem_erro_2" class="alerta_erro_2"> <!---Aqui Aparece a Mensagem de Validação (ALERT) ---> </div>
+        </div>
+
       </div>
       <div class="containerbtn">
         <a onclick="a_limpar()">Limpar</a>
         <a onclick="cadastro()">Cadastrar</a>
       </div>
     </div>
+    
   </div>
+  
   <!---------------------------------RODAPÉ DO SITE------------------------------------------>
   <div class="footer">
     <div class="container">
@@ -123,35 +129,66 @@
         bairroEmpresaCadasVar == "" || cidadeEmpresaCadasVar == "" || estadoEmpresaCadasVar == "" || cepEmpresaCadasVar == "" ||
         tel1EmpresaCadasVar == "" || tel2EmpresaCadasVar == ""
         ) {
-          alert ("Existem campos não preenchidos")
+          mensagem_erro_2.innerHTML = `<p> Existem campos não preenchidos ! </p>`
+          document.getElementById("mensagem_erro_2").style.display="flex";
+          document.getElementById("input_nomeEmpresa").style.backgroundColor="#ff9696";
+          document.getElementById("input_CNPJ").style.backgroundColor="#ff9696";
+          document.getElementById("input_rua").style.backgroundColor="#ff9696";
+          document.getElementById("input_numero").style.backgroundColor="#ff9696";
+          document.getElementById("input_bairro").style.backgroundColor="#ff9696";
+          document.getElementById("input_cidade").style.backgroundColor="#ff9696";
+          document.getElementById("input_estado").style.backgroundColor="#ff9696";
+          document.getElementById("input_cep").style.backgroundColor="#ff9696";
+          document.getElementById("input_telefone1").style.backgroundColor="#ff9696";
+          document.getElementById("input_telefone2").style.backgroundColor="#ff9696";
 
       } else if (cnpjEmpresaCadasVar.length != 15 ){
-        alert ("CNPJ invalido !")
 
-      } 
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js              
-              nomeEmpresaCadasServer : nomeEmpresaCadasVar,
-              cnpjEmpresaCadasServer : cnpjEmpresaCadasVar,
-              ruaEmpresaCadasServer : ruaEmpresaCadasVar,
-              numeroEmpresaCadasServer : numeroEmpresaCadasVar, 
-              bairroEmpresaCadasServer : bairroEmpresaCadasVar,
-              cidadeEmpresaCadasServer : cidadeEmpresaCadasVar, 
-              estadoEmpresaCadasServer : estadoEmpresaCadasVar, 
-              cepEmpresaCadasServer : cepEmpresaCadasVar, 
-              tel1EmpresaCadasServer : tel1EmpresaCadasVar, 
-              tel2EmpresaCadasServer : tel2EmpresaCadasVar,         
-          })
-      })
-      window.location.href = "cadastroUsuario.html" 
+        mensagem_erro_2.innerHTML = `<p> CNPJ Inválido ! </p>`
+        document.getElementById("mensagem_erro_2").style.display="flex";
+        document.getElementById("input_CNPJ").style.backgroundColor="#ff9696";
+
+      } else {
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js              
+                nomeEmpresaCadasServer : nomeEmpresaCadasVar,
+                cnpjEmpresaCadasServer : cnpjEmpresaCadasVar,
+                ruaEmpresaCadasServer : ruaEmpresaCadasVar,
+                numeroEmpresaCadasServer : numeroEmpresaCadasVar, 
+                bairroEmpresaCadasServer : bairroEmpresaCadasVar,
+                cidadeEmpresaCadasServer : cidadeEmpresaCadasVar, 
+                estadoEmpresaCadasServer : estadoEmpresaCadasVar, 
+                cepEmpresaCadasServer : cepEmpresaCadasVar, 
+                tel1EmpresaCadasServer : tel1EmpresaCadasVar, 
+                tel2EmpresaCadasServer : tel2EmpresaCadasVar,         
+            })
+        })
+        window.location.href = "cadastroUsuario.html" 
+      }
+      
   }
+  function limparBorda_de_erro(){
+    document.getElementById("input_nomeEmpresa").style.backgroundColor="#fff";
+    document.getElementById("input_CNPJ").style.backgroundColor="#fff";
+    document.getElementById("input_rua").style.backgroundColor="#fff";
+    document.getElementById("input_numero").style.backgroundColor="#fff";
+    document.getElementById("input_bairro").style.backgroundColor="#fff";
+    document.getElementById("input_cidade").style.backgroundColor="#fff";
+    document.getElementById("input_estado").style.backgroundColor="#fff";
+    document.getElementById("input_cep").style.backgroundColor="#fff";
+    document.getElementById("input_telefone1").style.backgroundColor="#fff";
+    document.getElementById("input_telefone2").style.backgroundColor="#fff";
+    mensagem_erro_2.innerHTML = ``
+    document.getElementById("mensagem_erro_2").style.display="none";
+  }
+
   function a_limpar(){
     input_nomeEmpresa.value = "";
     input_CNPJ.value = "";

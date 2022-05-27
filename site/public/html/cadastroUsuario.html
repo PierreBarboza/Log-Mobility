@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/header-footer.css" />
   <link rel="stylesheet" href="../css/cadastrarLinha.css" />
+  <link rel="stylesheet" href="../css/alertas.css">
   <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
   <title>Cadastro de Usuário</title>
   <script src="../js/funcoes.js"></script>
@@ -54,12 +55,12 @@
 
       <div class="dados">
         <h4>Email do funcionario:</h4>
-        <input id="input_emailfunc">
+        <input id="input_emailfunc" onclick="limparBorda_de_erro()">
       </div>
 
       <div class="dados">
         <h4>Senha do usuario:</h4>
-        <input id="input_senhafunc" />
+        <input id="input_senhafunc" onclick="limparBorda_de_erro()"/>
       </div>
       
       <div class="dados">
@@ -70,7 +71,10 @@
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
         <button onclick="cadastro()">Cadastrar</button>
-        <a href="empCadast-cheio.html">Finalizar<br>Cadastro</a>
+        <a onclick="finalizarCadastro()" href="../html/empCadast-cheio.html">Finalizar<br>Cadastro</a>     
+      </div>
+      <div id="caixa_de_alerta" class="box_alert">
+        <div id="mensagem_erro" class="alerta_erro"> <!---Aqui Aparece a Mensagem de Validação (ALERT) ---> </div>
       </div>
     </div>
   </div>
@@ -113,8 +117,29 @@
       if (
         emailfuncVar == "" || senhafuncVar == "" || empresafuncVar == ""
         ) {
-          alert ("Existem campos não preenchidos")
-      }
+        mensagem_erro.innerHTML = `Existem campos Não preenchidos !`
+        document.getElementById("mensagem_erro").style.display="flex";
+        document.getElementById("input_emailfunc").style.border="2px solid red"
+        document.getElementById("input_senhafunc").style.border="2px solid red"
+        document.getElementById("caixa_de_alerta").style.backgroundColor="#00000087";
+
+      } else if (emailfuncVar.indexOf("@gmail.com") == -1 &&
+                emailfuncVar.indexOf("@outlook.com") == -1 &&
+                emailfuncVar.indexOf("@hotmail.com") == -1 &&
+                emailfuncVar.indexOf("@yahoo.com") == -1 &&
+                emailfuncVar.indexOf("@sptech.com") == -1 &&
+                emailfuncVar.indexOf("@terra.com") == -1 &&
+                emailfuncVar.indexOf("@sptrans.com") == -1){
+
+        mensagem_erro.innerHTML = `E-mail Inválido !`
+        document.getElementById("mensagem_erro").style.display="flex";
+        document.getElementById("input_emailfunc").style.border="2px solid red";
+        document.getElementById("caixa_de_alerta").style.backgroundColor="#00000087";
+
+    } else {
+      mensagem_erro.innerHTML = ``
+      document.getElementById("mensagem_erro").style.display="none";
+
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrarfunc", {
           method: "POST",
@@ -128,8 +153,19 @@
               senhafuncServer : senhafuncVar,
               empresafuncServer : empresafuncVar              
           })
-      })
-      window.location.href = "empCadast-cheio.html" 
+          
+      }) 
+    }
+  }
+  function limparBorda_de_erro(){
+    document.getElementById("input_emailfunc").style.border="none"
+    document.getElementById("input_senhafunc").style.border="none"
+    mensagem_erro.innerHTML = ``
+    document.getElementById("mensagem_erro").style.display="none";
+    document.getElementById("caixa_de_alerta").style.backgroundColor="rgb(0 0 0 / 0%)";
+  }
+  function finalizarCadastro(){
+    window.location.href = "../html/empCadast-cheio.html"
   }
   function listarEmpresasCadastradas() {
         // aguardar();   
