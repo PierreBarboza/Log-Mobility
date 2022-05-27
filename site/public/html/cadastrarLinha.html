@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/header-footer.css" />
   <link rel="stylesheet" href="../css/cadastrarLinha.css" />
+  <link rel="stylesheet" href="../css/alertas.css">
   <link rel="shortcut icon" href="../img/Icon-LM.png" type="image/x-icon" />
   <title>Cadastro de linha</title>
   <script src="../js/funcoes.js"></script>
@@ -47,17 +48,20 @@
 
       <div class="dados">
         <h4>Nome da Linha:</h4>
-        <input id="input_nomeLinha">
+        <input id="input_nomeLinha" onclick="limparBorda_de_erro()"/>
       </div>
 
       <div class="dados">
         <h4>Rota:</h4>
-        <input id="input_rota" />
+        <input id="input_rota" onclick="limparBorda_de_erro()"/>
       </div>  
 
       <div class="butao">
         <button onclick="button_limpar()">Limpar</button>
         <button onclick="cadastrolinha()">Cadastrar</button>
+      </div>
+      <div id="caixa_de_alerta" class="box_alert">
+        <div id="mensagem_erro" class="alerta_erro"> <!---Aqui Aparece a Mensagem de Validação (ALERT) ---> </div>
       </div>
     </div>
   </div>
@@ -103,10 +107,18 @@
       if (
         nomeLinhaVar == "" || rotaVar == "" || empresapertVar ==""
         ) {
-          alert ("Existem campos não preenchidos")
-      }
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrolinha", {
+        mensagem_erro.innerHTML = `Existem campos Não preenchidos !`
+        document.getElementById("mensagem_erro").style.display="flex";
+        document.getElementById("input_nomeLinha").style.border="2px solid red"
+        document.getElementById("input_rota").style.border="2px solid red"
+        document.getElementById("caixa_de_alerta").style.backgroundColor="#00000087";
+
+      } else {
+        mensagem_erro.innerHTML = ``
+        document.getElementById("mensagem_erro").style.display="none";
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrolinha", {
           method: "POST",
           headers: {
               "Content-Type": "application/json"
@@ -118,9 +130,20 @@
               rotaServer : rotaVar,  
               empresapertServer : empresapertVar    
           })
-      })
-      window.location.href = "linhasCadast.html"
+          
+        })
+        window.location.href = "linhasCadast.html"
+      }
+      
+      
     }
+  function limparBorda_de_erro(){
+    document.getElementById("input_nomeLinha").style.border="none"
+    document.getElementById("input_rota").style.border="none"
+    mensagem_erro.innerHTML = ``
+    document.getElementById("mensagem_erro").style.display="none";
+    document.getElementById("caixa_de_alerta").style.backgroundColor="rgb(0 0 0 / 0%)";
+  }
   function button_limpar(){
     input_nomeLinha.value = "";
     input_rota.value = "";
