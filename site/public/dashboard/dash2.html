@@ -309,7 +309,7 @@
             numero_tempo_real.style.borderColor = "#2ECC71"
             numero_tempo_real.innerHTML = `${qtd_entrada}`
 
-        } else if (qtd_entrada < 9) {
+        } else if (qtd_entrada <= 9) {
             numero_tempo_real.style.borderColor = "#F1C40F"
             numero_tempo_real.innerHTML = `${qtd_entrada}`
 
@@ -345,7 +345,7 @@
             numero_tempo_real.style.borderColor = "#2ECC71"
             aviso.style.borderColor = "#2ECC71"
             aviso.style.color = "#2ECC71"
-        } else if (qtd_entrada < 9) {
+        } else if (qtd_entrada <= 9) {
             numero_tempo_real.style.borderColor = "#F1C40F"
             aviso.innerHTML = `Onibus perto do limite de passageiros!`
             aviso.style.borderColor = "#F1C40F"
