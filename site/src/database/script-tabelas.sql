@@ -190,12 +190,24 @@ create table medida (
 	foreign key (fkSensor) references sensor(idSensor)
 );
 	
-insert into medida (chave, momento, fkSensor) values 
-(10, CURRENT_TIMESTAMP ,1),
-(20, CURRENT_TIMESTAMP ,1),
-(30, CURRENT_TIMESTAMP ,1),
-(10, CURRENT_TIMESTAMP ,1),
-(50, CURRENT_TIMESTAMP ,1),
-(80, CURRENT_TIMESTAMP ,1),
-(40, CURRENT_TIMESTAMP ,1),
-(30, CURRENT_TIMESTAMP ,1);
+CREATE TABLE Alerta(
+    idAlerta INT primary Key identity,
+    tipoAlerta varchar(40)
+);
+
+insert into Alerta (tipoAlerta) values
+('Onibus vazio'),
+('Usuarios a baixo do esperado'),
+('Onibus proximo da capacidade maxima'),
+('Onibus lotação maxima');
+
+CREATE TABLE Central(
+    idCentral INT identity, 
+    dtAlerta DATETIME,
+    fkAlerta INT,
+    foreign key (fkAlerta) references Alerta (idAlerta),
+    fkAlertaOnibus INT,
+    foreign key (fkAlertaOnibus) references Onibus (idOnibus),
+    primary key (idCentral, fkAlerta, fkAlertaOnibus)
+    
+);

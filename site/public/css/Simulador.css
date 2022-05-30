@@ -33,6 +33,7 @@
   width: 50%;
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 2px solid white;
 }
 
@@ -135,4 +136,10 @@
 .texto_mediano_simu {
     color: #ffffff;
     padding-left: 30px;
+}
+.texto_mediano_btn{
+  color: rgb(190, 190, 190);
+  line-height: 50px;
+  font-size: 21px;
+  font-family: monospace;
 }
